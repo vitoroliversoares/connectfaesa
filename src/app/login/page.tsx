@@ -2,17 +2,20 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import { motion } from 'framer-motion'
-import { Mail } from 'lucide-react'
+import { Lock, Mail } from 'lucide-react'
 
 function LoginContent() {
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [isRegistering, setIsRegistering] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  
   const supabase = createClient()
   const searchParams = useSearchParams()
+  const router = useRouter()
 
   useEffect(() => {
     const error = searchParams.get('error')
@@ -22,11 +25,11 @@ function LoginContent() {
         duration: 8000,
       })
     } else if (error) {
-      toast.error('Erro na autenticação. Link expirado ou inválido.')
+      toast.error('Erro na autenticação. Tente novamente.')
     }
   }, [searchParams])
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
     // Validação estrita de domínio no Frontend
@@ -37,23 +40,47 @@ function LoginContent() {
       return
     }
 
-    setIsLoading(true)
-    const { error } = await supabase.auth.signInWithOtp({
-      email,
-      options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback`,
-      },
-    })
-    
-    setIsLoading(false)
-
-    if (error) {
-      toast.error('Erro ao enviar link mágico: ' + error.message)
-    } else {
-      setIsSuccess(true)
-      toast.success('Link enviado!', {
-        description: 'Verifique sua caixa de entrada para fazer login.',
+    if (password.length < 6) {
+      toast.error('Senha muito curta', {
+        description: 'A senha deve ter no mínimo 6 caracteres.',
       })
+      return
+    }
+
+    setIsLoading(true)
+
+    if (isRegistering) {
+      // Fluxo de Cadastro
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+      })
+
+      if (error) {
+        toast.error('Erro ao cadastrar: ' + error.message)
+        setIsLoading(false)
+      } else {
+        toast.success('Conta criada com sucesso!')
+        router.push('/onboarding')
+      }
+    } else {
+      // Fluxo de Login
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+
+      if (error) {
+        toast.error('Erro ao acessar', {
+          description: error.message === 'Invalid login credentials' 
+            ? 'E-mail ou senha incorretos.' 
+            : error.message
+        })
+        setIsLoading(false)
+      } else {
+        toast.success('Login bem-sucedido!')
+        router.push('/onboarding')
+      }
     }
   }
 
@@ -75,24 +102,19 @@ function LoginContent() {
         </div>
         <h1 className="text-2xl font-bold text-gray-900">ConnectFAESA</h1>
         <p className="text-gray-500 text-center mt-2">
-          Entre com seu e-mail institucional.
+          {isRegistering ? 'Crie sua conta na plataforma.' : 'Acesse sua conta para continuar.'}
         </p>
       </div>
 
-      {isSuccess ? (
-        <div className="text-center p-4 bg-green-50 rounded-xl border border-green-100">
-          <div className="flex justify-center mb-2 text-green-500">
-            <Mail size={32} />
-          </div>
-          <h3 className="text-green-800 font-semibold">Verifique seu E-mail</h3>
-          <p className="text-green-600 text-sm mt-1">Enviamos um link mágico para você acessar a plataforma.</p>
-        </div>
-      ) : (
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-              E-mail Institucional
-            </label>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            E-mail Institucional
+          </label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+              <Mail size={18} />
+            </div>
             <input
               id="email"
               type="email"
@@ -100,23 +122,55 @@ function LoginContent() {
               placeholder="seu.nome@aluno.faesa.br"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-faesa-blue focus:border-faesa-blue outline-none transition-all text-gray-900"
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-faesa-blue focus:border-faesa-blue outline-none transition-all text-gray-900"
             />
           </div>
+        </div>
 
-          <button
-            type="submit"
-            disabled={isLoading || !email}
-            className="w-full flex items-center justify-center gap-3 bg-faesa-blue text-white hover:bg-faesa-light transition-colors py-3 px-4 rounded-xl font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-faesa-blue disabled:opacity-50"
-          >
-            {isLoading ? (
-              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-            ) : (
-              'Receber Link Mágico'
-            )}
-          </button>
-        </form>
-      )}
+        <div>
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            Senha
+          </label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+              <Lock size={18} />
+            </div>
+            <input
+              id="password"
+              type="password"
+              required
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-faesa-blue focus:border-faesa-blue outline-none transition-all text-gray-900"
+            />
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          disabled={isLoading || !email || !password}
+          className="w-full flex items-center justify-center gap-3 bg-faesa-blue text-white hover:bg-faesa-light transition-colors py-3 px-4 rounded-xl font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-faesa-blue disabled:opacity-50 mt-2"
+        >
+          {isLoading ? (
+            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          ) : (
+            isRegistering ? 'Criar Conta' : 'Entrar'
+          )}
+        </button>
+      </form>
+
+      <div className="mt-6 text-center">
+        <button
+          type="button"
+          onClick={() => setIsRegistering(!isRegistering)}
+          className="text-sm text-faesa-blue hover:text-faesa-light font-medium transition-colors"
+        >
+          {isRegistering 
+            ? 'Já tem uma conta? Faça login' 
+            : 'Primeiro acesso? Cadastre-se'}
+        </button>
+      </div>
 
       <p className="text-xs text-center text-gray-400 mt-6">
         Acesso restrito a e-mails @aluno.faesa.br ou @faesa.br.
