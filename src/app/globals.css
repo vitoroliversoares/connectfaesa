@@ -12,20 +12,27 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #002A54;
+  --background: #f8fafc;
+  --foreground: #0f172a;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0B1B3D;
-    --foreground: #ffffff;
-  }
-}
+/* 
+Removida a inversão agressiva do Dark Mode do Next.js padrão 
+para garantir que o design baseado em bg-white funcione perfeitamente.
+*/
 
 body {
+  color-scheme: light;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   @apply antialiased;
+}
+
+/* Forçando alto contraste em inputs e textareas para legibilidade garantida */
+input, textarea, select {
+  color: #0f172a;
+}
+input::placeholder, textarea::placeholder {
+  color: #94a3b8;
 }

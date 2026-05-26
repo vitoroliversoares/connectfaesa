@@ -1,13 +1,39 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { LogOut, User } from 'lucide-react'
+import { createClient } from '@/lib/supabase/client'
+import { useEffect, useState } from 'react'
 
 export function Navbar() {
   const pathname = usePathname()
+  const router = useRouter()
+  const supabase = createClient()
+  const [userName, setUserName] = useState<string | null>(null)
 
-  // Hide Navbar on login page
+  useEffect(() => {
+    async function loadUser() {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (user) {
+        const { data } = await supabase.from('profiles').select('full_name').eq('id', user.id).single()
+        if (data?.full_name) {
+          setUserName(data.full_name.split(' ')[0]) // Pega só o primeiro nome
+        }
+      }
+    }
+    // Não carrega no login
+    if (pathname !== '/login') {
+      loadUser()
+    }
+  }, [pathname, supabase])
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut()
+    router.push('/login')
+  }
+
+  // Ocultar Navbar na tela de login
   if (pathname === '/login') {
     return null
   }
@@ -17,20 +43,23 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/onboarding" className="font-bold text-xl tracking-tight flex items-center gap-2">
+            <Link href="/dashboard" className="font-bold text-xl tracking-tight flex items-center gap-2">
               <span className="bg-white text-faesa-blue p-1 rounded">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2L2 12L12 22L22 12L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </span>
-              ConnectFAESA
+              <span className="hidden sm:inline">ConnectFAESA</span>
             </Link>
           </div>
-          <div className="flex items-center space-x-4">
-            <button className="p-2 rounded-full hover:bg-white/10 transition">
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <Link href="/profile" className="flex items-center gap-2 p-2 rounded-xl hover:bg-white/10 transition" title="Meu Perfil">
+              {userName && (
+                <span className="text-sm font-medium">Olá, {userName}</span>
+              )}
               <User size={20} />
-            </button>
-            <button className="p-2 rounded-full hover:bg-white/10 transition text-red-300 hover:text-red-400">
+            </Link>
+            <button onClick={handleLogout} className="p-2 rounded-full hover:bg-white/10 transition text-red-300 hover:text-red-400" title="Sair">
               <LogOut size={20} />
             </button>
           </div>
