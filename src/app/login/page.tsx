@@ -3,6 +3,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { useSearchParams, useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { toast } from 'sonner'
 import { motion } from 'framer-motion'
 import { Lock, Mail } from 'lucide-react'
@@ -93,14 +94,11 @@ function LoginContent() {
     >
       <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 to-faesa-light"></div>
       
-      <div className="flex flex-col items-center mb-8">
-        <div className="w-16 h-16 bg-faesa-blue text-white rounded-xl flex justify-center items-center mb-4 transform rotate-45 shadow-lg">
-          <svg className="w-8 h-8 -rotate-45" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 12L12 22L22 12L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            <rect x="8" y="8" width="8" height="8" stroke="currentColor" strokeWidth="2" />
-          </svg>
+      <div className="text-center mb-8">
+        <div className="flex justify-center mb-6">
+          <Image src="/logo.png" alt="Logo FAESA" width={240} height={60} priority className="h-12 w-auto" />
         </div>
-        <h1 className="text-2xl font-bold text-gray-900">ConnectFAESA</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Entrar na Plataforma</h1>
         <p className="text-gray-500 text-center mt-2">
           {isRegistering ? 'Crie sua conta na plataforma.' : 'Acesse sua conta para continuar.'}
         </p>

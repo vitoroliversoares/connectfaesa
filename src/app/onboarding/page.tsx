@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { motion, AnimatePresence } from 'framer-motion'
 import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { toast } from 'sonner'
 import { Check, ChevronRight, ChevronLeft } from 'lucide-react'
 import { 
@@ -118,11 +119,8 @@ export default function OnboardingWizard() {
           className="max-w-5xl mx-auto w-full"
         >
           <div className="text-center mb-12">
-            <div className="w-20 h-20 bg-white text-faesa-blue rounded-2xl flex justify-center items-center mx-auto mb-6 transform rotate-12 shadow-xl">
-              <svg className="w-10 h-10 -rotate-12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L2 12L12 22L22 12L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <rect x="8" y="8" width="8" height="8" stroke="currentColor" strokeWidth="2" />
-              </svg>
+            <div className="flex justify-center mb-8">
+              <Image src="/logo.png" alt="Logo FAESA" width={300} height={80} priority className="h-16 md:h-20 w-auto" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Bem-vindo(a) ao ConnectFAESA!</h1>
             <p className="text-blue-200 text-lg max-w-2xl mx-auto">Para começarmos a construir o seu perfil e encontrar as pessoas certas, qual é o seu objetivo principal na plataforma?</p>

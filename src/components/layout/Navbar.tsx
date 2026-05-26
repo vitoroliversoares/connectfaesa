@@ -2,6 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { LogOut, User } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 import { useEffect, useState } from 'react'
@@ -42,14 +43,9 @@ export function Navbar() {
     <nav className="w-full bg-faesa-blue text-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <div className="flex-shrink-0 flex items-center">
-            <Link href="/dashboard" className="font-bold text-xl tracking-tight flex items-center gap-2">
-              <span className="bg-white text-faesa-blue p-1 rounded">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L2 12L12 22L22 12L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-              <span className="hidden sm:inline">ConnectFAESA</span>
+          <div className="flex-shrink-0 flex items-center py-2">
+            <Link href="/dashboard" className="flex items-center">
+              <Image src="/logo.png" alt="Logo FAESA" width={200} height={40} priority className="h-8 sm:h-10 w-auto" />
             </Link>
           </div>
           <div className="flex items-center space-x-2 sm:space-x-4">
