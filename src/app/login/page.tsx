@@ -80,6 +80,20 @@ function LoginContent() {
         setIsLoading(false)
       } else {
         toast.success('Login bem-sucedido!')
+        
+        if (data.user) {
+          const { data: profile } = await supabase
+            .from('profiles')
+            .select('full_name')
+            .eq('id', data.user.id)
+            .single()
+
+          if (profile?.full_name) {
+            router.push('/dashboard')
+            return
+          }
+        }
+        
         router.push('/onboarding')
       }
     }
