@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
-import { createClient } from '@/lib/supabase/client'
+import { useState, useMemo } from 'react'
 import { Filter, X } from 'lucide-react'
 import ProfileCard from './ProfileCard'
 import ProfileModal from './ProfileModal'
@@ -17,34 +16,16 @@ const COURSES = [
   'Análise e Desenvolvimento de Sistemas (ADS)', 'Ciência da Computação', 'Design de Moda'
 ]
 
-export default function DashboardClient({ currentUser }: { currentUser: any }) {
-  const [profiles, setProfiles] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
+export default function DashboardClient({ currentUser, initialProfiles }: { currentUser: any, initialProfiles: any[] }) {
+  const [profiles, setProfiles] = useState<any[]>(initialProfiles)
+  const [loading, setLoading] = useState(false)
   const [selectedProfile, setSelectedProfile] = useState<any | null>(null)
-  
+
   // Filters State
   const [showFilters, setShowFilters] = useState(false)
   const [courseFilter, setCourseFilter] = useState('')
   const [goalFilter, setGoalFilter] = useState('')
   const [skillFilter, setSkillFilter] = useState('')
-
-  const supabase = createClient()
-
-  useEffect(() => {
-    async function fetchProfiles() {
-      // Busca perfis excluindo o próprio usuário
-      const { data } = await supabase
-        .from('profiles')
-        .select('*')
-        .neq('id', currentUser.id)
-      
-      if (data) {
-        setProfiles(data)
-      }
-      setLoading(false)
-    }
-    fetchProfiles()
-  }, [currentUser.id, supabase])
 
   const filteredAndSortedProfiles = useMemo(() => {
     let result = profiles

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion } from 'framer-motion'
-import { createClient } from '@/lib/supabase/client'
+import { updateProfileAction } from '@/actions/profile'
 import { toast } from 'sonner'
 import { X, Check } from 'lucide-react'
 import { 
@@ -21,7 +21,6 @@ const HOURS = onboardingSchema.shape.availability_hours.options
 
 export default function EditProfileModal({ profile, onClose, onSave }: { profile: any, onClose: () => void, onSave: (p: any) => void }) {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const supabase = createClient()
 
   // Mapeamos os valores atuais para o RHF (ignoramos consent_lgpd pois já foi aceito)
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<OnboardingData>({
@@ -47,13 +46,10 @@ export default function EditProfileModal({ profile, onClose, onSave }: { profile
 
   const onSubmit = async (data: OnboardingData) => {
     setIsSubmitting(true)
-    const { error } = await supabase
-      .from('profiles')
-      .update(data)
-      .eq('id', profile.id)
+    const { error } = await updateProfileAction(data)
 
     if (error) {
-      toast.error('Erro ao salvar', { description: error.message })
+      toast.error('Erro ao salvar', { description: error })
       setIsSubmitting(false)
     } else {
       toast.success('Perfil atualizado com sucesso!')

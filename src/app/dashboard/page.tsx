@@ -22,9 +22,16 @@ export default async function DashboardPage() {
     redirect('/onboarding')
   }
 
+  // Fetch all profiles for the feed
+  const { data: allProfiles } = await supabase
+    .from('profiles')
+    .select('*')
+    .neq('id', user.id)
+    .not('full_name', 'is', null)
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <DashboardClient currentUser={currentUserProfile} />
+      <DashboardClient currentUser={currentUserProfile} initialProfiles={allProfiles || []} />
     </div>
   )
 }

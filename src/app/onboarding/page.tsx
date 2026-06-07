@@ -4,10 +4,11 @@ import { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion, AnimatePresence } from 'framer-motion'
-import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { toast } from 'sonner'
+import { getUserAction } from '@/actions/auth'
+import { updateProfileAction } from '@/actions/profile'
 import { Check, ChevronRight, ChevronLeft } from 'lucide-react'
 import { 
   onboardingSchema, 
@@ -33,7 +34,6 @@ export default function OnboardingWizard() {
   const [submitting, setSubmitting] = useState(false)
   const [userId, setUserId] = useState<string | null>(null)
   
-  const supabase = createClient()
   const router = useRouter()
 
   const { register, handleSubmit, control, watch, setValue, trigger, formState: { errors } } = useForm<OnboardingData>({
@@ -47,7 +47,7 @@ export default function OnboardingWizard() {
 
   useEffect(() => {
     async function init() {
-      const { data: { user } } = await supabase.auth.getUser()
+      const user = await getUserAction()
       if (!user) {
         router.push('/login')
         return
@@ -57,7 +57,7 @@ export default function OnboardingWizard() {
       setLoading(false)
     }
     init()
-  }, [supabase, router, setValue])
+  }, [router, setValue])
 
   const nextStep = async () => {
     let fieldsToValidate: any[] = []
@@ -89,13 +89,10 @@ export default function OnboardingWizard() {
     if (!userId) return
     setSubmitting(true)
 
-    const { error } = await supabase
-      .from('profiles')
-      .update(data)
-      .eq('id', userId)
+    const result = await updateProfileAction(data)
 
-    if (error) {
-      toast.error('Erro ao salvar perfil', { description: error.message })
+    if (result.error) {
+      toast.error('Erro ao salvar perfil', { description: result.error })
       setSubmitting(false)
     } else {
       toast.success('Perfil concluído com sucesso!')

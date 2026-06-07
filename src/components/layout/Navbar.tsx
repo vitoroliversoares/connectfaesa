@@ -4,34 +4,29 @@ import { usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { LogOut, User } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
 import { useEffect, useState } from 'react'
+import { getUserNameAction, logoutAction } from '@/actions/auth'
 
 export function Navbar() {
   const pathname = usePathname()
   const router = useRouter()
-  const supabase = createClient()
   const [userName, setUserName] = useState<string | null>(null)
 
   useEffect(() => {
     async function loadUser() {
-      const { data: { user } } = await supabase.auth.getUser()
-      if (user) {
-        const { data } = await supabase.from('profiles').select('full_name').eq('id', user.id).single()
-        if (data?.full_name) {
-          setUserName(data.full_name.split(' ')[0]) // Pega só o primeiro nome
-        }
+      const name = await getUserNameAction()
+      if (name) {
+        setUserName(name)
       }
     }
     // Não carrega no login
     if (pathname !== '/login') {
       loadUser()
     }
-  }, [pathname, supabase])
+  }, [pathname])
 
   const handleLogout = async () => {
-    await supabase.auth.signOut()
-    router.push('/login')
+    await logoutAction()
   }
 
   // Ocultar Navbar na tela de login

@@ -1,13 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { toast } from 'sonner'
 import { ArrowLeft, Edit2, LogOut, KeyRound, User, BookOpen, Clock, X, Phone } from 'lucide-react'
 import EditProfileModal from './EditProfileModal'
 import Link from 'next/link'
+import { logoutAction, updatePasswordAction } from '@/actions/auth'
 
 export default function ProfileClient({ initialProfile, userEmail }: { initialProfile: any, userEmail: string }) {
   const [profile, setProfile] = useState(initialProfile)
@@ -15,13 +15,8 @@ export default function ProfileClient({ initialProfile, userEmail }: { initialPr
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false)
   const [newPassword, setNewPassword] = useState('')
   const [isSavingPassword, setIsSavingPassword] = useState(false)
-  
-  const supabase = createClient()
-  const router = useRouter()
-
   const handleLogout = async () => {
-    await supabase.auth.signOut()
-    router.push('/login')
+    await logoutAction()
   }
 
   const handleUpdatePassword = async (e: React.FormEvent) => {
@@ -32,12 +27,10 @@ export default function ProfileClient({ initialProfile, userEmail }: { initialPr
     }
     
     setIsSavingPassword(true)
-    const { error } = await supabase.auth.updateUser({
-      password: newPassword
-    })
+    const { error } = await updatePasswordAction(newPassword)
 
     if (error) {
-      toast.error('Erro ao atualizar senha', { description: error.message })
+      toast.error('Erro ao atualizar senha', { description: error })
     } else {
       toast.success('Senha atualizada com sucesso!')
       setIsPasswordModalOpen(false)

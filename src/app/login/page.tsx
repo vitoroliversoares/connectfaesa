@@ -1,12 +1,12 @@
 'use client'
 
 import { useState, useEffect, Suspense } from 'react'
-import { createClient } from '@/lib/supabase/client'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { toast } from 'sonner'
 import { motion } from 'framer-motion'
 import { Lock, Mail } from 'lucide-react'
+import { loginAction, registerAction } from '@/actions/auth'
 
 function LoginContent() {
   const [email, setEmail] = useState('')
@@ -14,7 +14,6 @@ function LoginContent() {
   const [isRegistering, setIsRegistering] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   
-  const supabase = createClient()
   const searchParams = useSearchParams()
   const router = useRouter()
 
@@ -51,50 +50,34 @@ function LoginContent() {
     setIsLoading(true)
 
     if (isRegistering) {
-      // Fluxo de Cadastro
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-      })
+      // Fluxo de Cadastro via Server Action
+      const { error } = await registerAction(email, password)
 
       if (error) {
-        toast.error('Erro ao cadastrar: ' + error.message)
+        toast.error('Erro ao cadastrar: ' + error)
         setIsLoading(false)
       } else {
         toast.success('Conta criada com sucesso!')
         router.push('/onboarding')
       }
     } else {
-      // Fluxo de Login
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
+      // Fluxo de Login via Server Action
+      const result = await loginAction(email, password)
 
-      if (error) {
+      if (result.error) {
         toast.error('Erro ao acessar', {
-          description: error.message === 'Invalid login credentials' 
+          description: result.error === 'Invalid login credentials' 
             ? 'E-mail ou senha incorretos.' 
-            : error.message
+            : result.error
         })
         setIsLoading(false)
       } else {
         toast.success('Login bem-sucedido!')
-        
-        if (data.user) {
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('full_name')
-            .eq('id', data.user.id)
-            .single()
-
-          if (profile?.full_name) {
-            router.push('/dashboard')
-            return
-          }
+        if (result.hasProfile) {
+          router.push('/dashboard')
+        } else {
+          router.push('/onboarding')
         }
-        
-        router.push('/onboarding')
       }
     }
   }
