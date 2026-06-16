@@ -14,6 +14,7 @@ import {
   declineConnectionRequestAction, 
   cancelConnectionRequestAction 
 } from '@/actions/connection'
+import { createClient } from '@/lib/supabase/client'
 
 // Constantes para filtros
 const GOALS = ['TCC', 'Startup', 'Grupo de Estudos', 'Extracurricular', 'Outros']
@@ -24,33 +25,53 @@ const COURSES = [
   'Análise e Desenvolvimento de Sistemas (ADS)', 'Ciência da Computação', 'Design de Moda'
 ]
 
-// Algoritmo de Match Score Inteligente
+// Algoritmo de Match Score Inteligente com Explicação das Afinidades
 function calculateMatchScore(user: any, other: any) {
   let score = 0
+  const reasons: string[] = []
 
   // 1. Minhas necessidades no parceiro x habilidades que o outro oferece
   if (user.partner_needs && other.top_skills) {
     const matchingNeeds = user.partner_needs.filter((need: string) => other.top_skills.includes(need))
-    score += matchingNeeds.length * 35 // Até 70%
+    if (matchingNeeds.length > 0) {
+      score += matchingNeeds.length * 35 // Até 70%
+      matchingNeeds.forEach((need: string) => {
+        reasons.push(`Oferece a habilidade "${need.split('/')[0].trim()}" que você busca (+35%)`)
+      })
+    }
   }
 
   // 2. Necessidades do parceiro no outro x habilidades que eu ofereço
   if (other.partner_needs && user.top_skills) {
     const matchingOffers = other.partner_needs.filter((need: string) => user.top_skills.includes(need))
-    score += matchingOffers.length * 20 // Até 40% (totalizando até 110%, mas limitaremos a 100%)
+    if (matchingOffers.length > 0) {
+      score += matchingOffers.length * 20 // Até 40%
+      matchingOffers.forEach((need: string) => {
+        reasons.push(`Busca a habilidade "${need.split('/')[0].trim()}" que você oferece (+20%)`)
+      })
+    }
   }
 
   // 3. Mesmos cursos (afinidade acadêmica)
   if (user.course === other.course) {
     score += 10
+    reasons.push(`Estudam no mesmo curso: ${user.course} (+10%)`)
   }
 
   // 4. Mesmo turno (compatibilidade de horários)
   if (user.shift === other.shift) {
     score += 10
+    reasons.push(`Estudam no mesmo turno: ${user.shift} (+10%)`)
   }
 
-  return Math.min(score, 100)
+  if (score === 0) {
+    reasons.push("Nenhuma afinidade direta encontrada nas habilidades principais ou curso/turno.")
+  }
+
+  return {
+    score: Math.min(score, 100),
+    reasons
+  }
 }
 
 export default function DashboardClient({ 
@@ -79,14 +100,52 @@ export default function DashboardClient({
   // Sincronizar dados quando o servidor recarregar
   useEffect(() => {
     setProfiles(initialProfiles)
-  }, [initialProfiles])
+    
+    // Se o modal de detalhes estiver aberto, atualiza os dados dele também para revelar os contatos imediatamente
+    if (selectedProfile) {
+      const updatedSelected = initialProfiles.find(p => p.id === selectedProfile.id)
+      if (updatedSelected) {
+        setSelectedProfile(updatedSelected)
+      }
+    }
+  }, [initialProfiles, selectedProfile])
 
-  // Injetar o Match Score em cada perfil
+  // Configurar Listener do Supabase Realtime para conexões em tempo real absoluto
+  useEffect(() => {
+    const supabase = createClient()
+    
+    const channel = supabase
+      .channel('realtime-connections-dashboard')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'connections'
+        },
+        (payload) => {
+          console.log('Detectado alteração de conexão em tempo real:', payload)
+          // Força o Next.js a re-executar as queries no servidor
+          router.refresh()
+        }
+      )
+      .subscribe()
+
+    return () => {
+      supabase.removeChannel(channel)
+    }
+  }, [router])
+
+  // Injetar o Match Score e explicações em cada perfil
   const profilesWithScore = useMemo(() => {
-    return profiles.map(p => ({
-      ...p,
-      matchScore: calculateMatchScore(currentUser, p)
-    }))
+    return profiles.map(p => {
+      const match = calculateMatchScore(currentUser, p)
+      return {
+        ...p,
+        matchScore: match.score,
+        matchReasons: match.reasons
+      }
+    })
   }, [profiles, currentUser])
 
   // Filtragem e Ordenação do Feed
@@ -141,53 +200,146 @@ export default function DashboardClient({
     return { pendingReceived, pendingSent, matches }
   }, [profilesWithScore])
 
-  // Ações de Conexão
+  // Ações de Conexão com Atualizações Otimistas para feedback instantâneo
   const handleConnect = async (receiverId: string) => {
-    setLoading(true)
+    // 1. Atualização Otimista
+    setProfiles(prev => prev.map(p => {
+      if (p.id === receiverId) {
+        return {
+          ...p,
+          connectionState: {
+            id: 'temp-id',
+            status: 'pending',
+            isSender: true
+          }
+        }
+      }
+      return p
+    }))
+    
+    // Atualizar no modal aberto se houver
+    if (selectedProfile && selectedProfile.id === receiverId) {
+      setSelectedProfile((prev: any) => prev ? {
+        ...prev,
+        connectionState: {
+          id: 'temp-id',
+          status: 'pending',
+          isSender: true
+        }
+      } : null)
+    }
+
     const res = await sendConnectionRequestAction(receiverId)
     if (res.error) {
       toast.error(res.error)
+      // Se já existia uma solicitação pendente do outro usuário, o refresh exibirá "Aceitar/Recusar"
+      router.refresh()
     } else {
       toast.success('Solicitação de conexão enviada!')
       router.refresh()
     }
-    setLoading(false)
   }
 
   const handleAccept = async (connId: string) => {
-    setLoading(true)
+    const matchProfile = profiles.find(p => p.connectionState?.id === connId)
+    if (matchProfile) {
+      // Atualização Otimista
+      setProfiles(prev => prev.map(p => {
+        if (p.id === matchProfile.id) {
+          return {
+            ...p,
+            connectionState: {
+              ...p.connectionState,
+              status: 'accepted'
+            }
+          }
+        }
+        return p
+      }))
+
+      if (selectedProfile && selectedProfile.id === matchProfile.id) {
+        setSelectedProfile((prev: any) => prev ? {
+          ...prev,
+          connectionState: {
+            ...prev.connectionState,
+            status: 'accepted'
+          }
+        } : null)
+      }
+    }
+
     const res = await acceptConnectionRequestAction(connId)
     if (res.error) {
       toast.error(res.error)
+      router.refresh()
     } else {
       toast.success('Conexão aceita! Vocês agora são Matches.')
       router.refresh()
     }
-    setLoading(false)
   }
 
   const handleDecline = async (connId: string) => {
-    setLoading(true)
+    const matchProfile = profiles.find(p => p.connectionState?.id === connId)
+    if (matchProfile) {
+      // Atualização Otimista
+      setProfiles(prev => prev.map(p => {
+        if (p.id === matchProfile.id) {
+          return {
+            ...p,
+            connectionState: null
+          }
+        }
+        return p
+      }))
+
+      if (selectedProfile && selectedProfile.id === matchProfile.id) {
+        setSelectedProfile((prev: any) => prev ? {
+          ...prev,
+          connectionState: null
+        } : null)
+      }
+    }
+
     const res = await declineConnectionRequestAction(connId)
     if (res.error) {
       toast.error(res.error)
+      router.refresh()
     } else {
       toast.success('Solicitação recusada.')
       router.refresh()
     }
-    setLoading(false)
   }
 
   const handleCancel = async (connId: string) => {
-    setLoading(true)
+    const matchProfile = profiles.find(p => p.connectionState?.id === connId)
+    if (matchProfile) {
+      // Atualização Otimista
+      setProfiles(prev => prev.map(p => {
+        if (p.id === matchProfile.id) {
+          return {
+            ...p,
+            connectionState: null
+          }
+        }
+        return p
+      }))
+
+      if (selectedProfile && selectedProfile.id === matchProfile.id) {
+        setSelectedProfile((prev: any) => prev ? {
+          ...prev,
+          connectionState: null
+        } : null)
+      }
+    }
+
     const res = await cancelConnectionRequestAction(connId)
     if (res.error) {
       toast.error(res.error)
+      router.refresh()
     } else {
       toast.success('Solicitação cancelada/desfeita.')
       router.refresh()
     }
-    setLoading(false)
   }
 
   return (
@@ -520,6 +672,7 @@ export default function DashboardClient({
         {selectedProfile && (
           <ProfileModal 
             profile={selectedProfile} 
+            currentUser={currentUser}
             onClose={() => setSelectedProfile(null)} 
             onConnect={handleConnect}
             onAccept={handleAccept}

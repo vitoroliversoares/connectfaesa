@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
-import { X, MessageCircle, Clock, BookOpen, User, Check, Trash2 } from 'lucide-react'
+import { X, MessageCircle, Clock, BookOpen, User, Check, Trash2, Star } from 'lucide-react'
+import { calculateMatchScore } from '@/lib/match'
 
 export default function ProfileModal({ 
   profile, 
+  currentUser,
   onClose,
   onConnect,
   onAccept,
@@ -10,6 +12,7 @@ export default function ProfileModal({
   onCancel
 }: { 
   profile: any, 
+  currentUser: any,
   onClose: () => void,
   onConnect?: (id: string) => void,
   onAccept?: (connId: string) => void,
@@ -19,6 +22,7 @@ export default function ProfileModal({
   if (!profile) return null
 
   const connectionState = profile.connectionState
+  const match = calculateMatchScore(currentUser, profile)
 
   const handleWhatsApp = () => {
     if (!profile.whatsapp) return
@@ -78,6 +82,21 @@ export default function ProfileModal({
                 </p>
               )}
             </section>
+
+            {/* Motivos da Porcentagem de Match (Explicação Acadêmica) */}
+            {match && (
+              <section className="bg-amber-50/60 p-4 rounded-xl border border-amber-100">
+                <h3 className="text-xs font-bold text-amber-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                  <Star size={14} className="fill-amber-500 text-amber-500" />
+                  {match.score}% de Compatibilidade
+                </h3>
+                <ul className="text-xs text-amber-900 space-y-1.5 list-disc pl-4 leading-relaxed font-medium">
+                  {match.reasons.map((reason: string, idx: number) => (
+                    <li key={idx}>{reason}</li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             {/* Informações de Contato baseadas na Conexão */}
             {connectionState && connectionState.status === 'accepted' ? (

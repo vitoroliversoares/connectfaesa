@@ -48,3 +48,6 @@ CREATE TRIGGER update_connections_updated_at
 BEFORE UPDATE ON public.connections
 FOR EACH ROW
 EXECUTE FUNCTION public.handle_updated_at();
+
+-- Habilitar Realtime para a tabela connections
+alter publication supabase_realtime add table public.connections;
