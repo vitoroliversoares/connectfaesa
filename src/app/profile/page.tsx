@@ -21,7 +21,7 @@ export default async function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col pb-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-zinc-950 flex flex-col pb-20 transition-colors duration-300">
       <ProfileClient initialProfile={profile} userEmail={user.email || ''} />
     </div>
   )

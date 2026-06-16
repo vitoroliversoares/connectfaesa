@@ -67,7 +67,7 @@ export default async function DashboardPage() {
     })
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 dark:bg-zinc-950 flex flex-col transition-colors duration-300">
       <DashboardClient 
         currentUser={currentUserProfile} 
         initialProfiles={activeProfiles} 

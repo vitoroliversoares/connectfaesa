@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from 'react'
 import { Filter, X, Users, UserCheck, MessageSquare, Check, Search, ArrowRight, Clock, Star } from 'lucide-react'
 import ProfileCard from './ProfileCard'
 import ProfileModal from './ProfileModal'
+import ProfileCardSkeleton from './ProfileCardSkeleton'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SKILL_OPTIONS } from '@/lib/validations/onboarding'
 import { useRouter } from 'next/navigation'
@@ -19,6 +20,7 @@ import { calculateMatchScore } from '@/lib/match'
 
 // Constantes para filtros
 const GOALS = ['TCC', 'Startup', 'Grupo de Estudos', 'Extracurricular', 'Outros']
+const SHIFTS = ['Matutino', 'Vespertino', 'Noturno']
 const COURSES = [
   'Administração', 'Arquitetura e Urbanismo', 'Ciências Contábeis', 'Design Gráfico', 
   'Enfermagem', 'Engenharia da Computação', 'Engenharia Elétrica', 'Jornalismo', 
@@ -46,6 +48,7 @@ export default function DashboardClient({
   const [courseFilter, setCourseFilter] = useState('')
   const [goalFilter, setGoalFilter] = useState('')
   const [skillFilter, setSkillFilter] = useState('')
+  const [shiftFilter, setShiftFilter] = useState('')
 
   const router = useRouter()
 
@@ -119,12 +122,13 @@ export default function DashboardClient({
     if (courseFilter) result = result.filter(p => p.course === courseFilter)
     if (goalFilter) result = result.filter(p => p.main_goal === goalFilter)
     if (skillFilter) result = result.filter(p => p.top_skills?.includes(skillFilter))
+    if (shiftFilter) result = result.filter(p => p.shift === shiftFilter)
 
     // Ordenar primeiro pelo Match Score (decrescente)
     result.sort((a, b) => b.matchScore - a.matchScore)
 
     return result
-  }, [profilesWithScore, searchQuery, courseFilter, goalFilter, skillFilter])
+  }, [profilesWithScore, searchQuery, courseFilter, goalFilter, skillFilter, shiftFilter])
 
   // Categorizar Conexões para a aba de conexões
   const connectionsData = useMemo(() => {
@@ -295,23 +299,23 @@ export default function DashboardClient({
   }
 
   return (
-    <div className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex flex-col">
+    <div className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 flex flex-col transition-colors duration-300">
       
       {/* Abas e Título */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-gray-200 pb-5 mb-8 gap-4">
+      <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-gray-200 dark:border-zinc-800 pb-5 mb-8 gap-4">
         <div>
-          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">ConnectFAESA</h1>
-          <p className="text-gray-500 mt-1">Conecte-se com alunos para TCCs, startups e grupos de estudo.</p>
+          <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">ConnectFAESA</h1>
+          <p className="text-gray-500 dark:text-zinc-400 mt-1">Conecte-se com alunos para TCCs, startups e grupos de estudo.</p>
         </div>
         
         {/* Switcher de Abas */}
-        <div className="flex bg-gray-100 p-1 rounded-2xl self-start md:self-auto shadow-inner">
+        <div className="flex bg-gray-100 dark:bg-zinc-900 p-1 rounded-2xl self-start md:self-auto shadow-inner">
           <button
             onClick={() => setActiveTab('feed')}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
               activeTab === 'feed' 
-                ? 'bg-white text-faesa-blue shadow-sm' 
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-white dark:bg-zinc-800 text-faesa-blue dark:text-white shadow-sm' 
+                : 'text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-zinc-200'
             }`}
           >
             <Users size={18} />
@@ -319,16 +323,16 @@ export default function DashboardClient({
           </button>
           <button
             onClick={() => setActiveTab('connections')}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all relative ${
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all relative cursor-pointer ${
               activeTab === 'connections' 
-                ? 'bg-white text-faesa-blue shadow-sm' 
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'bg-white dark:bg-zinc-800 text-faesa-blue dark:text-white shadow-sm' 
+                : 'text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-zinc-200'
             }`}
           >
             <UserCheck size={18} />
             Conexões
             {connectionsData.pendingReceived.length > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold border-2 border-white animate-pulse">
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold border-2 border-white dark:border-zinc-900 animate-pulse">
                 {connectionsData.pendingReceived.length}
               </span>
             )}
@@ -347,12 +351,12 @@ export default function DashboardClient({
                 placeholder="Buscar por nome, habilidade..." 
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full pl-11 pr-4 py-2.5 bg-white border border-gray-200 rounded-xl outline-none focus:ring-2 focus:ring-faesa-blue text-sm text-gray-900"
+                className="w-full pl-11 pr-4 py-2.5 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl outline-none focus:ring-2 focus:ring-faesa-blue text-sm text-gray-900 dark:text-white"
               />
             </div>
             <button 
               onClick={() => setShowFilters(true)}
-              className="flex items-center gap-2 bg-white border border-gray-200 px-4 py-2.5 rounded-xl text-gray-700 font-semibold shadow-sm"
+              className="flex items-center gap-2 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 px-4 py-2.5 rounded-xl text-gray-700 dark:text-zinc-300 font-semibold shadow-sm cursor-pointer"
             >
               <Filter size={18} />
             </button>
@@ -360,15 +364,15 @@ export default function DashboardClient({
 
           {/* Sidebar de Filtros (Desktop) */}
           <aside className="hidden md:block w-72 flex-shrink-0">
-            <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-200 sticky top-24 space-y-6">
-              <div className="flex items-center justify-between pb-2 border-b border-gray-100">
-                <h2 className="text-lg font-bold text-gray-900 flex items-center gap-2">
-                  <Filter size={20} className="text-faesa-blue" /> Filtros
+            <div className="bg-white dark:bg-zinc-900/60 p-6 rounded-3xl shadow-sm border border-gray-200 dark:border-zinc-800 sticky top-24 space-y-6">
+              <div className="flex items-center justify-between pb-2 border-b border-gray-100 dark:border-zinc-800">
+                <h2 className="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                  <Filter size={20} className="text-faesa-blue dark:text-blue-400" /> Filtros
                 </h2>
-                {(courseFilter || goalFilter || skillFilter) && (
+                {(courseFilter || goalFilter || skillFilter || shiftFilter) && (
                   <button 
-                    onClick={() => { setCourseFilter(''); setGoalFilter(''); setSkillFilter('') }}
-                    className="text-xs text-red-500 hover:underline font-semibold"
+                    onClick={() => { setCourseFilter(''); setGoalFilter(''); setSkillFilter(''); setShiftFilter('') }}
+                    className="text-xs text-red-500 hover:underline font-semibold cursor-pointer"
                   >
                     Limpar
                   </button>
@@ -377,11 +381,11 @@ export default function DashboardClient({
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Objetivo</label>
+                  <label className="block text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Objetivo</label>
                   <select 
                     value={goalFilter} 
                     onChange={e => setGoalFilter(e.target.value)}
-                    className="w-full p-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 font-medium"
+                    className="w-full p-3.5 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 dark:text-zinc-100 font-medium"
                   >
                     <option value="">Todos os Objetivos</option>
                     {GOALS.map(g => <option key={g} value={g}>{g}</option>)}
@@ -389,11 +393,11 @@ export default function DashboardClient({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Habilidade Oferecida</label>
+                  <label className="block text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Habilidade Oferecida</label>
                   <select 
                     value={skillFilter} 
                     onChange={e => setSkillFilter(e.target.value)}
-                    className="w-full p-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 font-medium"
+                    className="w-full p-3.5 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 dark:text-zinc-100 font-medium"
                   >
                     <option value="">Todas as Habilidades</option>
                     {SKILL_OPTIONS.map(s => <option key={s} value={s}>{s.split('/')[0].trim()}</option>)}
@@ -401,11 +405,23 @@ export default function DashboardClient({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Curso</label>
+                  <label className="block text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Turno</label>
+                  <select 
+                    value={shiftFilter} 
+                    onChange={e => setShiftFilter(e.target.value)}
+                    className="w-full p-3.5 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 dark:text-zinc-100 font-medium"
+                  >
+                    <option value="">Todos os Turnos</option>
+                    {SHIFTS.map(s => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Curso</label>
                   <select 
                     value={courseFilter} 
                     onChange={e => setCourseFilter(e.target.value)}
-                    className="w-full p-3.5 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 font-medium"
+                    className="w-full p-3.5 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 dark:text-zinc-100 font-medium"
                   >
                     <option value="">Todos os Cursos</option>
                     {COURSES.map(c => <option key={c} value={c}>{c}</option>)}
@@ -423,35 +439,43 @@ export default function DashboardClient({
                   initial={{ y: "100%" }}
                   animate={{ y: 0 }}
                   exit={{ y: "100%" }}
-                  className="w-full bg-white rounded-t-3xl p-6 shadow-xl max-h-[85vh] overflow-y-auto"
+                  className="w-full bg-white dark:bg-zinc-900 rounded-t-3xl p-6 shadow-xl max-h-[85vh] overflow-y-auto"
                 >
                   <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-xl font-bold text-gray-900">Filtros</h2>
-                    <button onClick={() => setShowFilters(false)} className="p-2 bg-gray-100 rounded-full">
-                      <X size={20} />
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">Filtros</h2>
+                    <button onClick={() => setShowFilters(false)} className="p-2 bg-gray-100 dark:bg-zinc-800 rounded-full cursor-pointer">
+                      <X size={20} className="text-gray-600 dark:text-zinc-300" />
                     </button>
                   </div>
 
                   <div className="space-y-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Objetivo</label>
-                      <select value={goalFilter} onChange={e => setGoalFilter(e.target.value)} className="w-full p-4 bg-white border border-gray-200 rounded-xl outline-none text-slate-900">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300 mb-2">Objetivo</label>
+                      <select value={goalFilter} onChange={e => setGoalFilter(e.target.value)} className="w-full p-4 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl outline-none text-slate-900 dark:text-zinc-100">
                         <option value="">Todos</option>
                         {GOALS.map(g => <option key={g} value={g}>{g}</option>)}
                       </select>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Habilidade Oferecida</label>
-                      <select value={skillFilter} onChange={e => setSkillFilter(e.target.value)} className="w-full p-4 bg-white border border-gray-200 rounded-xl outline-none text-slate-900">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300 mb-2">Habilidade Oferecida</label>
+                      <select value={skillFilter} onChange={e => setSkillFilter(e.target.value)} className="w-full p-4 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl outline-none text-slate-900 dark:text-zinc-100">
                         <option value="">Todas</option>
                         {SKILL_OPTIONS.map(s => <option key={s} value={s}>{s.split('/')[0].trim()}</option>)}
                       </select>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">Curso</label>
-                      <select value={courseFilter} onChange={e => setCourseFilter(e.target.value)} className="w-full p-4 bg-white border border-gray-200 rounded-xl outline-none text-slate-900">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300 mb-2">Turno</label>
+                      <select value={shiftFilter} onChange={e => setShiftFilter(e.target.value)} className="w-full p-4 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl outline-none text-slate-900 dark:text-zinc-100">
+                        <option value="">Todos</option>
+                        {SHIFTS.map(s => <option key={s} value={s}>{s}</option>)}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300 mb-2">Curso</label>
+                      <select value={courseFilter} onChange={e => setCourseFilter(e.target.value)} className="w-full p-4 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl outline-none text-slate-900 dark:text-zinc-100">
                         <option value="">Todos</option>
                         {COURSES.map(c => <option key={c} value={c}>{c}</option>)}
                       </select>
@@ -459,7 +483,7 @@ export default function DashboardClient({
                     
                     <button 
                       onClick={() => setShowFilters(false)}
-                      className="w-full bg-faesa-blue text-white py-4 rounded-xl font-bold mt-4 shadow-md"
+                      className="w-full bg-faesa-blue text-white py-4 rounded-xl font-bold mt-4 shadow-md cursor-pointer"
                     >
                       Aplicar Filtros
                     </button>
@@ -472,27 +496,27 @@ export default function DashboardClient({
           {/* Grid de Perfis */}
           <main className="flex-grow w-full">
             {/* Barra de Pesquisa Desktop */}
-            <div className="hidden md:flex items-center bg-white border border-gray-200 rounded-2xl shadow-sm px-4 py-3 mb-6">
+            <div className="hidden md:flex items-center bg-white dark:bg-zinc-900/60 border border-gray-200 dark:border-zinc-800 rounded-2xl shadow-sm px-4 py-3 mb-6">
               <Search className="text-gray-400 mr-3" size={20} />
               <input 
                 type="text" 
                 placeholder="Buscar alunos por nome, curso ou habilidades..." 
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent outline-none text-gray-900 placeholder:text-gray-400"
+                className="w-full bg-transparent outline-none text-gray-900 dark:text-white placeholder:text-gray-400"
               />
             </div>
 
             {loading ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[1, 2, 3, 4, 5, 6].map(i => (
-                  <div key={i} className="bg-white rounded-3xl h-72 border border-gray-100 animate-pulse"></div>
+                  <ProfileCardSkeleton key={i} />
                 ))}
               </div>
             ) : filteredAndSortedProfiles.length === 0 ? (
-              <div className="bg-white rounded-3xl border border-gray-200 p-12 text-center shadow-sm">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Nenhum aluno encontrado</h3>
-                <p className="text-gray-500">Tente ajustar seus termos de busca ou filtros.</p>
+              <div className="bg-white dark:bg-zinc-900/40 rounded-3xl border border-gray-200 dark:border-zinc-800 p-12 text-center shadow-sm">
+                <h3 className="text-xl font-bold text-gray-800 dark:text-zinc-200 mb-2">Nenhum aluno encontrado</h3>
+                <p className="text-gray-500 dark:text-zinc-400">Tente ajustar seus termos de busca ou filtros.</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -513,41 +537,45 @@ export default function DashboardClient({
           
           {/* Seção: Solicitações Recebidas */}
           {connectionsData.pendingReceived.length > 0 && (
-            <section className="bg-blue-50/50 p-6 sm:p-8 rounded-3xl border border-blue-100">
-              <h2 className="text-xl font-bold text-blue-900 mb-6 flex items-center gap-2">
-                <Clock size={22} className="text-blue-600" /> Solicitações Recebidas
+            <section className="bg-blue-50/50 dark:bg-blue-950/10 p-6 sm:p-8 rounded-3xl border border-blue-100 dark:border-blue-900/30">
+              <h2 className="text-xl font-bold text-blue-900 dark:text-blue-200 mb-6 flex items-center gap-2">
+                <Clock size={22} className="text-blue-600 dark:text-blue-400" /> Solicitações Recebidas
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {connectionsData.pendingReceived.map(profile => (
-                  <div key={profile.id} className="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 flex flex-col justify-between h-full">
+                  <div key={profile.id} className="bg-white dark:bg-zinc-900/60 p-5 rounded-2xl shadow-sm border border-gray-200 dark:border-zinc-800 flex flex-col justify-between h-full">
                     <div>
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold">
+                        <div className="w-10 h-10 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-300 rounded-full flex items-center justify-center font-bold">
                           {profile.full_name[0]}
                         </div>
                         <div>
-                          <h4 className="font-bold text-gray-900 text-sm line-clamp-1">{profile.full_name}</h4>
-                          <p className="text-xs text-gray-500 line-clamp-1">{profile.course} • {profile.shift}</p>
+                          <h4 className="font-bold text-gray-900 dark:text-white text-sm line-clamp-1">{profile.full_name}</h4>
+                          <p className="text-xs text-gray-500 dark:text-zinc-400 line-clamp-1">{profile.course} • {profile.shift}</p>
                         </div>
                       </div>
                       <div className="mb-4">
-                        <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400 block mb-1">Objetivo:</span>
-                        <span className="text-xs font-semibold bg-gray-50 text-gray-700 px-2.5 py-1 rounded-md border border-gray-150">{profile.main_goal}</span>
+                        <span className="text-[10px] uppercase font-bold tracking-wider text-gray-400 dark:text-zinc-500 block mb-1">Objetivo:</span>
+                        <span className="text-xs font-semibold bg-gray-50 dark:bg-zinc-800 text-gray-700 dark:text-zinc-300 px-2.5 py-1 rounded-md border border-gray-150 dark:border-zinc-700">{profile.main_goal}</span>
                       </div>
                     </div>
-                    <div className="flex gap-2 mt-4 pt-3 border-t border-gray-100">
-                      <button 
+                    <div className="flex gap-2 mt-4 pt-3 border-t border-gray-100 dark:border-zinc-850">
+                      <motion.button 
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={() => handleAccept(profile.connectionId)}
-                        className="flex-1 py-2 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1 shadow-sm transition"
+                        className="flex-1 py-2 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1 shadow-sm cursor-pointer"
                       >
                         <Check size={14} /> Aceitar
-                      </button>
-                      <button 
+                      </motion.button>
+                      <motion.button 
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={() => handleDecline(profile.connectionId)}
-                        className="flex-1 py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold rounded-xl text-xs flex items-center justify-center gap-1 transition"
+                        className="flex-1 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-gray-600 dark:text-zinc-355 font-bold rounded-xl text-xs flex items-center justify-center gap-1 cursor-pointer"
                       >
                         Recusar
-                      </button>
+                      </motion.button>
                     </div>
                   </div>
                 ))}
@@ -557,16 +585,16 @@ export default function DashboardClient({
 
           {/* Seção: Conexões Estabelecidas (Matches) */}
           <section>
-            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
               <Star size={22} className="text-amber-500 fill-amber-500" /> Conexões Aceitas (Matches)
             </h2>
             {connectionsData.matches.length === 0 ? (
-              <div className="bg-white rounded-3xl border border-gray-200 p-12 text-center max-w-2xl mx-auto shadow-sm">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-400">
+              <div className="bg-white dark:bg-zinc-900/40 rounded-3xl border border-gray-200 dark:border-zinc-800 p-12 text-center max-w-2xl mx-auto shadow-sm">
+                <div className="w-16 h-16 bg-gray-100 dark:bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-4 text-gray-400">
                   <Users size={28} />
                 </div>
-                <h3 className="text-lg font-bold text-gray-800 mb-1">Nenhum match ativo ainda</h3>
-                <p className="text-gray-500 text-sm max-w-sm mx-auto">Navegue no feed e envie solicitações de conexão para alunos com interesses parecidos.</p>
+                <h3 className="text-lg font-bold text-gray-805 dark:text-zinc-200 mb-1">Nenhum match ativo ainda</h3>
+                <p className="text-gray-500 dark:text-zinc-400 text-sm max-w-sm mx-auto">Navegue no feed e envie solicitações de conexão para alunos com interesses parecidos.</p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -583,33 +611,35 @@ export default function DashboardClient({
 
           {/* Seção: Solicitações Enviadas */}
           {connectionsData.pendingSent.length > 0 && (
-            <section className="pt-6 border-t border-gray-200">
-              <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+            <section className="pt-6 border-t border-gray-200 dark:border-zinc-800">
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
                 <ArrowRight size={22} className="text-gray-500" /> Solicitações Enviadas
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {connectionsData.pendingSent.map(profile => (
-                  <div key={profile.id} className="bg-white p-5 rounded-2xl shadow-sm border border-gray-200 flex flex-col justify-between h-full opacity-85 hover:opacity-100 transition-opacity">
+                  <div key={profile.id} className="bg-white dark:bg-zinc-900/60 p-5 rounded-2xl shadow-sm border border-gray-200 dark:border-zinc-800 flex flex-col justify-between h-full opacity-85 hover:opacity-100 transition-opacity">
                     <div>
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center font-bold">
+                        <div className="w-10 h-10 bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-zinc-400 rounded-full flex items-center justify-center font-bold">
                           {profile.full_name[0]}
                         </div>
                         <div>
-                          <h4 className="font-bold text-gray-900 text-sm line-clamp-1">{profile.full_name}</h4>
-                          <p className="text-xs text-gray-500 line-clamp-1">{profile.course} • {profile.shift}</p>
+                          <h4 className="font-bold text-gray-900 dark:text-white text-sm line-clamp-1">{profile.full_name}</h4>
+                          <p className="text-xs text-gray-500 dark:text-zinc-400 line-clamp-1">{profile.course} • {profile.shift}</p>
                         </div>
                       </div>
                       <div className="mb-2">
-                        <span className="text-xs text-gray-500">Aguardando resposta do parceiro ideal...</span>
+                        <span className="text-xs text-gray-500 dark:text-zinc-450">Aguardando resposta do parceiro ideal...</span>
                       </div>
                     </div>
-                    <button 
+                    <motion.button 
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                       onClick={() => handleCancel(profile.connectionId)}
-                      className="w-full mt-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 font-semibold rounded-xl text-xs transition"
+                      className="w-full mt-4 py-2 bg-red-50 hover:bg-red-100 dark:bg-red-950/20 dark:hover:bg-red-950/40 text-red-600 dark:text-red-400 font-semibold rounded-xl text-xs cursor-pointer"
                     >
                       Cancelar Solicitação
-                    </button>
+                    </motion.button>
                   </div>
                 ))}
               </div>
