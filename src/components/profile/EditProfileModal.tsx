@@ -228,17 +228,17 @@ export default function EditProfileModal({ profile, onClose, onSave }: { profile
                         const isSelected = field.value.includes(skill)
                         const isDisabled = !isSelected && field.value.length >= 3
                         return (
-                          <label key={skill} className={`cursor-pointer rounded-xl border p-2 flex items-center ${isSelected ? 'border-indigo-500 bg-indigo-50 text-indigo-700' : isDisabled ? 'border-gray-200 bg-gray-50 opacity-50 cursor-not-allowed' : 'border-gray-300 bg-white text-gray-700'}`}>
+                          <label key={skill} className={`cursor-pointer rounded-xl border p-2 flex items-center ${isSelected ? 'border-faesa-blue bg-blue-50 text-faesa-blue font-semibold' : isDisabled ? 'border-gray-200 bg-gray-50 opacity-50 cursor-not-allowed' : 'border-gray-300 bg-white text-gray-700'}`}>
                             <input type="checkbox" className="hidden" disabled={isDisabled} checked={isSelected}
                               onChange={(e) => {
                                 if (e.target.checked) field.onChange([...field.value, skill])
                                 else field.onChange(field.value.filter(v => v !== skill))
                               }} 
                             />
-                            <div className={`w-4 h-4 rounded mr-2 flex-shrink-0 flex items-center justify-center border ${isSelected ? 'border-indigo-500 bg-indigo-500 text-white' : 'border-gray-400 bg-white'}`}>
+                            <div className={`w-4 h-4 rounded mr-2 flex-shrink-0 flex items-center justify-center border ${isSelected ? 'border-faesa-blue bg-faesa-blue text-white' : 'border-gray-400 bg-white'}`}>
                               {isSelected && <Check size={12} />}
                             </div>
-                            <span className="text-xs font-medium line-clamp-1">{skill.split('/')[0].trim()}</span>
+                            <span className="text-xs font-semibold line-clamp-1">{skill.split('/')[0].trim()}</span>
                           </label>
                         )
                       })}

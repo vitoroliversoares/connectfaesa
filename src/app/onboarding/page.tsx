@@ -373,7 +373,7 @@ export default function OnboardingWizard() {
                             const isDisabled = !isSelected && field.value.length >= 3
                             
                             return (
-                              <label key={skill} className={`cursor-pointer rounded-xl border-2 p-3 transition-all flex items-start ${isSelected ? 'border-indigo-500 bg-indigo-50 text-indigo-700 font-medium' : isDisabled ? 'border-gray-100 bg-gray-50 opacity-50 cursor-not-allowed' : 'border-gray-100 hover:border-gray-200 text-gray-700'}`}>
+                              <label key={skill} className={`cursor-pointer rounded-xl border-2 p-3 transition-all flex items-start ${isSelected ? 'border-faesa-blue bg-blue-50 text-faesa-blue font-semibold' : isDisabled ? 'border-gray-100 bg-gray-50 opacity-50 cursor-not-allowed' : 'border-gray-100 hover:border-gray-200 text-gray-700'}`}>
                                 <input 
                                   type="checkbox" 
                                   className="hidden" 
@@ -384,7 +384,7 @@ export default function OnboardingWizard() {
                                     else field.onChange(field.value.filter(v => v !== skill))
                                   }} 
                                 />
-                                <div className={`w-5 h-5 rounded border-2 mt-0.5 mr-3 flex-shrink-0 flex items-center justify-center ${isSelected ? 'border-indigo-500 bg-indigo-500 text-white' : 'border-gray-300 bg-white'}`}>
+                                <div className={`w-5 h-5 rounded border-2 mt-0.5 mr-3 flex-shrink-0 flex items-center justify-center ${isSelected ? 'border-faesa-blue bg-faesa-blue text-white' : 'border-gray-300 bg-white'}`}>
                                   {isSelected && <Check size={14} />}
                                 </div>
                                 <span className="text-sm">{skill}</span>
