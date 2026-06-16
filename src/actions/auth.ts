@@ -3,6 +3,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
+import { headers } from 'next/headers'
 
 export async function loginAction(email: string, password: string) {
   // Validação estrita de domínio no Backend
@@ -40,7 +41,20 @@ export async function registerAction(email: string, password: string) {
   }
 
   const supabase = await createClient()
-  const { data, error } = await supabase.auth.signUp({ email: emailLower, password })
+  
+  // Obter o host da requisição para redirecionar dinamicamente ao callback correto
+  const headersList = await headers()
+  const host = headersList.get('host') || 'localhost:3000'
+  const protocol = host.includes('localhost') ? 'http' : 'https'
+  const emailRedirectTo = `${protocol}://${host}/auth/callback?next=/onboarding`
+
+  const { data, error } = await supabase.auth.signUp({ 
+    email: emailLower, 
+    password,
+    options: {
+      emailRedirectTo
+    }
+  })
 
   if (error) {
     return { error: error.message }
@@ -59,6 +73,29 @@ export async function logoutAction() {
 export async function updatePasswordAction(password: string) {
   const supabase = await createClient()
   const { error } = await supabase.auth.updateUser({ password })
+
+  if (error) {
+    return { error: error.message }
+  }
+
+  return { success: true }
+}
+
+export async function resetPasswordAction(email: string) {
+  const emailLower = email.toLowerCase().trim()
+  if (!emailLower.endsWith('@aluno.faesa.br') && !emailLower.endsWith('@faesa.br')) {
+    return { error: 'Domínio de e-mail não autorizado. Use seu e-mail institucional da FAESA.' }
+  }
+
+  const supabase = await createClient()
+  
+  // Obter o host da requisição para redirecionar dinamicamente ao callback correto
+  const headersList = await headers()
+  const host = headersList.get('host') || 'localhost:3000'
+  const protocol = host.includes('localhost') ? 'http' : 'https'
+  const redirectTo = `${protocol}://${host}/auth/callback?next=/reset-password`
+
+  const { error } = await supabase.auth.resetPasswordForEmail(emailLower, { redirectTo })
 
   if (error) {
     return { error: error.message }
