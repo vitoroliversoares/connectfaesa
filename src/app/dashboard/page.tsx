@@ -12,7 +12,7 @@ export default async function DashboardPage() {
 
   // Buscar o perfil do usuário logado para usarmos na lógica de Match
   const { data: currentUserProfile } = await supabase
-    .from('profiles')
+    .from('student_profiles')
     .select('*')
     .eq('id', user.id)
     .single()
@@ -48,7 +48,7 @@ export default async function DashboardPage() {
 
   // Buscar todos os perfis cadastrados
   const { data: allProfiles } = await supabase
-    .from('profiles')
+    .from('student_profiles')
     .select('*')
     .neq('id', user.id)
     .not('full_name', 'is', null)

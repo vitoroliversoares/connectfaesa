@@ -10,6 +10,7 @@ import { toast } from 'sonner'
 import { getUserAction } from '@/actions/auth'
 import { updateProfileAction } from '@/actions/profile'
 import { Check, ChevronRight, ChevronLeft } from 'lucide-react'
+import { createClient } from '@/lib/supabase/client'
 import { 
   onboardingSchema, 
   OnboardingData, 
@@ -41,7 +42,8 @@ export default function OnboardingWizard() {
     defaultValues: {
       top_skills: [],
       partner_needs: [],
-      specific_skills: {}
+      specific_skills: {},
+      consent_lgpd: false
     }
   })
 
@@ -52,6 +54,21 @@ export default function OnboardingWizard() {
         router.push('/login')
         return
       }
+
+      // Redireciona o usuário para o dashboard se ele já completou o perfil,
+      // impedindo que ele re-escreva ou caia no onboarding acidentalmente.
+      const supabase = createClient()
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('full_name')
+        .eq('id', user.id)
+        .single()
+
+      if (profile?.full_name) {
+        router.push('/dashboard')
+        return
+      }
+
       setUserId(user.id)
       setValue('institutional_email', user.email || '')
       setLoading(false)

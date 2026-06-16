@@ -99,19 +99,7 @@ export default function ProfileModal({
             )}
 
             {/* Informações de Contato baseadas na Conexão */}
-            {connectionState && connectionState.status === 'accepted' ? (
-              <section className="bg-green-50 p-4 rounded-xl border border-green-100 space-y-2">
-                <h3 className="text-xs font-bold text-green-800 uppercase tracking-wider flex items-center gap-1.5">
-                  <Check size={16} /> Contato Disponível (Match!)
-                </h3>
-                <div className="text-sm text-gray-800 space-y-1">
-                  <p><span className="font-semibold text-gray-600">WhatsApp:</span> {profile.whatsapp}</p>
-                  {profile.institutional_email && (
-                    <p><span className="font-semibold text-gray-600">E-mail:</span> {profile.institutional_email}</p>
-                  )}
-                </div>
-              </section>
-            ) : (
+            {(!connectionState || connectionState.status !== 'accepted') && (
               <section className="bg-gray-50 p-4 rounded-xl border border-gray-200">
                 <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 flex items-center gap-1.5">
                   🔒 Informações de Contato Ocultas

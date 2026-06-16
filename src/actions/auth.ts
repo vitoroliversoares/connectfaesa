@@ -5,11 +5,17 @@ import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 
 export async function loginAction(email: string, password: string) {
+  // Validação estrita de domínio no Backend
+  const emailLower = email.toLowerCase().trim()
+  if (!emailLower.endsWith('@aluno.faesa.br') && !emailLower.endsWith('@faesa.br')) {
+    return { error: 'Domínio de e-mail não autorizado. Use seu e-mail institucional da FAESA.' }
+  }
+
   const supabase = await createClient()
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+  const { data, error } = await supabase.auth.signInWithPassword({ email: emailLower, password })
 
   if (error) {
-    return { error: error.message }
+    return { error: error.message === 'Invalid login credentials' ? 'E-mail ou senha incorretos.' : error.message }
   }
 
   // Check if profile exists
@@ -27,8 +33,14 @@ export async function loginAction(email: string, password: string) {
 }
 
 export async function registerAction(email: string, password: string) {
+  // Validação estrita de domínio no Backend
+  const emailLower = email.toLowerCase().trim()
+  if (!emailLower.endsWith('@aluno.faesa.br') && !emailLower.endsWith('@faesa.br')) {
+    return { error: 'Domínio de e-mail não autorizado. Use seu e-mail institucional da FAESA.' }
+  }
+
   const supabase = await createClient()
-  const { data, error } = await supabase.auth.signUp({ email, password })
+  const { data, error } = await supabase.auth.signUp({ email: emailLower, password })
 
   if (error) {
     return { error: error.message }
