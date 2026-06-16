@@ -1,10 +1,27 @@
 import { motion } from 'framer-motion'
-import { X, MessageCircle, Clock, BookOpen, User } from 'lucide-react'
+import { X, MessageCircle, Clock, BookOpen, User, Check, Trash2 } from 'lucide-react'
 
-export default function ProfileModal({ profile, onClose }: { profile: any, onClose: () => void }) {
+export default function ProfileModal({ 
+  profile, 
+  onClose,
+  onConnect,
+  onAccept,
+  onDecline,
+  onCancel
+}: { 
+  profile: any, 
+  onClose: () => void,
+  onConnect?: (id: string) => void,
+  onAccept?: (connId: string) => void,
+  onDecline?: (connId: string) => void,
+  onCancel?: (connId: string) => void
+}) {
   if (!profile) return null
 
+  const connectionState = profile.connectionState
+
   const handleWhatsApp = () => {
+    if (!profile.whatsapp) return
     const rawNumber = profile.whatsapp || ''
     const cleanNumber = rawNumber.replace(/\D/g, '')
     
@@ -28,22 +45,22 @@ export default function ProfileModal({ profile, onClose }: { profile: any, onClo
         onClick={(e) => e.stopPropagation()}
       >
         {/* Barra de arrastar no mobile */}
-        <div className="w-full flex justify-center py-3 sm:hidden">
+        <div className="w-full flex justify-center py-3 sm:hidden bg-white border-b border-gray-50 flex-shrink-0">
           <div className="w-12 h-1.5 bg-gray-300 rounded-full" />
         </div>
 
-        <button onClick={onClose} className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors hidden sm:block">
+        <button onClick={onClose} className="absolute top-4 right-4 p-2 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors hidden sm:block z-10">
           <X size={20} className="text-gray-600" />
         </button>
 
-        <div className="p-6 overflow-y-auto">
+        <div className="p-6 overflow-y-auto flex-grow">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 bg-faesa-accent rounded-full flex items-center justify-center flex-shrink-0 text-faesa-blue">
-              <User size={32} />
+            <div className="w-16 h-16 bg-faesa-accent rounded-full flex items-center justify-center flex-shrink-0 text-faesa-blue font-bold text-xl">
+              {profile.full_name ? profile.full_name[0] : <User size={32} />}
             </div>
             <div>
               <h2 className="text-2xl font-bold text-gray-900">{profile.full_name}</h2>
-              <p className="text-gray-500">{profile.course} • {profile.shift}</p>
+              <p className="text-gray-500 text-sm">{profile.course} • {profile.shift}</p>
             </div>
           </div>
 
@@ -61,6 +78,30 @@ export default function ProfileModal({ profile, onClose }: { profile: any, onClo
                 </p>
               )}
             </section>
+
+            {/* Informações de Contato baseadas na Conexão */}
+            {connectionState && connectionState.status === 'accepted' ? (
+              <section className="bg-green-50 p-4 rounded-xl border border-green-100 space-y-2">
+                <h3 className="text-xs font-bold text-green-800 uppercase tracking-wider flex items-center gap-1.5">
+                  <Check size={16} /> Contato Disponível (Match!)
+                </h3>
+                <div className="text-sm text-gray-800 space-y-1">
+                  <p><span className="font-semibold text-gray-600">WhatsApp:</span> {profile.whatsapp}</p>
+                  {profile.institutional_email && (
+                    <p><span className="font-semibold text-gray-600">E-mail:</span> {profile.institutional_email}</p>
+                  )}
+                </div>
+              </section>
+            ) : (
+              <section className="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                  🔒 Informações de Contato Ocultas
+                </h3>
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  Para sua privacidade e segurança, dados de contato ficam visíveis apenas para conexões aceitas (matches mútuos). Envie uma solicitação abaixo para se conectar!
+                </p>
+              </section>
+            )}
 
             <section>
               <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">O que oferece</h3>
@@ -94,14 +135,72 @@ export default function ProfileModal({ profile, onClose }: { profile: any, onClo
           </div>
         </div>
 
-        <div className="p-4 sm:p-6 bg-gray-50 border-t border-gray-100">
-          <button 
-            onClick={handleWhatsApp}
-            className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 px-6 rounded-xl transition-colors shadow-sm"
-          >
-            <MessageCircle size={24} />
-            Chamar no WhatsApp
-          </button>
+        {/* Rodapé de Ações Dinâmicas */}
+        <div className="p-4 sm:p-6 bg-gray-50 border-t border-gray-100 flex-shrink-0">
+          {!connectionState ? (
+            <button 
+              onClick={() => onConnect?.(profile.id)}
+              className="w-full flex items-center justify-center gap-2 bg-faesa-blue hover:bg-faesa-light text-white font-bold py-4 px-6 rounded-xl transition-colors shadow-sm cursor-pointer"
+            >
+              Solicitar Conexão
+            </button>
+          ) : connectionState.status === 'accepted' ? (
+            <div className="space-y-3">
+              <button 
+                onClick={handleWhatsApp}
+                className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 px-6 rounded-xl transition-colors shadow-sm cursor-pointer"
+              >
+                <MessageCircle size={22} />
+                Chamar no WhatsApp
+              </button>
+              <button 
+                onClick={() => onCancel?.(connectionState.id)}
+                className="w-full flex items-center justify-center gap-1.5 bg-white hover:bg-red-50 text-red-600 border border-red-200 font-semibold py-2.5 rounded-xl transition text-xs cursor-pointer"
+              >
+                <Trash2 size={14} /> Desfazer Conexão
+              </button>
+            </div>
+          ) : connectionState.status === 'pending' ? (
+            connectionState.isSender ? (
+              <div className="space-y-3">
+                <button 
+                  disabled
+                  className="w-full flex items-center justify-center gap-2 bg-blue-50 text-blue-500 border border-blue-200 font-bold py-4 px-6 rounded-xl cursor-not-allowed"
+                >
+                  <Clock size={20} className="animate-spin-slow" /> Solicitação Pendente
+                </button>
+                <button 
+                  onClick={() => onCancel?.(connectionState.id)}
+                  className="w-full flex items-center justify-center bg-white hover:bg-red-50 text-red-600 border border-red-200 font-semibold py-2.5 rounded-xl transition text-xs cursor-pointer"
+                >
+                  Cancelar Solicitação
+                </button>
+              </div>
+            ) : (
+              <div className="flex gap-3">
+                <button 
+                  onClick={() => onAccept?.(connectionState.id)}
+                  className="flex-1 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-4 rounded-xl transition shadow-sm cursor-pointer text-sm"
+                >
+                  <Check size={18} /> Aceitar
+                </button>
+                <button 
+                  onClick={() => onDecline?.(connectionState.id)}
+                  className="flex-1 flex items-center justify-center bg-white hover:bg-gray-100 text-gray-700 border border-gray-300 font-bold py-4 px-4 rounded-xl transition cursor-pointer text-sm"
+                >
+                  Recusar
+                </button>
+              </div>
+            )
+          ) : (
+            /* Se estiver recusado, permite reenviar */
+            <button 
+              onClick={() => onConnect?.(profile.id)}
+              className="w-full flex items-center justify-center gap-2 bg-faesa-blue hover:bg-faesa-light text-white font-bold py-4 px-6 rounded-xl transition-colors shadow-sm cursor-pointer"
+            >
+              Solicitar Conexão novamente
+            </button>
+          )}
         </div>
       </motion.div>
     </div>
