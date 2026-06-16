@@ -17,6 +17,7 @@ import {
   SKILL_OPTIONS, 
   SKILL_QUESTIONS 
 } from '@/lib/validations/onboarding'
+import CustomSelect from '@/components/ui/CustomSelect'
 
 const COURSES = onboardingSchema.shape.course.options
 const SHIFTS = onboardingSchema.shape.shift.options
@@ -244,10 +245,18 @@ export default function OnboardingWizard() {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Qual curso você faz?</label>
-                    <select {...register('course')} className="w-full p-4 bg-white border border-gray-200 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none appearance-none text-slate-900">
-                      <option className="text-slate-900 bg-white" value="">Selecione um curso...</option>
-                      {COURSES.map(c => <option className="text-slate-900 bg-white" key={c} value={c}>{c}</option>)}
-                    </select>
+                    <Controller
+                      name="course"
+                      control={control}
+                      render={({ field }) => (
+                        <CustomSelect
+                          value={field.value}
+                          onChange={field.onChange}
+                          options={COURSES}
+                          placeholder="Selecione um curso..."
+                        />
+                      )}
+                    />
                     {errors.course && <p className="text-red-500 text-sm mt-1">{errors.course.message}</p>}
                   </div>
 

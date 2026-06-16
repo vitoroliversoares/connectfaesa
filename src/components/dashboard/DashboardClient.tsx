@@ -5,6 +5,7 @@ import { Filter, X, Users, UserCheck, MessageSquare, Check, Search, ArrowRight, 
 import ProfileCard from './ProfileCard'
 import ProfileModal from './ProfileModal'
 import ProfileCardSkeleton from './ProfileCardSkeleton'
+import CustomSelect from '@/components/ui/CustomSelect'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SKILL_OPTIONS } from '@/lib/validations/onboarding'
 import { useRouter } from 'next/navigation'
@@ -51,6 +52,48 @@ export default function DashboardClient({
   const [shiftFilter, setShiftFilter] = useState('')
 
   const router = useRouter()
+
+  // Opções formatadas para o CustomSelect (Desktop)
+  const goalOptions = useMemo(() => [
+    { value: '', label: 'Todos os Objetivos' },
+    ...GOALS.map(g => ({ value: g, label: g }))
+  ], [])
+
+  const skillOptions = useMemo(() => [
+    { value: '', label: 'Todas as Habilidades' },
+    ...SKILL_OPTIONS.map(s => ({ value: s, label: s.split('/')[0].trim() }))
+  ], [])
+
+  const shiftOptions = useMemo(() => [
+    { value: '', label: 'Todos os Turnos' },
+    ...SHIFTS.map(s => ({ value: s, label: s }))
+  ], [])
+
+  const courseOptions = useMemo(() => [
+    { value: '', label: 'Todos os Cursos' },
+    ...COURSES.map(c => ({ value: c, label: c }))
+  ], [])
+
+  // Opções formatadas para o CustomSelect (Mobile)
+  const goalOptionsMobile = useMemo(() => [
+    { value: '', label: 'Todos' },
+    ...GOALS.map(g => ({ value: g, label: g }))
+  ], [])
+
+  const skillOptionsMobile = useMemo(() => [
+    { value: '', label: 'Todas' },
+    ...SKILL_OPTIONS.map(s => ({ value: s, label: s.split('/')[0].trim() }))
+  ], [])
+
+  const shiftOptionsMobile = useMemo(() => [
+    { value: '', label: 'Todos' },
+    ...SHIFTS.map(s => ({ value: s, label: s }))
+  ], [])
+
+  const courseOptionsMobile = useMemo(() => [
+    { value: '', label: 'Todos' },
+    ...COURSES.map(c => ({ value: c, label: c }))
+  ], [])
 
   // Sincronizar dados quando o servidor recarregar
   useEffect(() => {
@@ -382,50 +425,38 @@ export default function DashboardClient({
               <div className="space-y-4">
                 <div>
                   <label className="block text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Objetivo</label>
-                  <select 
-                    value={goalFilter} 
-                    onChange={e => setGoalFilter(e.target.value)}
-                    className="w-full p-3.5 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 dark:text-zinc-100 font-medium"
-                  >
-                    <option value="">Todos os Objetivos</option>
-                    {GOALS.map(g => <option key={g} value={g}>{g}</option>)}
-                  </select>
+                  <CustomSelect
+                    value={goalFilter}
+                    onChange={setGoalFilter}
+                    options={goalOptions}
+                  />
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Habilidade Oferecida</label>
-                  <select 
-                    value={skillFilter} 
-                    onChange={e => setSkillFilter(e.target.value)}
-                    className="w-full p-3.5 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 dark:text-zinc-100 font-medium"
-                  >
-                    <option value="">Todas as Habilidades</option>
-                    {SKILL_OPTIONS.map(s => <option key={s} value={s}>{s.split('/')[0].trim()}</option>)}
-                  </select>
+                  <CustomSelect
+                    value={skillFilter}
+                    onChange={setSkillFilter}
+                    options={skillOptions}
+                  />
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Turno</label>
-                  <select 
-                    value={shiftFilter} 
-                    onChange={e => setShiftFilter(e.target.value)}
-                    className="w-full p-3.5 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 dark:text-zinc-100 font-medium"
-                  >
-                    <option value="">Todos os Turnos</option>
-                    {SHIFTS.map(s => <option key={s} value={s}>{s}</option>)}
-                  </select>
+                  <CustomSelect
+                    value={shiftFilter}
+                    onChange={setShiftFilter}
+                    options={shiftOptions}
+                  />
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-gray-500 dark:text-zinc-400 uppercase tracking-wider mb-2">Curso</label>
-                  <select 
-                    value={courseFilter} 
-                    onChange={e => setCourseFilter(e.target.value)}
-                    className="w-full p-3.5 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl focus:ring-2 focus:ring-faesa-blue outline-none text-slate-900 dark:text-zinc-100 font-medium"
-                  >
-                    <option value="">Todos os Cursos</option>
-                    {COURSES.map(c => <option key={c} value={c}>{c}</option>)}
-                  </select>
+                  <CustomSelect
+                    value={courseFilter}
+                    onChange={setCourseFilter}
+                    options={courseOptions}
+                  />
                 </div>
               </div>
             </div>
@@ -451,34 +482,38 @@ export default function DashboardClient({
                   <div className="space-y-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300 mb-2">Objetivo</label>
-                      <select value={goalFilter} onChange={e => setGoalFilter(e.target.value)} className="w-full p-4 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl outline-none text-slate-900 dark:text-zinc-100">
-                        <option value="">Todos</option>
-                        {GOALS.map(g => <option key={g} value={g}>{g}</option>)}
-                      </select>
+                      <CustomSelect
+                        value={goalFilter}
+                        onChange={setGoalFilter}
+                        options={goalOptionsMobile}
+                      />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300 mb-2">Habilidade Oferecida</label>
-                      <select value={skillFilter} onChange={e => setSkillFilter(e.target.value)} className="w-full p-4 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl outline-none text-slate-900 dark:text-zinc-100">
-                        <option value="">Todas</option>
-                        {SKILL_OPTIONS.map(s => <option key={s} value={s}>{s.split('/')[0].trim()}</option>)}
-                      </select>
+                      <CustomSelect
+                        value={skillFilter}
+                        onChange={setSkillFilter}
+                        options={skillOptionsMobile}
+                      />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300 mb-2">Turno</label>
-                      <select value={shiftFilter} onChange={e => setShiftFilter(e.target.value)} className="w-full p-4 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl outline-none text-slate-900 dark:text-zinc-100">
-                        <option value="">Todos</option>
-                        {SHIFTS.map(s => <option key={s} value={s}>{s}</option>)}
-                      </select>
+                      <CustomSelect
+                        value={shiftFilter}
+                        onChange={setShiftFilter}
+                        options={shiftOptionsMobile}
+                      />
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300 mb-2">Curso</label>
-                      <select value={courseFilter} onChange={e => setCourseFilter(e.target.value)} className="w-full p-4 bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-xl outline-none text-slate-900 dark:text-zinc-100">
-                        <option value="">Todos</option>
-                        {COURSES.map(c => <option key={c} value={c}>{c}</option>)}
-                      </select>
+                      <CustomSelect
+                        value={courseFilter}
+                        onChange={setCourseFilter}
+                        options={courseOptionsMobile}
+                      />
                     </div>
                     
                     <button 

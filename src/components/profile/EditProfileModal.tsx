@@ -13,6 +13,7 @@ import {
   SKILL_OPTIONS, 
   SKILL_QUESTIONS 
 } from '@/lib/validations/onboarding'
+import CustomSelect from '@/components/ui/CustomSelect'
 
 const COURSES = onboardingSchema.shape.course.options
 const SHIFTS = onboardingSchema.shape.shift.options
@@ -102,10 +103,19 @@ export default function EditProfileModal({ profile, onClose, onSave }: { profile
               <h3 className="text-lg font-bold text-gray-900 mb-4 border-b border-gray-200 pb-2">Acadêmico</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Curso</label>
-                  <select {...register('course')} className="w-full p-3 bg-white border border-gray-300 rounded-xl outline-none text-slate-900 focus:ring-2 focus:ring-faesa-blue">
-                    {COURSES.map(c => <option className="bg-white text-slate-900" key={c} value={c}>{c}</option>)}
-                  </select>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-zinc-300 mb-1">Curso</label>
+                  <Controller
+                    name="course"
+                    control={control}
+                    render={({ field }) => (
+                      <CustomSelect
+                        value={field.value}
+                        onChange={field.onChange}
+                        options={COURSES}
+                        placeholder="Selecione seu curso"
+                      />
+                    )}
+                  />
                   {errors.course && <p className="text-red-500 text-xs mt-1">{errors.course.message}</p>}
                 </div>
                 <div>
