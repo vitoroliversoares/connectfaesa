@@ -17,10 +17,11 @@ export default function ProfileCard({ profile, onOpen }: { profile: any, onOpen:
 
   return (
     <motion.div 
-      whileHover={{ y: -6, scale: 1.01 }}
-      whileTap={{ scale: 0.98 }}
+      onClick={onOpen}
+      whileHover={{ y: -6, scale: 1.015 }}
+      whileTap={{ scale: 0.975 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      className="bg-white dark:bg-zinc-900/60 rounded-[2rem] border border-black/[0.04] dark:border-white/[0.04] p-7 flex flex-col h-full hover:shadow-[0_24px_60px_rgba(0,0,0,0.05)] transition-all duration-500 ease-out relative overflow-hidden bg-gradient-to-b from-white to-gray-50/10 dark:from-zinc-900/60 dark:to-zinc-950/20"
+      className="bg-white dark:bg-zinc-900/60 rounded-[2rem] border border-black/[0.04] dark:border-white/[0.04] p-7 flex flex-col h-full hover:shadow-[0_24px_60px_rgba(0,0,0,0.05)] transition-all duration-500 ease-out relative overflow-hidden bg-gradient-to-b from-white to-gray-50/10 dark:from-zinc-900/60 dark:to-zinc-950/20 cursor-pointer"
     >
       
       {/* Indicador de Status de Conexão no topo */}
@@ -68,9 +69,9 @@ export default function ProfileCard({ profile, onOpen }: { profile: any, onOpen:
       </div>
 
       {/* Exibir Status Text se Conectado ou Pendente */}
-      <div className="mt-6 flex items-center justify-between gap-2 pt-4 border-t border-black/[0.02] dark:border-white/[0.04]">
-        {connectionState ? (
-          connectionState.status === 'accepted' ? (
+      {connectionState && (
+        <div className="mt-6 flex items-center justify-between gap-2 pt-4 border-t border-black/[0.02] dark:border-white/[0.04]">
+          {connectionState.status === 'accepted' ? (
             <span className="text-xs bg-green-50 dark:bg-green-950/20 text-green-700 dark:text-green-400 font-bold px-2.5 py-1 rounded-xl border border-green-200 dark:border-green-800/30 flex items-center gap-1">
               <Check size={14} /> Conectado
             </span>
@@ -78,18 +79,9 @@ export default function ProfileCard({ profile, onOpen }: { profile: any, onOpen:
             <span className="text-xs bg-blue-50/50 dark:bg-blue-950/20 text-blue-700 dark:text-blue-400 font-semibold px-2.5 py-1 rounded-xl border border-blue-200/60 dark:border-blue-800/30 flex items-center gap-1">
               <Clock size={14} className="animate-spin-slow" /> Pendente
             </span>
-          )
-        ) : (
-          <div />
-        )}
-
-        <button 
-          onClick={onOpen}
-          className="py-2.5 px-4.5 bg-[#F5F5F7] hover:bg-[#E8E8ED] dark:bg-zinc-800 dark:hover:bg-zinc-700 text-[#1D1D1F] dark:text-zinc-100 font-bold rounded-2xl transition-all border border-black/[0.03] dark:border-white/[0.03] text-xs shadow-sm cursor-pointer ml-auto hover:scale-[1.03]"
-        >
-          Ver Perfil
-        </button>
-      </div>
+          )}
+        </div>
+      )}
     </motion.div>
   )
 }
