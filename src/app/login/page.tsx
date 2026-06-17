@@ -134,7 +134,7 @@ function LoginContent() {
             width={240} 
             height={60} 
             priority 
-            className="h-12 w-auto dark:brightness-0 dark:invert transition-all" 
+            className="h-12 w-auto transition-all" 
           />
         </div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
