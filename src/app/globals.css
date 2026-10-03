@@ -20,6 +20,9 @@
   --muted: #52617e;
   --line: #dce2ed;
   --focus: #4679e6;
+  --scroll-thumb: #788fb7;
+  --scroll-thumb-hover: #466aac;
+  --scroll-thumb-active: #0d2b6c;
   color-scheme: light;
 }
 
@@ -31,11 +34,23 @@
   --muted: #b3bed5;
   --line: #2c3c61;
   --blue-soft: #1b376d;
+  --scroll-thumb: #6885b6;
+  --scroll-thumb-hover: #9fb9e7;
+  --scroll-thumb-active: #c5d6f6;
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html::-webkit-scrollbar { width: 12px; }
+html::-webkit-scrollbar-track { background: var(--canvas); }
+html::-webkit-scrollbar-thumb { min-height: 48px; border: 3px solid var(--canvas); border-radius: 999px; background: var(--scroll-thumb); }
+html::-webkit-scrollbar-thumb:hover { background: var(--scroll-thumb-hover); }
+html::-webkit-scrollbar-thumb:active { background: var(--scroll-thumb-active); }
+html::-webkit-scrollbar-corner { background: var(--canvas); }
+@supports (-moz-appearance: none) {
+  html { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--canvas); }
+}
 body { margin: 0; background: var(--canvas); color: var(--ink); font-family: 'Satoshi', Arial, sans-serif; font-size: 16px; line-height: 1.5; }
 button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
