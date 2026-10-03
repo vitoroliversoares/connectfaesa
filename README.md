@@ -1,31 +1,23 @@
 # Connect FAESA
 
-Comunidade para estudantes da FAESA encontrarem colegas por curso, matérias em estudo, objetivos e habilidades. O contato de cada pessoa só é exibido após um convite aceito.
+O Connect FAESA aproxima estudantes que querem estudar juntos, trocar habilidades e tirar projetos do papel. A descoberta de pessoas começa pelo que cada um está vivendo na faculdade: curso, matérias em estudo e objetivos.
 
-## Rodar localmente
+## Como funciona
 
-Requer Node.js compatível com Next.js 16 e um projeto Supabase configurado.
+1. **Conheça a plataforma.** A página inicial apresenta a proposta do Connect FAESA e uma galeria de espaços do campus. É possível explorá-la sem criar uma conta.
+2. **Crie seu perfil.** Com um e-mail institucional da FAESA, informe seu curso e modalidade, selecione as matérias que está estudando e conte o que você procura e pode oferecer a outros estudantes.
+3. **Encontre colegas.** Explore perfis organizados por afinidade e filtre por nome, curso, modalidade ou matéria. As matérias em comum e outros interesses ajudam a entender por que uma pessoa pode combinar com você.
+4. **Conecte-se no seu ritmo.** Envie um convite para quem você gostaria de conhecer. A outra pessoa pode aceitar ou recusar, e você pode cancelar um convite enviado.
+5. **Conversem depois da aceitação.** Os dados de contato ficam privados até a conexão ser aceita. Quando houver um número cadastrado, o perfil oferece um atalho para iniciar a conversa no WhatsApp.
 
-1. Copie `.env.example` para `.env.local` e preencha a URL e a chave pública (`anon`) do Supabase. Não use a chave `service_role` no navegador.
-2. Execute `npm ci`.
-3. Execute `npm run dev` e abra `http://localhost:3000`.
+## Seu espaço
 
-`npm run build` e `npm run lint` validam o projeto. A página inicial e o acesso podem ser visualizados sem conta; para salvar perfil e usar conexões, o banco precisa da migração abaixo.
+No perfil, você pode atualizar suas matérias, objetivo, habilidades, disponibilidade e apresentação pessoal conforme sua rotina muda. A área **Minhas conexões** reúne os perfis com os quais você já trocou convites, e os cards mostram discretamente quando um convite está pendente ou quando a conexão foi aceita.
 
-## Banco de dados
+## Matérias e cursos
 
-A mudança desta entrega está em `supabase/migrations/20261003162439_academic_subjects_and_modalities.sql`. Ela adiciona modalidade e matérias ao perfil, permite nomes completos dos cursos e protege a leitura direta de dados de contato. O catálogo e a seleção de matérias dependem dela.
+A seleção de matérias é organizada por curso e modalidade, presencial ou EAD, com base nas grades de graduação publicadas pela FAESA. Assim, estudantes da mesma disciplina podem se encontrar mesmo quando procuram tipos diferentes de parceria, como um grupo de estudos ou um projeto.
 
-O projeto Supabase conectado já possui o esquema das migrações antigas do repositório, embora o histórico de migrações não esteja registrado nele. A nova migração foi aplicada a esse projeto em 3 de outubro de 2026. Para configurar outro banco com o esquema antigo, aplique apenas a nova migração; executar todas as antigas novamente causará conflito.
+## Privacidade e acesso
 
-## Grades curriculares
-
-`src/data/faesa-catalog.json` é um retrato das páginas de graduação da [FAESA](https://www.faesa.br/) consultadas em 3 de outubro de 2026. Cada curso contém o endereço da página oficial e as matérias organizadas por período. Há 29 cursos presenciais e 8 cursos EAD com páginas acessíveis no catálogo público consultado. A página de Engenharia de Produção presencial não expunha matriz curricular naquele momento; o curso aparece, mas sem matérias para selecionar. Outras páginas EAD listadas no menu principal retornavam erro e não foram incluídas como grades disponíveis. Revise o catálogo quando a FAESA atualizar suas matrizes.
-
-## Tipografia
-
-Telma e Satoshi são carregadas pela API oficial do Fontshare. O repositório não inclui arquivos de fonte. Quando o serviço de fontes estiver indisponível, o navegador usa a fonte de sistema configurada como alternativa.
-
-## Experiência visual
-
-A página inicial apresenta livros e duas canecas em 3D feitos com Three.js e uma galeria contínua com nove fotos do campus fornecidas para o projeto. As fotos estão otimizadas em WebP em `public/campus`. A cena 3D só é carregada quando está próxima da área visível, reage à rolagem e usa uma ilustração estática caso WebGL não esteja disponível. A galeria permite pausa, navegação por botões e setas do teclado. A preferência por movimento reduzido desativa a animação 3D e o avanço automático.
+O cadastro usa e-mails institucionais `@aluno.faesa.br` ou `@faesa.br`. Perfis de estudantes são exibidos apenas para pessoas autenticadas. WhatsApp e e-mail de contato só ficam disponíveis para uma conexão aceita. Também é possível recuperar ou alterar a senha da conta.
