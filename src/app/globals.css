@@ -212,6 +212,12 @@ a { text-decoration: none; }
 .avatar { display: inline-flex; width: 48px; height: 48px; flex: none; align-items: center; justify-content: center; border-radius: 4px; background: var(--blue-soft); color: var(--blue); font-size: 18px; font-weight: 700; }
 .student-card h3 { font-size: 17px; font-weight: 700; line-height: 1.2; }
 .student-card .meta { margin-top: 4px; color: var(--muted); font-size: 12px; }
+.student-card-status { display: inline-flex; align-items: center; gap: 7px; width: fit-content; margin-top: 11px; padding: 5px 8px; border: 1px solid; border-radius: 3px; font-size: 12px; font-weight: 700; line-height: 1.2; }
+.student-card-status::before { width: 6px; height: 6px; flex: none; border-radius: 50%; background: currentColor; content: ''; }
+.student-card-status-accepted { border-color: #c9dfd0; background: #e8f1eb; color: #225b3e; }
+.student-card-status-pending { border-color: #ecdca6; background: #fbf4dc; color: #755c18; }
+.dark .student-card-status-accepted { border-color: #2d6047; background: #143c30; color: #b9dbc5; }
+.dark .student-card-status-pending { border-color: #766025; background: #453818; color: #f2d992; }
 .student-card .goal { margin: 20px 0 12px; color: var(--ink); font-size: 14px; font-weight: 700; }
 .student-card .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
 .student-card .bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; }
