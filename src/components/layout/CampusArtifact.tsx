@@ -135,8 +135,8 @@ export function CampusArtifact() {
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
       let frame = 0
       let lastTime = 0
-      let progress = 0.5
-      let targetProgress = 0.5
+      let progress = 0
+      let targetProgress = 0
       let pointerX = 0
       let pointerY = 0
       let targetPointerX = 0
@@ -177,8 +177,10 @@ export function CampusArtifact() {
         frame = requestAnimationFrame(animate)
       }
       updateScene = () => {
-        const rect = host.getBoundingClientRect()
-        targetProgress = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)))
+        const section = host.closest<HTMLElement>('.artifact-section') ?? host
+        const rect = section.getBoundingClientRect()
+        const travel = rect.height - window.innerHeight
+        targetProgress = Math.max(0, Math.min(1, travel > 0 ? -rect.top / travel : (window.innerHeight - rect.top) / (window.innerHeight + rect.height)))
         if (!visible || reduceMotion.matches) {
           if (frame) cancelAnimationFrame(frame)
           frame = 0

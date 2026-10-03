@@ -27,7 +27,7 @@ const getServerReducedMotion = () => false
 export function CampusGallery() {
   const viewportRef = useRef<HTMLDivElement>(null)
   const firstSetRef = useRef<HTMLDivElement>(null)
-  const hoverPause = useRef(false)
+  const focusPause = useRef(false)
   const pauseUntil = useRef(0)
   const drag = useRef<{ x: number; scroll: number; pointerId: number } | null>(null)
   const activeRef = useRef(0)
@@ -77,7 +77,7 @@ export function CampusGallery() {
     const tick = (time: number) => {
       const delta = Math.min(time - (lastTime || time), 64)
       lastTime = time
-      if (!hoverPause.current && time > pauseUntil.current) viewport.scrollLeft += delta * 0.1
+      if (!focusPause.current && time > pauseUntil.current) viewport.scrollLeft += delta * 0.1
       frame = requestAnimationFrame(tick)
     }
     const observer = new IntersectionObserver(([entry]) => {
@@ -117,7 +117,7 @@ export function CampusGallery() {
       <p>Um olhar sobre os lugares onde encontros, estudos e projetos ganham vida.</p>
     </div>
     <div className="gallery-stage">
-      <div className="gallery-viewport" ref={viewportRef} tabIndex={0} aria-label="Galeria de fotos do campus. Use as setas do teclado ou os controles para navegar." onPointerEnter={() => { hoverPause.current = true }} onPointerLeave={() => { hoverPause.current = false }} onFocusCapture={() => { hoverPause.current = true }} onBlurCapture={() => { hoverPause.current = false }} onPointerDown={(event) => { if (event.pointerType !== 'mouse') return; drag.current = { x: event.clientX, scroll: event.currentTarget.scrollLeft, pointerId: event.pointerId }; event.currentTarget.setPointerCapture(event.pointerId); event.currentTarget.setAttribute('data-dragging', 'true'); pauseUntil.current = performance.now() + 6500 }} onPointerMove={(event) => { if (drag.current?.pointerId !== event.pointerId) return; event.currentTarget.scrollLeft = drag.current.scroll + drag.current.x - event.clientX }} onPointerUp={endDrag} onPointerCancel={endDrag} onKeyDown={(event) => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); move(event.key === 'ArrowLeft' ? -1 : 1) } }}>
+      <div className="gallery-viewport" ref={viewportRef} tabIndex={0} aria-label="Galeria de fotos do campus. Use as setas do teclado ou os controles para navegar." onFocusCapture={() => { focusPause.current = true }} onBlurCapture={() => { focusPause.current = false }} onPointerDown={(event) => { if (event.pointerType !== 'mouse') return; drag.current = { x: event.clientX, scroll: event.currentTarget.scrollLeft, pointerId: event.pointerId }; event.currentTarget.setPointerCapture(event.pointerId); event.currentTarget.setAttribute('data-dragging', 'true'); pauseUntil.current = performance.now() + 6500 }} onPointerMove={(event) => { if (drag.current?.pointerId !== event.pointerId) return; event.currentTarget.scrollLeft = drag.current.scroll + drag.current.x - event.clientX }} onPointerUp={endDrag} onPointerCancel={endDrag} onKeyDown={(event) => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); move(event.key === 'ArrowLeft' ? -1 : 1) } }}>
         <div className="gallery-track"><div className="gallery-set" ref={firstSetRef} aria-hidden="true">{renderSet(true)}</div><div className="gallery-set">{renderSet(false)}</div><div className="gallery-set" aria-hidden="true">{renderSet(true)}</div></div>
       </div>
     </div>
