@@ -5,10 +5,10 @@ import Image from 'next/image'
 import { ArrowLeft, ArrowRight, Pause, Play } from 'lucide-react'
 
 const photos = [
-  { src: '/campus/movle.webp', title: 'Mov.le', detail: 'Espaços para criar e se reunir', alt: 'Espaço Mov.le da FAESA com mesas de estudo e cadeiras coloridas' },
+  { src: '/campus/mov-ie.webp', title: 'Mov.ie', detail: 'Espaços para criar e se reunir', alt: 'Espaço Mov.ie da FAESA com mesas de estudo e cadeiras coloridas' },
   { src: '/campus/biblioteca.webp', title: 'Biblioteca', detail: 'Ideias entre as estantes', alt: 'Corredor da biblioteca FAESA entre estantes de livros' },
   { src: '/campus/nucleo-tecnologia.webp', title: 'Tecnologia', detail: 'Conhecimento em prática', alt: 'Fachada do Núcleo de Aplicações Tecnológicas da FAESA' },
-  { src: '/campus/bloco-seis.webp', title: 'Bloco 6', detail: 'Pontos de encontro', alt: 'Área interna do Bloco 6 com mesas de convivência' },
+  { src: '/campus/bloco-seis.webp', title: 'Núcleo de Prática Jurídica', detail: 'Bloco 6 · Simulações dos alunos de Direito', alt: 'Área interna do Núcleo de Prática Jurídica no Bloco 6 da FAESA' },
   { src: '/campus/odontologia.webp', title: 'Odontologia', detail: 'Aprender fazendo', alt: 'Entrada envidraçada da Clínica Odontológica da FAESA' },
   { src: '/campus/sala-de-apoio.webp', title: 'Acolhimento', detail: 'Espaço para conversar', alt: 'Sala de apoio com cadeiras organizadas em círculo' },
   { src: '/campus/laboratorio-veterinaria.webp', title: 'Laboratórios', detail: 'Experimentar e descobrir', alt: 'Laboratório de Medicina Veterinária da FAESA' },
