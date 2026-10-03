@@ -28,6 +28,7 @@ export function CampusGallery() {
   const viewportRef = useRef<HTMLDivElement>(null)
   const firstSetRef = useRef<HTMLDivElement>(null)
   const focusPause = useRef(false)
+  const pointerFocus = useRef(false)
   const pauseUntil = useRef(0)
   const drag = useRef<{ x: number; scroll: number; pointerId: number } | null>(null)
   const activeRef = useRef(0)
@@ -77,7 +78,7 @@ export function CampusGallery() {
     const tick = (time: number) => {
       const delta = Math.min(time - (lastTime || time), 64)
       lastTime = time
-      if (!focusPause.current && time > pauseUntil.current) viewport.scrollLeft += delta * 0.1
+      if (!drag.current && !focusPause.current && time > pauseUntil.current) viewport.scrollLeft += delta * 0.1
       frame = requestAnimationFrame(tick)
     }
     const observer = new IntersectionObserver(([entry]) => {
@@ -101,8 +102,18 @@ export function CampusGallery() {
   const endDrag = (event: React.PointerEvent<HTMLDivElement>) => {
     if (drag.current?.pointerId !== event.pointerId) return
     drag.current = null
+    pauseUntil.current = performance.now() + 750
     event.currentTarget.removeAttribute('data-dragging')
     if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId)
+  }
+
+  const beginDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== 'mouse') return
+    pointerFocus.current = true
+    focusPause.current = false
+    drag.current = { x: event.clientX, scroll: event.currentTarget.scrollLeft, pointerId: event.pointerId }
+    event.currentTarget.setPointerCapture(event.pointerId)
+    event.currentTarget.setAttribute('data-dragging', 'true')
   }
 
   const renderSet = (duplicate: boolean) => photos.map((photo, index) => <figure className={`gallery-slide${activeIndex === index ? ' is-active' : ''}`} key={`${photo.src}-${duplicate}`}>
@@ -117,7 +128,7 @@ export function CampusGallery() {
       <p>Um olhar sobre os lugares onde encontros, estudos e projetos ganham vida.</p>
     </div>
     <div className="gallery-stage">
-      <div className="gallery-viewport" ref={viewportRef} tabIndex={0} aria-label="Galeria de fotos do campus. Use as setas do teclado ou os controles para navegar." onFocusCapture={() => { focusPause.current = true }} onBlurCapture={() => { focusPause.current = false }} onPointerDown={(event) => { if (event.pointerType !== 'mouse') return; drag.current = { x: event.clientX, scroll: event.currentTarget.scrollLeft, pointerId: event.pointerId }; event.currentTarget.setPointerCapture(event.pointerId); event.currentTarget.setAttribute('data-dragging', 'true'); pauseUntil.current = performance.now() + 6500 }} onPointerMove={(event) => { if (drag.current?.pointerId !== event.pointerId) return; event.currentTarget.scrollLeft = drag.current.scroll + drag.current.x - event.clientX }} onPointerUp={endDrag} onPointerCancel={endDrag} onKeyDown={(event) => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); move(event.key === 'ArrowLeft' ? -1 : 1) } }}>
+      <div className="gallery-viewport" ref={viewportRef} tabIndex={0} aria-label="Galeria de fotos do campus. Use as setas do teclado ou os controles para navegar." onFocusCapture={() => { if (!pointerFocus.current) focusPause.current = true }} onBlurCapture={() => { focusPause.current = false; pointerFocus.current = false }} onPointerDown={beginDrag} onPointerMove={(event) => { if (drag.current?.pointerId !== event.pointerId) return; event.currentTarget.scrollLeft = drag.current.scroll + drag.current.x - event.clientX }} onPointerUp={endDrag} onPointerCancel={endDrag} onKeyDown={(event) => { if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { pointerFocus.current = false; focusPause.current = true; event.preventDefault(); move(event.key === 'ArrowLeft' ? -1 : 1) } }}>
         <div className="gallery-track"><div className="gallery-set" ref={firstSetRef} aria-hidden="true">{renderSet(true)}</div><div className="gallery-set">{renderSet(false)}</div><div className="gallery-set" aria-hidden="true">{renderSet(true)}</div></div>
       </div>
     </div>
