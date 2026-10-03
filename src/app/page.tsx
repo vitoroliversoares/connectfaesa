@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { TypeRepeater } from '@/components/layout/TypeRepeater'
-import { CampusArtifact } from '@/components/layout/CampusArtifact'
+import { ArtifactStory } from '@/components/layout/ArtifactStory'
 import { CampusGallery } from '@/components/layout/CampusGallery'
 
 export default function Home() {
@@ -20,17 +20,7 @@ export default function Home() {
       </div>
     </section>
 
-    <section className="artifact-section" aria-labelledby="artifact-title">
-      <div className="shell artifact-layout">
-        <div className="artifact-copy">
-          <p className="eyebrow">Ideias em movimento</p>
-          <h2 className="display" id="artifact-title">Toda grande ideia começa com um <span className="script">encontro.</span></h2>
-          <p>Entre livros e conversas, uma matéria em comum pode virar uma parceria. Encontre quem compartilha o que você está estudando.</p>
-          <Link href="/login?mode=register" className="text-link">Encontre sua turma <ArrowRight size={18} /></Link>
-        </div>
-        <CampusArtifact />
-      </div>
-    </section>
+    <ArtifactStory />
 
     <section id="como-funciona" className="section-pad shell">
       <p className="eyebrow">Feito para aproximar</p>

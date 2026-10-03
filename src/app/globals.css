@@ -106,15 +106,23 @@ a { text-decoration: none; }
 .feature-card h3 { margin-top: 44px; font-size: 22px; font-weight: 700; letter-spacing: -.04em; }
 .feature-card p { margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.65; }
 .artifact-section { background: var(--canvas); }
-.artifact-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: start; gap: 28px; min-height: max(1320px, 165vh); padding-block: clamp(96px, 12vh, 150px); }
-.artifact-copy { position: sticky; top: clamp(120px, 23vh, 230px); z-index: 2; padding-block: 34px; }
+.artifact-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: start; gap: 28px; min-height: max(2100px, 290vh); padding-block: clamp(96px, 12vh, 150px); }
+.artifact-copy { position: sticky; top: clamp(120px, 20vh, 210px); z-index: 2; align-self: start; padding-block: 34px; }
+.artifact-copy-stage { min-height: clamp(340px, 45vh, 400px); }
+.artifact-moment { animation: artifact-reveal .45s ease both; }
+@keyframes artifact-reveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 .artifact-copy h2 { max-width: 570px; margin-top: 22px; font-size: clamp(44px, 5vw, 74px); }
 .artifact-copy p:not(.eyebrow) { max-width: 440px; margin-top: 24px; color: var(--muted); font-size: 17px; line-height: 1.7; }
+.artifact-copy-footer { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 22px; }
+.artifact-progress { display: flex; align-items: center; gap: 12px; color: var(--ink); font-size: 12px; font-weight: 700; letter-spacing: .08em; white-space: nowrap; }
+.artifact-progress-total { color: var(--muted); }
+.artifact-progress-track { display: block; width: 72px; height: 2px; background: var(--line); }
+.artifact-progress-track > span { display: block; height: 100%; background: var(--blue); transition: width .35s ease; }
 .text-link { display: inline-flex; align-items: center; gap: 11px; margin-top: 32px; padding-bottom: 7px; border-bottom: 1px solid currentColor; color: var(--navy); font-size: 14px; font-weight: 700; }
 .dark .text-link { color: #d6e3ff; }
 .text-link svg { transition: transform .18s ease; }
 @media (hover: hover) and (pointer: fine) { .text-link:hover svg { transform: translateX(4px); } }
-.artifact-visual { position: sticky; top: max(24px, calc(50vh - 300px)); height: 600px; min-width: 0; overflow: hidden; }
+.artifact-visual { position: sticky; top: max(24px, calc(50vh - 300px)); align-self: start; height: 600px; min-width: 0; overflow: hidden; }
 .artifact-canvas { position: absolute; z-index: 1; inset: 0; }
 .artifact-webgl { display: block; width: 100%; height: 100%; }
 .artifact-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; transition: opacity .3s ease; }
@@ -231,8 +239,8 @@ a { text-decoration: none; }
   .wizard { grid-template-columns: 1fr; }
   .wizard-aside { min-height: 260px; }
   .wizard-main { padding-top: 35px; }
-  .artifact-layout { grid-template-columns: 1fr 1fr; min-height: max(1180px, 165vh); }
-  .artifact-visual { top: max(24px, calc(50vh - 250px)); height: 500px; }
+  .artifact-layout { grid-template-columns: 1fr 1fr; min-height: max(2100px, 290vh); }
+  .artifact-visual { top: max(24px, calc(50vh - min(23vw, 220px))); height: min(46vw, 440px); }
 }
 @media (max-width: 680px) {
   .shell { width: min(100% - 32px, 1200px); }
@@ -253,10 +261,14 @@ a { text-decoration: none; }
   .feature-grid, .profile-grid { grid-template-columns: 1fr; }
   .feature-grid { gap: 22px; }
   .feature-card h3 { margin-top: 22px; }
-  .artifact-layout { display: block; min-height: max(1360px, 175vh); padding-block: 75px 100px; }
-  .artifact-copy { position: relative; top: auto; padding: 0; }
-  .artifact-copy h2 { font-size: clamp(42px, 10vw, 60px); }
-  .artifact-visual { top: max(72px, calc(50vh - 195px)); height: 390px; margin-top: 48px; }
+  .artifact-layout { display: flex; flex-direction: column; min-height: max(1900px, 290vh); padding-block: 76px 110px; }
+  .artifact-visual { order: -1; top: 72px; width: 100%; height: min(38vh, 320px); }
+  .artifact-copy { top: calc(64px + min(38vh, 320px)); width: 100%; padding: 0; }
+  .artifact-copy-stage { min-height: 275px; }
+  .artifact-copy h2 { margin-top: 12px; font-size: clamp(37px, 9vw, 48px); }
+  .artifact-copy p:not(.eyebrow) { margin-top: 14px; font-size: 15px; line-height: 1.55; }
+  .artifact-copy-footer { align-items: center; gap: 12px; }
+  .artifact-copy-footer .text-link { margin-top: 0; }
   .campus-gallery { --gallery-card-size: min(72vw, 310px); --gallery-gap: 52px; padding-block: 65px 35px; }
   .gallery-heading h2 { font-size: 36px; }
   .gallery-stage { height: 370px; }
@@ -279,6 +291,13 @@ a { text-decoration: none; }
   .wizard-aside h1 { font-size: 43px; }
   .wizard-main { padding: 28px 16px 70px; }
   .form-section { padding: 22px; }
+}
+@media (max-width: 680px) and (max-height: 650px) {
+  .artifact-visual { top: 64px; height: 32vh; }
+  .artifact-copy { top: calc(56px + 32vh); }
+  .artifact-copy-stage { min-height: 250px; }
+  .artifact-copy h2 { font-size: 34px; }
+  .artifact-copy p:not(.eyebrow) { font-size: 14px; line-height: 1.5; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

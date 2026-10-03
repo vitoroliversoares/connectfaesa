@@ -146,21 +146,21 @@ export function CampusArtifact() {
         const drift = reduceMotion.matches ? 0 : Math.sin(time * 0.00075)
         const counterDrift = reduceMotion.matches ? 0 : Math.sin(time * 0.00092 + 1.6)
         books.rotation.x = scroll * 0.24
-        books.rotation.y = scroll * 1.05 + drift * 0.045
+        books.rotation.y = scroll * 1.6 + drift * 0.045
         books.rotation.z = scroll * 0.2
-        books.position.y = scroll * 0.62 + drift * 0.05
-        mugLeft.position.x = -2.03 - scroll * 0.33
-        mugLeft.position.y = -1.02 + scroll * 1.45 + counterDrift * 0.07
+        books.position.y = scroll * 0.8 + drift * 0.05
+        mugLeft.position.x = -2.03 - scroll * 0.55
+        mugLeft.position.y = -1.02 + scroll * 1.8 + counterDrift * 0.07
         mugLeft.position.z = 0.55 + scroll * 0.38
         mugLeft.rotation.z = scroll * 0.42
         mugLeft.rotation.y = -0.2 + scroll * 0.72
-        mugRight.position.x = 1.98 + scroll * 0.35
-        mugRight.position.y = -0.75 - scroll * 1.22 + drift * 0.08
+        mugRight.position.x = 1.98 + scroll * 0.55
+        mugRight.position.y = -0.75 - scroll * 1.65 + drift * 0.08
         mugRight.position.z = -0.25 - scroll * 0.44
         mugRight.rotation.z = -scroll * 0.36
         mugRight.rotation.y = 0.24 + scroll * 0.8
         collection.rotation.x = pointerX
-        collection.rotation.y = scroll * 0.16 + pointerY
+        collection.rotation.y = scroll * 0.26 + pointerY
       }
       const animate = (time: number) => {
         if (!visible || disposed || reduceMotion.matches) {
@@ -196,7 +196,7 @@ export function CampusArtifact() {
         const height = host.clientHeight
         if (!width || !height) return
         camera.aspect = width / height
-        camera.position.z = width < 480 ? 10.7 : 9.5
+        camera.position.z = window.innerWidth <= 680 ? (width < 360 ? 8.1 : 9.2) : 9.5
         camera.updateProjectionMatrix()
         renderer.setSize(width, height, false)
         updateScene()
