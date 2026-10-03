@@ -1,52 +1,27 @@
-// Algoritmo de Match Score Inteligente com Explicação das Afinidades
-export function calculateMatchScore(user: any, other: any) {
+import { sharedSubjects } from '@/lib/catalog'
+
+type MatchProfile = {
+  course?: string | null
+  shift?: string | null
+  study_subjects?: string[] | null
+  top_skills?: string[] | null
+  partner_needs?: string[] | null
+}
+
+export function calculateMatchScore(user: MatchProfile | null, other: MatchProfile | null) {
+  if (!user || !other) return { score: 0, reasons: [] as string[], subjects: [] as string[] }
   let score = 0
   const reasons: string[] = []
-
-  if (!user || !other) {
-    return { score: 0, reasons: [] }
+  const subjects = sharedSubjects(user.study_subjects, other.study_subjects)
+  if (subjects.length) {
+    score += Math.min(subjects.length * 20, 50)
+    reasons.push(`${subjects.length} ${subjects.length === 1 ? 'matéria em comum' : 'matérias em comum'}`)
   }
-
-  // 1. Minhas necessidades no parceiro x habilidades que o outro oferece
-  if (user.partner_needs && other.top_skills) {
-    const matchingNeeds = user.partner_needs.filter((need: string) => other.top_skills.includes(need))
-    if (matchingNeeds.length > 0) {
-      score += matchingNeeds.length * 35 // Até 70%
-      matchingNeeds.forEach((need: string) => {
-        reasons.push(`Oferece a habilidade "${need.split('/')[0].trim()}" que você busca (+35%)`)
-      })
-    }
-  }
-
-  // 2. Necessidades do parceiro no outro x habilidades que eu ofereço
-  if (other.partner_needs && user.top_skills) {
-    const matchingOffers = other.partner_needs.filter((need: string) => user.top_skills.includes(need))
-    if (matchingOffers.length > 0) {
-      score += matchingOffers.length * 20 // Até 40%
-      matchingOffers.forEach((need: string) => {
-        reasons.push(`Busca a habilidade "${need.split('/')[0].trim()}" que você oferece (+20%)`)
-      })
-    }
-  }
-
-  // 3. Mesmos cursos (afinidade acadêmica)
-  if (user.course === other.course) {
-    score += 10
-    reasons.push(`Estudam no mesmo curso: ${user.course} (+10%)`)
-  }
-
-  // 4. Mesmo turno (compatibilidade de horários)
-  if (user.shift === other.shift) {
-    score += 10
-    reasons.push(`Estudam no mesmo turno: ${user.shift} (+10%)`)
-  }
-
-  if (score === 0) {
-    reasons.push("Nenhuma afinidade direta encontrada nas habilidades principais ou curso/turno.")
-  }
-
-  return {
-    score: Math.min(score, 100),
-    reasons
-  }
+  const offered = user.partner_needs?.filter((skill) => other.top_skills?.includes(skill)) ?? []
+  if (offered.length) { score += Math.min(offered.length * 15, 25); reasons.push('Oferece uma habilidade que você procura') }
+  const reciprocal = other.partner_needs?.filter((skill) => user.top_skills?.includes(skill)) ?? []
+  if (reciprocal.length) { score += Math.min(reciprocal.length * 10, 15); reasons.push('Procura uma habilidade que você oferece') }
+  if (user.course && user.course === other.course) { score += 10; reasons.push('Mesmo curso') }
+  if (user.shift && user.shift === other.shift) { score += 5; reasons.push('Mesmo turno') }
+  return { score: Math.min(score, 100), reasons, subjects }
 }

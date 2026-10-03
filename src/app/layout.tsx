@@ -1,51 +1,28 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Toaster } from "sonner";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import type { Metadata } from 'next'
+import { Toaster } from 'sonner'
+import { Navbar } from '@/components/layout/Navbar'
+import './globals.css'
 
 export const metadata: Metadata = {
-  title: "ConnectFAESA",
-  description: "Conectando alunos da FAESA para TCCs, grupos de estudo e startups.",
-};
+  title: 'Connect FAESA | Pessoas que fazem sua jornada acontecer',
+  description: 'Encontre colegas por curso, matérias e interesses para estudar e criar juntos na FAESA.',
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `
-          try {
-            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-              document.documentElement.classList.add('dark')
-            } else {
-              document.documentElement.classList.remove('dark')
-            }
-          } catch (_) {}
-        ` }} />
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://cdn.fontshare.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=satoshi%40400%2C500%2C700&display=swap" />
+        <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f%5B%5D=telma%40400&display=swap" />
+        <script dangerouslySetInnerHTML={{ __html: `try{if(localStorage.theme==='dark'||(!localStorage.theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')}catch(e){}` }} />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
-      >
+      <body>
         <Toaster position="top-center" richColors />
         <Navbar />
-        <main className="flex-grow flex flex-col">
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
-  );
+  )
 }

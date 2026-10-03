@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache'
 
 import { onboardingSchema } from '@/lib/validations/onboarding'
 
-export async function updateProfileAction(profileData: any) {
+export async function updateProfileAction(profileData: unknown) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   
@@ -14,13 +14,14 @@ export async function updateProfileAction(profileData: any) {
   }
 
   // Validar e sanitizar dados no Backend para mitigar Mass Assignment
-  const validationResult = onboardingSchema.partial().safeParse(profileData)
+  const validationResult = onboardingSchema.safeParse(profileData)
   
   if (!validationResult.success) {
     return { error: 'Formato de dados do perfil inválido.' }
   }
 
-  const validatedData = validationResult.data
+  const { institutional_email: _institutionalEmail, ...validatedData } = validationResult.data
+  void _institutionalEmail
 
   const { error } = await supabase
     .from('profiles')

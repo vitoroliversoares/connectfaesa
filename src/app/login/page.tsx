@@ -1,254 +1,76 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
-import Image from 'next/image'
+import { Suspense, useEffect, useState } from 'react'
+import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { toast } from 'sonner'
-import { motion } from 'framer-motion'
-import { Lock, Mail, ArrowLeft } from 'lucide-react'
 import { loginAction, registerAction, resetPasswordAction } from '@/actions/auth'
+import { Brand } from '@/components/layout/Navbar'
+import { TypeRepeater } from '@/components/layout/TypeRepeater'
 
-function LoginContent() {
+function AuthContent() {
+  const router = useRouter()
+  const params = useSearchParams()
+  const [mode, setMode] = useState<'login' | 'register' | 'reset'>(params.get('mode') === 'register' ? 'register' : 'login')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [isRegistering, setIsRegistering] = useState(false)
-  const [isResetting, setIsResetting] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  
-  const searchParams = useSearchParams()
-  const router = useRouter()
+  const [busy, setBusy] = useState(false)
 
   useEffect(() => {
-    const error = searchParams.get('error')
-    if (error === 'invalid_domain') {
-      toast.error('Acesso negado', {
-        description: 'A plataforma ConnectFAESA é exclusiva para alunos. Utilize seu e-mail @aluno.faesa.br ou @faesa.br',
-        duration: 8000,
-      })
-    } else if (error) {
-      toast.error('Erro na autenticação. Tente novamente.')
-    }
-  }, [searchParams])
+    if (params.get('error') === 'invalid_domain') toast.error('Use seu e-mail institucional da FAESA.')
+    else if (params.get('error')) toast.error('Não foi possível concluir a autenticação. Tente novamente.')
+  }, [params])
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    
-    // Validação estrita de domínio no Frontend
-    if (!email.endsWith('@aluno.faesa.br') && !email.endsWith('@faesa.br')) {
-      toast.error('E-mail inválido', {
-        description: 'Utilize o seu e-mail institucional da FAESA.',
-      })
+  async function submit(event: React.FormEvent) {
+    event.preventDefault()
+    if (!/@(aluno\.)?faesa\.br$/i.test(email.trim())) {
+      toast.error('Use um e-mail @aluno.faesa.br ou @faesa.br.')
       return
     }
-
-    // Se estiver redefinindo a senha, só precisamos do e-mail
-    if (isResetting) {
-      setIsLoading(true)
-      const res = await resetPasswordAction(email)
-      setIsLoading(false)
-      
-      if (res.error) {
-        toast.error('Erro ao solicitar redefinição: ' + res.error)
-      } else {
-        toast.success('Link enviado com sucesso!', {
-          description: 'Enviamos as instruções de alteração de senha para o seu e-mail institucional.',
-          duration: 8000,
-        })
-        setIsResetting(false)
-      }
+    if (mode !== 'reset' && password.length < 6) {
+      toast.error('A senha precisa ter pelo menos 6 caracteres.')
       return
     }
-
-    if (password.length < 6) {
-      toast.error('Senha muito curta', {
-        description: 'A senha deve ter no mínimo 6 caracteres.',
-      })
-      return
-    }
-
-    setIsLoading(true)
-
-    if (isRegistering) {
-      // Fluxo de Cadastro via Server Action com verificação de e-mail
-      const { error } = await registerAction(email, password)
-
-      if (error) {
-        toast.error('Erro ao cadastrar: ' + error)
-        setIsLoading(false)
+    setBusy(true)
+    try {
+      if (mode === 'reset') {
+        const result = await resetPasswordAction(email)
+        if (result.error) toast.error(result.error)
+        else { toast.success('Enviamos o link de recuperação para seu e-mail.'); setMode('login') }
+      } else if (mode === 'register') {
+        const result = await registerAction(email, password)
+        if (result.error) toast.error(result.error)
+        else { toast.success('Confira seu e-mail para confirmar a conta.'); setMode('login'); setPassword('') }
       } else {
-        toast.success('Cadastro solicitado com sucesso!', {
-          description: 'Enviamos um link de confirmação para o seu e-mail. Por favor, ative a conta na caixa de entrada antes de fazer o login.',
-          duration: 10000,
-        })
-        setIsRegistering(false)
-        setPassword('')
-        setIsLoading(false)
+        const result = await loginAction(email, password)
+        if (result.error) toast.error(result.error)
+        else router.push(result.hasProfile ? '/dashboard' : '/onboarding')
       }
-    } else {
-      // Fluxo de Login via Server Action
-      const result = await loginAction(email, password)
-
-      if (result.error) {
-        toast.error('Erro ao acessar', {
-          description: result.error.includes('Email not confirmed') 
-            ? 'Por favor, confirme seu e-mail institucional clicando no link de ativação enviado para sua caixa de entrada.' 
-            : result.error === 'Invalid login credentials' 
-              ? 'E-mail ou senha incorretos.' 
-              : result.error
-        })
-        setIsLoading(false)
-      } else {
-        toast.success('Login bem-sucedido!')
-        if (result.hasProfile) {
-          router.push('/dashboard')
-        } else {
-          router.push('/onboarding')
-        }
-      }
-    }
+    } catch {
+      toast.error('Não foi possível conectar agora. Tente novamente em instantes.')
+    } finally { setBusy(false) }
   }
 
-  return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="w-full max-w-md bg-white dark:bg-zinc-900 border border-transparent dark:border-zinc-800 rounded-2xl shadow-2xl p-8 relative overflow-hidden mx-4"
-    >
-      <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-400 to-faesa-light"></div>
-      
-      {isResetting && (
-        <button 
-          onClick={() => setIsResetting(false)}
-          className="absolute top-6 left-6 text-gray-400 dark:text-zinc-500 hover:text-gray-600 dark:hover:text-zinc-300 flex items-center gap-1.5 text-xs font-semibold cursor-pointer"
-        >
-          <ArrowLeft size={16} /> Voltar
-        </button>
-      )}
-      
-      <div className="text-center mb-8 mt-4">
-        <div className="flex justify-center mb-6">
-          <Image 
-            src="/logo.png" 
-            alt="Logo FAESA" 
-            width={240} 
-            height={60} 
-            priority 
-            className="h-12 w-auto transition-all" 
-          />
-        </div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-          {isResetting ? 'Recuperar Senha' : isRegistering ? 'Criar Conta' : 'Entrar na Plataforma'}
-        </h1>
-        <p className="text-gray-500 dark:text-zinc-400 text-sm mt-2 leading-relaxed">
-          {isResetting 
-            ? 'Insira seu e-mail institucional para receber o link de redefinição de senha.' 
-            : isRegistering 
-              ? 'Crie sua conta institucional para começar.' 
-              : 'Acesse sua conta para continuar.'}
-        </p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-zinc-350 mb-1">
-            E-mail Institucional
-          </label>
-          <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 dark:text-zinc-500">
-              <Mail size={18} />
-            </div>
-            <input
-              id="email"
-              type="email"
-              required
-              placeholder="seu.nome@aluno.faesa.br"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-800 bg-white dark:bg-zinc-950 focus:ring-2 focus:ring-faesa-blue focus:border-faesa-blue outline-none transition-all text-gray-900 dark:text-white placeholder:text-gray-400"
-            />
-          </div>
-        </div>
-
-        {!isResetting && (
-          <div>
-            <div className="flex justify-between items-center mb-1">
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-zinc-350">
-                Senha
-              </label>
-              {!isRegistering && (
-                <button
-                  type="button"
-                  onClick={() => setIsResetting(true)}
-                  className="text-xs text-faesa-blue dark:text-blue-400 hover:text-faesa-light dark:hover:text-blue-300 font-semibold cursor-pointer"
-                >
-                  Esqueci minha senha
-                </button>
-              )}
-            </div>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 dark:text-zinc-500">
-                <Lock size={18} />
-              </div>
-              <input
-                id="password"
-                type="password"
-                required
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 dark:border-zinc-800 bg-white dark:bg-zinc-950 focus:ring-2 focus:ring-faesa-blue focus:border-faesa-blue outline-none transition-all text-gray-900 dark:text-white placeholder:text-gray-400"
-              />
-            </div>
-          </div>
-        )}
-
-        <motion.button
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          type="submit"
-          disabled={isLoading || !email || (!isResetting && !password)}
-          className="w-full flex items-center justify-center gap-3 bg-faesa-blue dark:bg-blue-600 text-white hover:bg-faesa-light dark:hover:bg-blue-500 transition-colors py-3 px-4 rounded-xl font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-faesa-blue disabled:opacity-50 mt-4 cursor-pointer"
-        >
-          {isLoading ? (
-            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          ) : (
-            isResetting 
-              ? 'Enviar Link de Recuperação' 
-              : isRegistering 
-                ? 'Criar Conta' 
-                : 'Entrar'
-          )}
-        </motion.button>
+  const title = mode === 'register' ? 'Crie seu espaço.' : mode === 'reset' ? 'Recupere seu acesso.' : 'Bom ter você aqui.'
+  return <div className="auth-shell">
+    <aside className="type-stage auth-story"><TypeRepeater /><div className="auth-story-content"><p className="eyebrow" style={{ color: '#c9d9ff' }}>Connect FAESA</p><h2 className="display">Ideias crescem quando a gente se <span className="script">encontra.</span></h2><p style={{ marginTop: 22, color: '#d8e4fb', maxWidth: 420 }}>Pessoas, matérias e projetos em um só lugar.</p></div></aside>
+    <section className="auth-panel"><div className="auth-card">
+      <Brand />
+      <p className="eyebrow" style={{ marginTop: 55 }}>{mode === 'register' ? 'Primeiro acesso' : mode === 'reset' ? 'Recuperar senha' : 'Acesso institucional'}</p>
+      <h1 className="display">{title}</h1>
+      <p className="muted" style={{ marginTop: 12 }}>{mode === 'register' ? 'Use seu e-mail da FAESA para começar a encontrar colegas.' : mode === 'reset' ? 'Enviaremos um link seguro para seu e-mail institucional.' : 'Entre para descobrir pessoas na mesma jornada que você.'}</p>
+      <form onSubmit={submit} noValidate>
+        <div className="field-row"><label className="label" htmlFor="email">E-mail institucional</label><input className="field" id="email" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="seu.nome@aluno.faesa.br" required /></div>
+        {mode !== 'reset' && <div className="field-row"><div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}><label className="label" htmlFor="password">Senha</label>{mode === 'login' && <button type="button" onClick={() => setMode('reset')} style={{ color: 'var(--blue)', fontSize: 12, fontWeight: 700 }}>Esqueci a senha</button>}</div><input className="field" id="password" type="password" autoComplete={mode === 'register' ? 'new-password' : 'current-password'} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Mínimo de 6 caracteres" required /></div>}
+        <button className="btn btn-primary" type="submit" disabled={busy}>{busy ? 'Aguarde...' : mode === 'register' ? 'Criar conta' : mode === 'reset' ? 'Enviar link' : 'Entrar'} {!busy && <ArrowRight size={17} />}</button>
       </form>
-
-      {!isResetting && (
-        <div className="mt-6 text-center">
-          <button
-            type="button"
-            onClick={() => setIsRegistering(!isRegistering)}
-            className="text-sm text-faesa-blue dark:text-blue-400 hover:text-faesa-light dark:hover:text-blue-300 font-medium transition-colors cursor-pointer"
-          >
-            {isRegistering 
-              ? 'Já tem uma conta? Faça login' 
-              : 'Primeiro acesso? Cadastre-se'}
-          </button>
-        </div>
-      )}
-
-      <p className="text-xs text-center text-gray-400 dark:text-zinc-500 mt-6">
-        Acesso restrito a e-mails @aluno.faesa.br ou @faesa.br.
-      </p>
-    </motion.div>
-  )
+      <div className="auth-foot">
+        {mode === 'login' ? <>Ainda não tem conta? <button type="button" onClick={() => setMode('register')} style={{ color: 'var(--blue)', fontWeight: 700 }}>Cadastre-se</button></> : <button type="button" onClick={() => setMode('login')} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--blue)', fontWeight: 700 }}><ArrowLeft size={15} /> Voltar para entrar</button>}
+      </div>
+      <p className="auth-foot" style={{ marginTop: 42, fontSize: 12 }}>Seu perfil é visível apenas para estudantes autenticados. <Link href="/" style={{ color: 'var(--blue)', fontWeight: 700 }}>Conheça o Connect FAESA</Link></p>
+    </div></section>
+  </div>
 }
 
-export default function LoginPage() {
-  return (
-    <div className="min-h-screen bg-faesa-blue dark:bg-zinc-950 flex flex-col justify-center items-center transition-colors duration-300">
-      <Suspense fallback={<div className="text-white dark:text-zinc-400">Carregando...</div>}>
-        <LoginContent />
-      </Suspense>
-    </div>
-  )
-}
+export default function LoginPage() { return <Suspense fallback={<div className="auth-panel" style={{ minHeight: '100vh' }}>Carregando...</div>}><AuthContent /></Suspense> }

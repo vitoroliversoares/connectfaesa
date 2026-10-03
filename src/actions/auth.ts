@@ -48,7 +48,7 @@ export async function registerAction(email: string, password: string) {
   const protocol = host.includes('localhost') ? 'http' : 'https'
   const emailRedirectTo = `${protocol}://${host}/auth/callback?next=/onboarding`
 
-  const { data, error } = await supabase.auth.signUp({ 
+  const { error } = await supabase.auth.signUp({
     email: emailLower, 
     password,
     options: {

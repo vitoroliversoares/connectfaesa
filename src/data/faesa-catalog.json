@@ -1,0 +1,3377 @@
+[
+  {
+    "name": "Administração",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/administracao/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Sociedade, Cidadania e Diversidade",
+          "Direito Empresarial",
+          "Matemática",
+          "Teoria Das Organizações",
+          "Contabilidade",
+          "Projeto Integrador I"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Métodos Quantitativos",
+          "Contabilidade Empresarial",
+          "Teoria da Administração",
+          "Direito Societário",
+          "Projeto Integrador II",
+          "Legislação Trabalhista e Tributária"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Projeto Integrador III",
+          "Gestão e Controle de Custos",
+          "Estatística Empresarial",
+          "Gestão da Qualidade",
+          "Gestão Estratégica e Empresarial"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Gestão Estratégica de Marketing",
+          "Projeto Integrador IV",
+          "Gestão de Processos",
+          "Matemática Financeira",
+          "Economia"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Administração Pública",
+          "Gestão de Pessoas",
+          "Mercado I",
+          "Análise das Demonstrações Financeiras",
+          "Pesquisa Operacional",
+          "Modelos de Negociação e Tomada De Decisão"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Administração Financeira e Orçamentária",
+          "Empreendedorismo e Inovação",
+          "Administração da Produção",
+          "Mercado II",
+          "Administração de Recursos Patrimoniais"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Gestão da Cadeia de Suprimentos e Logística",
+          "Gestão de Pequenas e Médias Empresas",
+          "Tópicos Especiais I",
+          "Finanças e Valuation",
+          "Laboratório de Negócios",
+          "Tecnologia, Inovação e Inteligencia Artificial"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Tópicos Especiais II",
+          "Feira de Negócios"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Contabilidade Gerencial",
+          "Planejamento Tributário",
+          "Libras",
+          "Contabilidade aplicada ao setor público",
+          "Auditoria , Perícia Contábil e Arbitragem",
+          "Mercado financeiro e de capitais"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Agronomia",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/agronomia/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Leitura e Produção de Texto",
+          "Ecologia Básica",
+          "Sociedade, Cidadania e Diversidade",
+          "Informática Aplicada",
+          "Introdução a Agronomia",
+          "Biologia Celular"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Gênese de Solo",
+          "Cálculo I",
+          "Botânica Geral",
+          "Desenho Técnico e Topografia",
+          "Química Geral",
+          "Sociologia do Desenvolvimento Rural"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Zoologia",
+          "Morfologia e classificação de Solos",
+          "Física I",
+          "Bioquímica",
+          "Cálculo II",
+          "Metodologia Científica"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Agroecologia e Agricultura Orgânica",
+          "Física II",
+          "Projeto Integrador I",
+          "Microbiologia Geral",
+          "Estatística Aplicada",
+          "Fisiologia Vegetal I",
+          "Zootecnia Geral"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Máquina e mecanização Agrícola",
+          "Propagação de Plantas",
+          "Microbiologia do Solo",
+          "Fertilidade do Solo",
+          "Genética",
+          "Entomologia Agrícola",
+          "Projeto Integrador II"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Melhoramento de Plantas",
+          "Levantamento, Aptidão e Manejo Sustentável do solo",
+          "Fisiologia Vegetal II",
+          "Projeto Integrador III",
+          "Nutrição de Plantas",
+          "Fitopatologia I",
+          "Manejo de Plantas Daninhas"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Fruticultura",
+          "Avicultura Suinocultura",
+          "Culturas Anuais",
+          "Meteorologia Climatologia",
+          "Projeto de TCC",
+          "Fitopatologia II"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Bovinocultura",
+          "Olericultura",
+          "Cafeicultura",
+          "Construções Rurais",
+          "Economia Rural",
+          "Hidráulica e Hidrologia"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Extensão Rural",
+          "Optativa II",
+          "Administração Rural",
+          "Tecnologia de Alimentos",
+          "Estágio Supervisionado I",
+          "Silvicultura e Dendrologia",
+          "Irrigação e Drenagem"
+        ]
+      },
+      {
+        "label": "10° Período",
+        "subjects": [
+          "Marketing e Comercialização Agrícola",
+          "Empreendedorismo",
+          "Estágio Supervisionado II",
+          "Trabalho de Conclusão de Curso",
+          "Avaliação e Perícia Agrícola"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Análise e Desenvolvimento de Sistemas",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/analise-e-desenvolvimento-de-sistemas/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Laboratório de Programação I",
+          "Habilidades de Estudo e Comunicação",
+          "Modelos Lógicos Computacionais",
+          "Sistemas de Informações Organizacionais",
+          "Universo Computacional"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Engenharia de Software",
+          "Modelagem de Processos de Negócio",
+          "Laboratório de Programação II",
+          "Sociedade, Cidadania e Diversidade",
+          "Arquitetura de Computadores"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Projeto Integrador Computação I",
+          "Sistemas Operacionais",
+          "Análise Orientada a Objetos",
+          "Engenharia de Requisitos",
+          "Empreendedorismo",
+          "Linguagem de Programação Orientada a Objetos"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Desenvolvimento de Aplicações Web I",
+          "Interface Homem-Computador",
+          "Banco de Dados",
+          "Projeto Integrador Computação II",
+          "Redes de Computadores e Dispositivos Inteligentes",
+          "Projeto Orientado a Objetos",
+          "Tópicos Especiais I"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Sistemas Distribuídos e Computação em Nuvem",
+          "Teste de Software",
+          "Desenvolvimento de Aplicações Web II",
+          "Projeto Integrador Computação III",
+          "Tópicos Especiais II",
+          "Optativa"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Segurança e auditoria de sistemas",
+          "Governança de TI",
+          "Libras",
+          "Estrutura de dados",
+          "Organização, sistemas e métodos",
+          "IOT",
+          "Economia",
+          "Inteligência artificial, machine learning e deep learning",
+          "Data science",
+          "Cibersegurança",
+          "Análise de dados aplicada a computação"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Arquitetura e Urbanismo",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/arquitetura-e-urbanismo/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Observação e Expressão Gráfica",
+          "Arquitetura, Urbanismo e Espaços Vividos",
+          "Sociedade, Cidadania e Diversidade",
+          "Técnicas de Representação da Forma",
+          "Oficina de Composição e Desenho",
+          "Arte e Cultura"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Teoria e História da Arquitetura e do Urbanismo",
+          "Conforto Ambiental: Sustentabilidade e Fundamentação",
+          "Materiais de Construção Civil",
+          "Morfologia Urbana",
+          "Perspectiva",
+          "Desenho Arquitetônico"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Conforto Ambiental: Térmico",
+          "Tecnologia das Construções",
+          "Fundamentos da Pesquisa em Arquitetura, Urbanismo e Paisagismo",
+          "Arquitetura Brasileira",
+          "Projeto Integrado de Arquitetura: o habitar",
+          "Informática Aplicada à Arquitetura I"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Sistemas Estruturais: Fundamentação",
+          "Princípios do Desenho Urbano",
+          "Conforto Ambiental: iluminação",
+          "Ética e Exercício Profissional na Arquitetura",
+          "Projeto Integrado de Arquitetura: o habitar coletivo",
+          "Topografia Aplicada à Arquitetura e Urbanismo"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Sistemas Estruturais: concreto armado",
+          "Informática Aplicada à Arquitetura II",
+          "Conforto Ambiental: acústica",
+          "Projeto Integrado de Arquitetura e Paisagismo: o espaço do conhecimento",
+          "Instalações Prediais: elétricas"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Projeto de Interiores",
+          "Projeto Integrado de Arquitetura e Paisagismo: o edifício híbrido",
+          "Instalações Prediais: hidráulica, hidrossanitárias e prevenção de incêndio",
+          "Paisagismo",
+          "Sistemas Estruturais: metálicos e de madeira"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Sistemas Construtivos Industrializados",
+          "Paisagismo Urbano",
+          "Economia",
+          "Projeto Integrado de Arquitetura, Urbanismo e Paisagismo: a cidade sustentável",
+          "Planejamento de Cidades e Regiões"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Projeto Integrado de Arquitetura, Urbanismo e Paisagismo: o bem-estar urbano e saúde",
+          "Empreendedorismo e Inovação",
+          "Planejamento, Orçamento e Gerenciamento de Obra",
+          "Patrimônio Arquitetônico: fundamentos da conservação"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Projeto de Restauro",
+          "Projeto Executivo e Compatibilização",
+          "Projeto de TCC",
+          "Tópicos Especiais I"
+        ]
+      },
+      {
+        "label": "10° Período",
+        "subjects": [
+          "Trabalho de Conclusão de Curso",
+          "Tópicos Especiais II",
+          "Marketing e Gestão de Escritório de Projetos"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Fotografia na arquitetura",
+          "Projetos especiais de arquitetura",
+          "Avaliação de desempenho lumínico",
+          "Desenho industrial",
+          "Libras",
+          "Perícia e avaliação de imóveis urbanos",
+          "Diagramação e apresentação gráfica",
+          "Patologia das construções",
+          "Cidades inteligentes",
+          "Arquitetura para jogos",
+          "Materiais de revestimento e acabamento"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ciência da Computação",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/ciencia-da-computacao/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Habilidades De estudo e comunicação",
+          "Laboratório De Programação I",
+          "Modelos Lógicos Computacionais",
+          "Universo Computacional",
+          "Sistemas De Informação Organizacionais"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Sistemas Digitais E Microprocessados",
+          "Engenharia De Software",
+          "Sociedade, Cidadania E Diversidade",
+          "Álgebra Linear E Tecnologias Digitais",
+          "Laboratório De Programação II"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Matemática Discreta",
+          "Arquitetura De Computadores",
+          "Análise Orientada A Objetos",
+          "Padrões De Linguagens De Programação",
+          "Estrutura De Dados",
+          "Projeto Integrador Computação I"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Linguagem De Programação Orientada A Objetos",
+          "Projeto Integrador Computação II",
+          "Banco De Dados",
+          "Pesquisa E Ordenação",
+          "Projeto Orientado A Objetos"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Sistemas Operacionais",
+          "Análise de dados aplicada à computação",
+          "Business Intelligence",
+          "Projeto Integrador Computação III",
+          "Redes De Computadores E Dispositivos Inteligentes"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Inteligência Artificial, Machine Learning E Deep Learning",
+          "Economia",
+          "Projeto Integrador Computação IV",
+          "Teoria Da Computação E Autômatos",
+          "Teste De Software"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Compiladores",
+          "Complexidade de algoritmos",
+          "Empreendedorismo de inovação",
+          "Projeto de trabalho de conclusão de curso",
+          "Tópicos especiais I"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Interface homem-computador",
+          "Trabalho de conclusão de curso",
+          "Tópicos especiais II",
+          "Sistemas distribuídos e computação em nuvem"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "IOT",
+          "Cibersegurança",
+          "Governança de TI",
+          "Desenvolvimento de aplicações WEB I",
+          "Desenvolvimento de aplicações WEB II",
+          "Libras",
+          "Dta science",
+          "Desenvolvimento WEB I",
+          "Internet das coisas",
+          "Desenvolvimento WEB II"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ciências Contábeis",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/ciencias-contabeis/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Matemática",
+          "Projeto Integrador I",
+          "Sociedade, Cidadania e Diversidade",
+          "Teoria das Organizações",
+          "Contabilidade",
+          "Direito Empresarial"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Projeto Integrador II",
+          "Direito Societário",
+          "Métodos Quantitativos",
+          "Teoria da Administração",
+          "Legislação Trabalhista e Tributária",
+          "Contabilidade Empresarial"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Teoria da Contabilidade",
+          "Contabilidade Societária - Ativos",
+          "Contabilidade Intermediária",
+          "Estatística Empresarial",
+          "Projeto Integrador III",
+          "Gestão e Controle de Custos"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Matemática Financeira",
+          "Economia",
+          "Projeto Integrador IV",
+          "Comportamento Organizacional",
+          "Estrutura das Demonstrações Contábeis"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Mercado Financeiro e de Capitais",
+          "Contabilidade Avançada",
+          "Administração Pública",
+          "Análise das Demonstrações Financeiras",
+          "Mercado I",
+          "Contabilidade Gerencial"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Mercado II",
+          "Empreendedorismo e Inovação",
+          "Administração Financeira e Orçamentária",
+          "Contabilidade Aplicada ao Setor Público",
+          "Planejamento Tributário"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Auditoria, Perícia Contábil e Arbitragem",
+          "Laboratório de Negócios",
+          "Finanças Valuation",
+          "Tecnologia, Inovação e Inteligência Artificial",
+          "Tópicos Especiais I",
+          "Controladoria"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Tópicos Especiais II",
+          "Laboratório de Práticas Contábeis",
+          "Feira de Negócios"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Gestão de pessoas",
+          "Gestão estratégica e empresarial",
+          "Libras",
+          "Gestão da qualidade",
+          "Gestão estratégica de marketing"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Design Gráfico",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/design-grafico/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Meios e Representação",
+          "Arte e Cultura",
+          "Marketing e Mercado",
+          "Processo de Criação",
+          "Tecnologia dos Materiais I",
+          "Cor e Composição"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Criação Disruptiva",
+          "Design Sustentável e Ético",
+          "Tecnologia dos Materiais II",
+          "Desenho Técnico no Design",
+          "História do Design",
+          "Plástica",
+          "Introdução à Ergonomia"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Representação Tridimensional I",
+          "Fundamentos da Computação I",
+          "Semiótica",
+          "Economia",
+          "Metodologia do Projeto",
+          "Projeto Integrador I",
+          "Ergonomia Aplicada ao Design"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Projeto I - Inovação e Mercado",
+          "Representação Tridimensional II - Mockups",
+          "Projeto Integrador II",
+          "Design e Contemporaneidade",
+          "Fundamentos da Computação II - 3D",
+          "Representação Gráfica e Digital - Vetorial e Bitmap"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Projeto II - Inovação e Mercado",
+          "Design de Interface",
+          "Multimídia",
+          "Psicologia do Consumo",
+          "Fundamentos da Computação III - Modelagem 3D",
+          "Projeto Integrador III"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Tópicos Especiais",
+          "Design de Superfície",
+          "Design Emocional",
+          "Empreendedorismo e Inovação"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Representação Tridimensional Aplicada ao Projeto",
+          "Projeto Aplicado",
+          "Gestão e Negócios em Design",
+          "Branding"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Fotografia",
+          "Motion design",
+          "Análise e visualização de dados",
+          "Oratória persuasiva",
+          "Projeto de sinalização",
+          "Interface digital",
+          "Libras",
+          "Marketing digital e-commerce",
+          "Design de experiência do usuário"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Design de Moda",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/design-de-moda/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Meios e Representação",
+          "Tecnologia dos Materiais I",
+          "Processo de Criação",
+          "Arte e Cultura",
+          "Cor e Composição",
+          "Marketing e Mercado"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Desenho Técnico no Design",
+          "Criação Disruptiva",
+          "Plástica",
+          "Introdução à Ergonomia",
+          "Design Sustentável e Ético",
+          "História do Design",
+          "Tecnologia dos Materiais II"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Economia",
+          "Representação Tridimensional I",
+          "Ergonomia Aplicada ao Design",
+          "Metodologia do Projeto",
+          "Semiótica",
+          "Projeto Integrador I",
+          "Fundamentos da Computação I"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Design e Contemporaneidade",
+          "Representação Gráfica e Digital - Vetorial e Bitmap",
+          "Projeto Integrador II",
+          "Representação Tridimensional II - Moulage",
+          "Fundamentos da Computação II - 3D",
+          "Projeto I - Desenho de Moda"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Tecnologia da Confecção",
+          "Psicologia do Consumo",
+          "Projeto e Planejamento de Coleção I",
+          "Projeto II - Inovação e Mercado (Design Efêmero)",
+          "Projeto Integrador III",
+          "Representação Tridimensional III - Modelagem"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Projeto e Planejamento de Coleção II",
+          "Design de Superfície",
+          "Modelagem Digital",
+          "Empreendedorismo e Inovação"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Representação Tridimensional Aplicado à Moda",
+          "Branding",
+          "Projeto Aplicado",
+          "Gestão e Negócios em Design"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Vitrine e visual",
+          "Libras",
+          "Marketing digital e-commerce",
+          "Modelagem avançada",
+          "Laboratório de costura",
+          "Tópicos avançados em design de moda",
+          "Fotografia",
+          "História da moda",
+          "Oratória persuasiva"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Direito",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/direito/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Teoria Geral Do Direito",
+          "Filosofia Geral E Do Direito",
+          "Economia",
+          "Direito E Pensamento Político",
+          "História Do Direito"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Direito Civil I",
+          "Psicologia",
+          "Direito Constitucional I",
+          "Sociedade, Cidadania E Diversidade",
+          "Solução Adequada De Conflitos",
+          "Realidade Brasileira, Cidadania E Direitos Humanos"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Hermenêutica E Argumentação",
+          "Direito Penal I",
+          "Direito Civil II",
+          "Direito Constitucional II",
+          "Organização Do Trabalho Científico"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Direito Processual Civil I",
+          "Direito Civil III",
+          "Direito Administrativo I",
+          "Direito Constitucional III",
+          "Responsabilidade Civil",
+          "Projeto Integrador I",
+          "Direito Penal II"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Direito Civil IV",
+          "Direito Do Trabalho I",
+          "Direito Administrativo II",
+          "Direito Penal III",
+          "Direito Processual Civil II",
+          "Projeto Integrador II",
+          "Empreendedorismo E Inovação"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Direito Do Trabalho II",
+          "Direito Processual Constitucional",
+          "Direito Civil V",
+          "Direito Do Consumidor",
+          "Projeto Integrador III",
+          "Direito Penal IV",
+          "Direito Processual Civil III"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Direito Civil VI",
+          "Direito Processual Civil IV",
+          "Prática Real I (Extensão, Visita Técnica E Acompanhamento À Audiência)",
+          "Direito Processual Penal I",
+          "Projeto De TCC",
+          "Direito Processual Do Trabalho I",
+          "Direito Empresarial I"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Direito Civil VII",
+          "Procedimento Sucessório",
+          "Direito Empresarial II",
+          "Prática Simulada I (Cível/Família)",
+          "Direito Internacional Público",
+          "Direito Processual Do Trabalho II",
+          "Direito Processual Penal II",
+          "Direito Processual Civil V"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Direito Ambiental",
+          "Deontologia",
+          "Prática Simulada I (Trabalho)",
+          "Direito Processual Civil VI",
+          "Direito Processual Penal III",
+          "Direito Tributário I",
+          "Prática Simulada I (Penal)",
+          "Prática Real II (Cível/Família)"
+        ]
+      },
+      {
+        "label": "10° Período",
+        "subjects": [
+          "Trabalho De Conclusão De Curso",
+          "Direito Tributário II",
+          "Tópicos Especiais De Direito Constitucional I",
+          "Prática Real III (Penal)",
+          "Direito Digital",
+          "Prática Real IV (Trabalho)"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Direito internacional privado",
+          "Libras",
+          "Tópicos emergentes",
+          "Direito previdenciário",
+          "Tópicos avançados"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Enfermagem",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/enfermagem/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Integralidade do Cuidado em Saúde",
+          "História da Enfermagem, Ética e Legislação Profissional",
+          "Introdução a Trajetória Acadêmica",
+          "Anatomia Humana",
+          "Biologia Celular, Histologia e Embriologia"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Psicologia Aplicada",
+          "Sociedade, Cidadania e Diversidade",
+          "Fisiologia",
+          "Suporte Básico de Vida",
+          "Bioquímica",
+          "Anatomia Clínica",
+          "Genética"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Processo de Enfermagem",
+          "Semiologia em Enfermagem",
+          "Língua Portuguesa",
+          "Saúde Coletiva",
+          "Ética e Pensamento Crítico",
+          "Microbiologia",
+          "Promoção de Saúde e Qualidade de Vida"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Imunologia",
+          "Parasitologia",
+          "Nutrição e Dietética",
+          "Semiotécnica",
+          "Patologia",
+          "Farmacologia"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Bioestatística e Epidemiologia",
+          "Saúde do Idoso",
+          "Saúde do Adulto I",
+          "Saúde Mental",
+          "Empreendedorismo e Inovação",
+          "Saúde da Mulher I"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Formação Pedagógica do Enfermeiro",
+          "Saúde do Trabalhador",
+          "Saúde da Criança e do Adolescente",
+          "Enfermagem Cirúrgica e CME",
+          "Saúde da Mulher II"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Gestão e Liderança em Enfermagem",
+          "Estágio em Saúde Coletiva",
+          "Projeto de TCC"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "TCC - Trabalho de Conclusão de Curso",
+          "Estágio Hospitalar",
+          "Tópicos Especiais"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Economia",
+          "Libras",
+          "Qualidade e segurança do paciente",
+          "Saúde ambiental e sustentabilidade",
+          "Enfermagem nas práticas complementares e integrativas de saúde"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Engenharia Civil",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/engenharia-civil/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Sustentabilidade e gestão ambiental",
+          "Desenho técnico",
+          "Pensamento matemático",
+          "Design em engenharia",
+          "Habilidade de estudo e comunicação"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Modelos físicos I",
+          "Técnicas de programação",
+          "Química geral",
+          "Projeto integrador engenharias I",
+          "Sociedade, cidadania e diversidade",
+          "Matemática aplicada I"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Modelos físicos II",
+          "Organização do trabalho científico",
+          "Ética e pensamento crítico",
+          "Probabilidade e estatística",
+          "Matemática aplicada II",
+          "Mecânica estática"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Fenômenos de transporte",
+          "Projeto integrador engenharias II",
+          "Modelos físicos III",
+          "Ciência e tecnologia dos materiais",
+          "Matemática aplicada III",
+          "Resistência dos materiais"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Geologia geral",
+          "Topografia",
+          "Instalações elétricas",
+          "Visão empresária",
+          "Projeto integrador engenharia civil I",
+          "Desenho de engenharia",
+          "Hidrologia",
+          "Hidráulica e sistemas de abastecimento de água"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Mecânica dos solos",
+          "Projeto integrador engenharia civil II",
+          "Instalações hidrossanitárias",
+          "Gestão de risco e segurança do trabalho",
+          "Análise estrutural",
+          "Planejamento e sistemas de transporte"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Materiais de construção civil",
+          "Fundações",
+          "Projeto integrador engenharia civil III",
+          "Estruturas de concreto",
+          "Engenharia de tráfego"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Estruturas especiais",
+          "Empreendedorismo e inovação",
+          "Construção civil",
+          "Águas residuárias",
+          "Projeto integrador engenharia civil IV",
+          "Projeto de estradas"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Projeto do trabalho de conclusão de curso",
+          "Planejamento e controle das construções",
+          "Tecnologia das contruções",
+          "Tópicos especiais I",
+          "Análise de projeto de investimento"
+        ]
+      },
+      {
+        "label": "10° Período",
+        "subjects": [
+          "Patologia das construções",
+          "Trabalho de conclusão de curso",
+          "Tópicos especiais II",
+          "Gestão de projetos em BIM"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Libras",
+          "Data science",
+          "Programação avançada em engenharia",
+          "Realidade aumentada",
+          "IOT",
+          "Energia solar fotovoltaica"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Engenharia Elétrica",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/engenharia-eletrica/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Sustentabilidade e gestão ambiental",
+          "Desenho técnico",
+          "Pensamento matemático",
+          "Design em engenharia",
+          "Habilidades de estudo e comunicação"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Modelos físicos I",
+          "Técnicas de programação",
+          "Sociedade, cidadania e diversidade",
+          "Química geral",
+          "Projeto integrador engenharias I",
+          "Matemática aplicada I"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Modelos físicos II",
+          "Probabilidade e estatística",
+          "Mecânica estática",
+          "Organização do trabalho científico",
+          "Ética epensamento crítico",
+          "Matemática aplicada II"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Projeto integrador engenharias II",
+          "Ciência e tecnologia dos materiais",
+          "Matemática aplicada III",
+          "Modelos físicos III",
+          "Fenômeno de transporte",
+          "Resistência dos materiais"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Circuitos elétricos",
+          "Projeto integrador engenharia elétrica I",
+          "Visão empresária",
+          "Eletrônica digital",
+          "Sistemas embarcados I"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Sistemas embarcados II",
+          "Sinais e sistemas",
+          "Eletrônica analógica I",
+          "Projeto integrador engenharia elétrica II"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Conversão eletromecânica de energia",
+          "Empreendedorismo e inovação",
+          "eletrônica analógica II",
+          "Projeto integrador engenharia elétrica III"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Máquinas elétricas",
+          "Projeto integrador engenharia elétrica IV",
+          "Controle automático II",
+          "Supervisão e controle de processos",
+          "Geração, transmissão e distribuição de energia elétrica"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Eletrônica de potência",
+          "Proteção de sistemas elétricos",
+          "Tópicos especiais I",
+          "Redes de computadores e redes industriais",
+          "Projeto do trabalho de conclusão de curso",
+          "Instalações elétricas"
+        ]
+      },
+      {
+        "label": "10° Período",
+        "subjects": [
+          "Trabalho de conclusão de curso",
+          "Eficiência energética",
+          "Tópicos especiais II"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Data science",
+          "Programação avançada em engenharia",
+          "Realidade aumentada",
+          "IOT",
+          "Energia solar fotovoltaica"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Engenharia Mecânica",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/engenharia-mecanica/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Sustentabilidade E Gestão Ambiental",
+          "Desenho Técnico",
+          "Pensamento Matemático",
+          "Design Em Engenharia",
+          "Habilidades De Estudo E Comunicação"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Modelos Físicos I",
+          "Química Geral",
+          "Projeto Integrador Engenharias I",
+          "Sociedade, Cidadania E Diversidade",
+          "Matemática Aplicada I",
+          "Técnicas De Programação"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Modelos Físicos II",
+          "Organização Do Trabalho Científico",
+          "Ética E Pensamento Crítico",
+          "Mecânica Estática",
+          "Probabilidade E Estatística",
+          "Matemática Aplicada II"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Projeto Integrador Engenharias II",
+          "Modelos Físicos III",
+          "Ciência E Tecnologia Dos Materiais",
+          "Matemática Aplicada III",
+          "Fenômenos De Transporte",
+          "Resistência Dos Materiais"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Resistência Dos Materiais Aplicada I",
+          "Dinâmica Aplicada",
+          "Projeto Integrador Engenharia Mecânica I",
+          "Ensaios Mecânicos",
+          "Visão Empresária",
+          "Metrologia",
+          "Métodos Numéricos Computacionais"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Projeto Integrador Engenharia Mecânica II",
+          "Termodinâmica Aplicada",
+          "Eletrotécnica Geral",
+          "Resistência Dos Materiais Aplicada II",
+          "Materiais De Construção Mecânica",
+          "Máquinas De Fluxo"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Vibrações Mecânicas",
+          "Elementos De Máquina I",
+          "Transferência De Calor E Massa",
+          "Projeto Integrador Engenharia Mecânica III",
+          "Processos De Manufatura, Mineração E Siderurgia",
+          "Eletrônica Aplicada",
+          "Sistemas Hidráulicos E Pneumáticos"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Instrumentação E Automação Industrial",
+          "Refrigeração E Ar-Condicionado",
+          "Gestão De Risco E Segurança Do Trabalho",
+          "Projeto Integrador Engenharia Mecânica IV",
+          "Conformação Mecânica",
+          "Elementos De Máquinas II",
+          "Máquinas Térmicas"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Empreendedorismo E Inovação",
+          "Tópicos Especiais I",
+          "Engenharia De Manutenção E Confiabilidade",
+          "Projeto Do Trabalho De Conclusão De Curso",
+          "Projeto de Engenharia"
+        ]
+      },
+      {
+        "label": "10° Período",
+        "subjects": [
+          "Tópicos Especiais II",
+          "Análise De Projetos De Investimento"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Libras",
+          "Ergonomia, Saúde e Segurança no Trabalho",
+          "Data Science",
+          "Programação Avançada em Engenharia",
+          "Realidade Aumentada",
+          "IOT",
+          "Energia Solar Fotovoltaica"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Engenharia da Computação",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/engenharia-da-computacao/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Desenho Técnico",
+          "Pensamento Matemático",
+          "Design em Engenharia",
+          "Habilidades de Estudo e Comunicação",
+          "Sustentabilidade e Gestão Ambiental"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Modelos Físicos I",
+          "Técnicas de Programação",
+          "Química Geral",
+          "Projeto Integrador Engenharias I",
+          "Sociedade, Cidadania e Diversidade",
+          "Matemática Aplicada I"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Modelos Físicos II",
+          "Ética e Pensamento Crítico",
+          "Organização do Trabalho Científico",
+          "Mecânica Estática",
+          "Probabilidade e Estatística",
+          "Matemática Aplicada II"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Projeto Integrador Engenharias II",
+          "Modelos Físicos III",
+          "Ciência e Tecnologia dos Materiais",
+          "Matemática aplicada III",
+          "Fenômenos de Transporte",
+          "Resistência dos Materiais"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Técnicas Avançadas de Programação",
+          "Estrutura de Dados",
+          "Projeto Integrador Engenharia da Computação I",
+          "Circuitos Digitais",
+          "Visão Empresária",
+          "Arquitetura de Computadores",
+          "Circuitos Elétricos"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Teoria da Computação",
+          "Circuitos Elétricos Avançados",
+          "Eletrônica",
+          "Pesquisa e Ordenação",
+          "Projeto Integrador Engenharia da Computação II",
+          "Linguagem de Programação"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Sistemas Operacionais",
+          "Machine Learning",
+          "Microprocessadores e Microcontroladores",
+          "Projeto Integrador Engenharia de Computação III",
+          "Engenharia de Software e Agilidade",
+          "Eletrônica Analógica e Aplicações"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Sistemas Embarcados",
+          "Empreendedorismo e Inovação",
+          "Bancos de Dados e Big Data",
+          "Sistemas de Comunicação",
+          "Projeto Integrador Engenharia de Computação IV",
+          "Processamento de Imagens"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Teoria da Informação e Codificação",
+          "Robótica e Sistemas Inteligentes",
+          "Processos Estocásticos e Simulações",
+          "Projeto do Trabalho de Conclusão de Curso",
+          "Tópicos Especiais I",
+          "Processamento Digital de Sinais"
+        ]
+      },
+      {
+        "label": "10° Período",
+        "subjects": [
+          "Controle Dinâmico de Sistemas",
+          "Trabalho de Conclusão de Curso",
+          "Tópicos Especiais II",
+          "Redes Industriais e LIOT"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Libras",
+          "Data Science",
+          "Programação Avançada em Engenharia",
+          "Realidade Aumentada",
+          "Gerência de Projetos",
+          "IOT",
+          "Energia Solar Fotovoltaica"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Engenharia de Produção",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/engenharia-de-producao/",
+    "periods": []
+  },
+  {
+    "name": "Engenharia de Software",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/engenharia-de-software/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Introdução à Computação e Engenharias",
+          "Modelos Lógicos Computacionais",
+          "Matemática Discreta",
+          "Laboratório de Programação I",
+          "Habilidades de estudo e comunicação"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Linguagem de Programação Orientada a Objetos",
+          "Estruturas de Dados",
+          "Álgebra Linear e Tecnologias Digitais",
+          "Laboratório de Programação II",
+          "Arquitetura de Computadores"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Bancos de Dados I",
+          "Sistemas Operacionais",
+          "Probabilidade e Estatística",
+          "Engenharia de Software I",
+          "Redes de Computadores I",
+          "Projeto Integrador II"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Projeto Integrador II",
+          "Redes de Computadores II",
+          "Bancos de Dados II",
+          "Desenvolvimento Web Full Stack I",
+          "Sistemas Distribuídos e Computação em Nuvem"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "DevOps e Integração Contínua",
+          "Computação em Nuvem (AWS/Azure/GCP)",
+          "Segurança da Informação e DevSecOps",
+          "Testes de Software e Qualidade",
+          "Empreendedorismo de inovação",
+          "Projeto Integrador III"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Inteligência Artificial",
+          "Machine Learning Aplicado",
+          "Engenharia de Dados",
+          "Desenvolvimento de APIs e Microsserviços",
+          "UX/UI e Experiência do Usuário"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Desenvolvimento Mobile (Android/iOS/Flutter)",
+          "Internet das Coisas (IoT)",
+          "Computação Distribuída e Escalabilidade",
+          "Ética, Cidadania e Diversidade",
+          "Projeto Integrador IV"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "TCC",
+          "Engenharia de Software Avançada",
+          "Arquiteturas Avançadas (DDD, Clean Architecture)",
+          "Gestão Ágil de Projetos",
+          "Optativa"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Gestão Financeira",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/gestao-financeira/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Teoria das Organizações",
+          "Métodos Quantitativos",
+          "Economia",
+          "Direito Empresarial",
+          "Contabilidade",
+          "Projeto Integrador I"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Legislação Trabalhista e Tributária",
+          "Contabilidade Empresarial",
+          "Matemática Financeira",
+          "Comportamento Organizacional",
+          "Tecnologia, Inovação e Inteligência Artificial",
+          "Modelo de Negociação e Tomada de Decisão"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Contabilidade Societária-ativos",
+          "Mercado Financeiro e de Capitais",
+          "Gestão e Controle de Custos",
+          "Mercado I",
+          "Administração Financeira e Orçamentária",
+          "Estatística Empresarial"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Análise das Demonstrações Financeiras",
+          "Controladoria",
+          "Finanças e Valuation",
+          "Auditoria, Perícia Contábil e Arbitragem",
+          "Mercado II",
+          "Empreendedorismo",
+          "Optativa"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Gestão da Qualidade",
+          "Gestão de Pessoas",
+          "Libras",
+          "Teoria da Administração"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Gestão de Recursos Humanos",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/gestao-de-recursos-humanos/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Teoria das Organizações",
+          "Matemática",
+          "Sociedade, Cidadania e Diversidade",
+          "Direito Empresarial",
+          "Contabilidade",
+          "Projeto Integrador I"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Legislação Trabalhista e Tributária",
+          "Gestão da Qualidade",
+          "Gestão Estratégica Empresarial",
+          "Administração de Departamento de Pessoal",
+          "Tecnologia, Inovação e Inteligência Artificial",
+          "Projeto Integrador II"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Modelo de Negociação e Tomada de Decisão",
+          "Empreendedorismo",
+          "Comportamento Organizacional",
+          "Mercado I",
+          "Gestão de Pessoas",
+          "Gestão de Pequenas e Médias Empresas",
+          "Gestão de Processos"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Mercado II",
+          "Tópicos Especiais",
+          "Gestão Estratégica de Marketing",
+          "Gestão por Desempenho",
+          "Administração Pública",
+          "Optativa"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Economia",
+          "Análise das Demonstrações Financeiras",
+          "Libras",
+          "Matemática Financeira",
+          "Mercado Financeiro e de Capitais"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Jogos Digitais",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/jogos-digitais/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Universo Computacional",
+          "Modelos Lógicos Computacionais",
+          "Sistemas de Informação Organizacionais",
+          "Laboratório de Programação I",
+          "Projeto Integrador Jogos Digitais I",
+          "Habilidades de Estudo e Comunicação"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Game Design",
+          "Arquitetura de Computadores",
+          "Engenharia de Software",
+          "Arte 2D",
+          "Sociedade, Cidadania e Diversidade",
+          "Laboratório de Programação II"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Linguagem de Programação Orientada a Objetos",
+          "Modelagem 3D",
+          "Projeto Integrador Jogos Digitais II",
+          "Análise Orientada a Objetos",
+          "Sistemas Operacionais",
+          "Design de Som"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Design de Ambiente",
+          "Redes de Computadores e Dispositivos Inteligentes",
+          "Projeto Orientado a Objetos",
+          "Tópicos Especiais I"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Tópicos Especiais II",
+          "Interface Homem-Computador",
+          "Empreendedorismo e Inovação",
+          "Projeto Integrador Jogos Digitais III",
+          "Animação 3D"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Análise de Dados Aplicada a Computação",
+          "Desenvolvimento Web I",
+          "Inteligência Artificial, Machine Learning e Deep Learning",
+          "IOT",
+          "Data Science",
+          "Unity Game Engine",
+          "Computação Gráfica",
+          "Desenvolvimento de Aplicações Web II",
+          "Libras",
+          "Desenvolvimento Web II",
+          "Segurança e Auditoria de Sistemas",
+          "Internet das Coisas (IOT)",
+          "Estrutura de Dados",
+          "Cibersegurança"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Jornalismo",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/jornalismo/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Comunicação e Linguagem",
+          "Arte e Comunicação",
+          "História do Jornalismo",
+          "Pensamento Contemporâneo",
+          "Narrativas Jornalísticas",
+          "Sociedade, Cidadania e Diversidade"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Design da Notícia",
+          "Teorias da Comunicação",
+          "Fotografia",
+          "Projeto Integrador I",
+          "Lingiagem Audiovisual",
+          "Textos Jornalísticos"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Projeto Integrador II",
+          "Estudos Contemporâneos do Jornalismo",
+          "Ética Jornalística",
+          "Fotojornalismo",
+          "Reportagem Jornalística",
+          "Análise e Visualização de Dados"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Psicologia da Comunicação",
+          "Projeto Integrador III",
+          "Produção para Audiovisual I",
+          "Produção e Edição em Mídia Sonora",
+          "Produção e Distribuição de Conteúdos para Mídias Digitais",
+          "Comunicação Organizacional I"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Comunicação Organizacional II",
+          "Jornalismo Optativo e Análise",
+          "Webjornalismo",
+          "Produção para Audiovisual II",
+          "Economia",
+          "Projeto Integrador IV"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Crítica de Mídia",
+          "Comunicação e Cidadania",
+          "Marketing e Gestão de Negócios em Comunicação",
+          "Projeto Integrador V"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Comunicação e Inovação",
+          "Políticas de Comunicação",
+          "Projeto de TCC",
+          "Tendências do Jornalismo",
+          "Empreendedorismo e Inovação"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Jornalismo Especializado",
+          "Trabalho de Conclusão de Curso"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Gestão de Crise",
+          "Comunicação e Direitos Humanos",
+          "Planejamento e Organização de Eventos",
+          "Comunicação e Sustentabilidade",
+          "Libras"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Marketing",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/marketing/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Fundamentos do Marketing",
+          "Sociedade, Cidadania e Diversidade",
+          "Comportamento Organizacional",
+          "Direito Empresarial",
+          "Comunicação, Criatividade e Produção de Conteúdo",
+          "Projeto Integrador I"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Tecnologia, Inovação e Inteligência Artificial",
+          "Economia",
+          "Pesquisa de Marketing e Comportamento do Consumidor",
+          "Direito Societário",
+          "Estatística Empresarial",
+          "Gestão de Processos"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Gestão Estratégica de Marketing",
+          "Empreendedorismo",
+          "Marketing Digital, Conteúdo e SEO",
+          "CRM, Experiência do Cliente e Automação",
+          "Modelo de Negociação e Tomada de Decisão",
+          "Gestão da Qualidade",
+          "Projeto Integrador II"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Pricing, Canai, Varejo e Trade Marketing",
+          "Gestão de Pequenas e Médias Empresas",
+          "Comunicação Integrada, Mídia e Performance",
+          "E-commerce e Social E-commerce",
+          "Marketing Analytics, Growth e Dashboards",
+          "Atividade Extensionista"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Administração da Produção",
+          "Gestão e Controle de Custos",
+          "Libras",
+          "Matemática Financeira",
+          "Mercado Financeiro e de Capitais"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Medicina",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/medicina/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Sistemas orgânicos integrados I",
+          "Habilidades médicas e profissionalismo I",
+          "Integração ensino serviço comunidade I"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Sistemas orgânicos integrados II",
+          "Habilidades médicas e profissionalismo II",
+          "Integração ensino serviço comunidade II",
+          "Libras",
+          "Neurociências e o processo de ensino-aprendizagem"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Integração ensino serviço comunidade III",
+          "Habilidades médicas e profissionalismo III",
+          "Sistemas orgânicos integrados III",
+          "Gestão da carreira, empreendedorismo e inovação"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Habilidades médicas e profissionalismo IV",
+          "Sistemas orgânicos integrados IV",
+          "Eletrocardiografia (ECG)",
+          "Toxicologia"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Clinica cirúrgica",
+          "Saúde adulto I",
+          "Integração ensino serviço comunidade V",
+          "Habilidades médicas e profissionalismo V"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Saúde adulto II",
+          "Habilidades médicas e profissionalismo VI",
+          "Integração ensino serviço comunidade VI",
+          "Urgência e emergência"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "TCC I",
+          "Integração ensino serviço comunidade VII",
+          "Habilidades médicas e profissionalismo VII",
+          "Saúde do adulto III",
+          "Cuidados paliativos",
+          "AIDPI (estratégia de atenção integrada às doenças prevalentes na infância)",
+          "Práticas integrativas e complementares em saúde"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Habilidades médicas e profissionalismo VIII",
+          "TCC II",
+          "Saúde materno infantil",
+          "Integração ensino serviço comunidade VIII"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Ginecologia e obstétrica I",
+          "Medicina de família e comunidade I",
+          "Saúde coletiva",
+          "Pediatria I"
+        ]
+      },
+      {
+        "label": "10° Período",
+        "subjects": [
+          "Medicina de família e comunidade II",
+          "Saúde mental",
+          "Clinica médica I",
+          "Ginecologia e obstétrica"
+        ]
+      },
+      {
+        "label": "11° Período",
+        "subjects": [
+          "Clinica médica II",
+          "Pediatria II",
+          "Urgência e emergência clínica"
+        ]
+      },
+      {
+        "label": "12° Período",
+        "subjects": [
+          "Urgência e emergência cirúrgica",
+          "Clinica médica III",
+          "Cirurgia"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Medicina Veterinária",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/medicina-veterinaria/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Sociedade, Cidadania e Diversidade​",
+          "Genética Aplicada à Medicina Veterinária",
+          "Embriologia Veterinaria",
+          "Anatomofisiologia Veterinária do Aparelho Neurolocomotor",
+          "Bioquímica Geral",
+          "Projeto Integrador I",
+          "Biologia Celular e Tecidual do Aparelho Neurolocomotor"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Ética e Pensamento Crítico",
+          "Projeto Integrador II",
+          "Anatomofisiologia Veterinária dos Aparelhos Cardio-Respiratório e Digestório",
+          "Biologia Celular e Tecidual dos Sistemas Vitais e Reprodutores",
+          "Organização Do Trabalho Científico",
+          "Bioestatística Aplicada à Experimentação Animal",
+          "Deontologia Veterinária Bem-Estar Animal"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Farmacologia Veterinária",
+          "Patologia Geral",
+          "Projeto Integrador III",
+          "Microbiologia Veterinária",
+          "Imunologia",
+          "Anatomofisiologia dos Aparelhos Geniturinário e Endócrino",
+          "Parasitologia Veterinária"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Patologia Especial Veterinária",
+          "Medicina da Conservação",
+          "Bovinocultura",
+          "Saneamento Básico e Ecologia",
+          "Avicultura, Suinocultura e Piscicultura",
+          "Doenças Parasitárias"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Melhoramento Genético Animal",
+          "Doenças Infecciosas de Pequenos Animais",
+          "Nutrição Animal",
+          "Epidemiologia e Saúde Pública",
+          "Equinocultura",
+          "Laboratório Clínico",
+          "Empreendedorismo e Inovação"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Inspeção e Tecnologia de Leite, Derivados Lácteos, Ovos e Mel",
+          "Forragicultura",
+          "Toxicologia Veterinária",
+          "Diagnóstico por Imagem",
+          "Doenças Infecciosas dos Animais de Produção",
+          "Semiologia Veterinária"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Técnica Cirúrgica Veterinária",
+          "Anestesiologia Veterinária",
+          "Inspeção e Tecnologia de Carne, Produtos Cárneos e Pescados",
+          "Clínica Médica de Grandes Animais I",
+          "Clínica Médica de Cães e Gatos"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Clínica Médica de Grandes Animais II",
+          "Patologia Cirúrgica e Obstétrica de Grandes Animais",
+          "Patologia Cirúrgica e Obstétrica de Pequenos Animais",
+          "Clínica Médica de Cães e Gatos II",
+          "Optativa"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Estágio Curricular I",
+          "Clínica de Silvestres e Pets Exóticos",
+          "Clínica Médica Integrada",
+          "Fisiopatologia e Biotecnologias da Reprodução Animal",
+          "Projeto de TCC"
+        ]
+      },
+      {
+        "label": "10° Período",
+        "subjects": [
+          "Programas Nacionais de Sanidade Animal",
+          "Estágio Curricular II",
+          "TCC"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Nutrição de ruminantes",
+          "Gestão da qualidade na agroindústria",
+          "Práticas hospitalares de pequenos animais",
+          "Bioclimatologia",
+          "Libras",
+          "Metabolismo animal",
+          "Nutrição de monogástricos",
+          "Biotecnologia da reprodução animal em bovinos",
+          "Biotecnologia da reprodução animal em equinos",
+          "Ovinocultura e caprinocultura"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Odontologia",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/odontologia/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Introdução à Odontologia",
+          "Educação em Saúde",
+          "Prática Odontológica de Observação",
+          "Anatomofisiologia Humana",
+          "Biologia Humana"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Farmacologia e Bioquímica Geral",
+          "Ética e Pensamento Crítico",
+          "Humanização do Cuidado",
+          "Agressão e Defesa",
+          "Biologia Orofacial"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Sociedade, Cidadania e Diversidade",
+          "Patologia Bucal",
+          "Anatomofisiologia em Odontologia e Anestesiologia",
+          "Periodontia",
+          "Odontologia Legal e Deontologia",
+          "Gestão do Cuidado I",
+          "Estomatologia"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Organização do Trabalho Científico",
+          "Gestão do Cuidado II",
+          "Propedêutica e Periodontia Clínica",
+          "Epidemiologia das Doenças Bucais e Promoção de Saúde",
+          "Endodontia I",
+          "Dentística I"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Introdução ao Planejamento Integrado e Ações Comunitárias",
+          "Oclusão e Prótese Fixa Laboratorial",
+          "Atenção ao Idoso - Odontogeriatria",
+          "Dentística II",
+          "Cirurgia Bucomaxilofacial Clínica",
+          "Endodontia II",
+          "Introdução às Clínicas Integradas"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Prótese Removível Laboratorial",
+          "Atenção Materno-Infantil",
+          "Clínica Integrada de Atenção Materno-Infantil I",
+          "Estágio Supervisionado - Clínicas Integradas I",
+          "Projeto Integrador - Estudo de Caso I",
+          "Ortodontia e Ortopedia Funcional"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Saúde Coletiva - Sistema único de Saúde",
+          "Estágio Supervisionado - Clínicas Integradas II",
+          "Prótese Removível Clínica",
+          "Clínica Integrada de Atenção Materno-Infantil II",
+          "Projeto Integrador - Estudo de Caso II",
+          "Implantodontia",
+          "Projeto de TCC"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Empreendedorismo e Inovação",
+          "Estágio Supervisionado - Clínicas Integradas III",
+          "Trabalho de Conclusão de Curso",
+          "Estágio Supervisionado - Ambiente Real de Trabalho I",
+          "Optativa"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Projeto Integrador - Estudo de Caso IV",
+          "Inovação, Gestão e Mercado em Odontologia",
+          "Estágio Supervisionado - Clínicas Integradas IV",
+          "Estágio Supervisionado - Clínica Integrada de Atenção a PCD",
+          "Estágio Supervisionado - Ambiente Real de Trabalho II",
+          "Optativa"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Odontologia Hospitalar",
+          "Endodontia Avançada",
+          "Implantodontia Clínica",
+          "Cirurgia e Taumatologia Bucomaxilofacial",
+          "Prótese Fixa - Estética e Odontologia Digital",
+          "Manipulação Cirúrgica de Tecidos Moles"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Processos Gerenciais",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/processos-gerenciais/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Teoria Das Organizações",
+          "Sociedade, Cidadania E Diversidade",
+          "Direito Empresarial",
+          "Matemática",
+          "Projeto Integrador I",
+          "Contabilidade"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Legislação Trabalhista E Tributária",
+          "Gestão Estratégica E Empresarial",
+          "Empreendedorismo E Inovação",
+          "Teoria Da Administração",
+          "Gestão E Controle De Custos"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Gestão De Pessoas",
+          "Gestão Estratégica De Marketing",
+          "Comportamento Organizacional",
+          "Gestão De Pequenas E Médias Empresas",
+          "Gestão De Processos",
+          "Matemática Financeira"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Administração Financeira E Orçamentária",
+          "Gestão Da Cadeia De Suprimentos E Logística",
+          "Administração Da Produção",
+          "Administração De Recursos Patrimoniais",
+          "Métodos Quantitativos",
+          "Análise Das Demonstrações Financeiras",
+          "Tópicos Especiais I",
+          "Administração Pública",
+          "Contabilidade Empresarial",
+          "Finanças Valuation",
+          "Libras"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Psicologia",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/psicologia/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Filosofia Aplicada à Psicologia",
+          "Projeto Integrador I",
+          "Introdução à Psicologia",
+          "Desenvolvimento da Criança e do Adolescente",
+          "Saúde e Qualidade de Vida",
+          "Organização do Trabalho Científico",
+          "Psicologia Evolucionista"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Psicologia do Desenvolvimento do Adulto e Idoso",
+          "Código de Ética",
+          "Psicologia da Aprendizagem",
+          "Análise Experimental do Comportamento",
+          "Psicometria Aplicada",
+          "Redação Científica",
+          "Neurociências I"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Teorias Comportamentais",
+          "Teorias Psicanalíticas",
+          "Neurociências II",
+          "Estágio Básico I - Triagem e Acolhimento",
+          "Projeto Integrador II",
+          "Técnicas de Exame Psicológico I"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Teorias Fenomenológico-Existenciais",
+          "Processos Psicológicos Básicos",
+          "Psicologia da Personalidade",
+          "Técnicas de Exame Psicológico II",
+          "Estágio Básico II - Observação e Mensuração"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Sociedade, Cidadania e Diversidade",
+          "Políticas Públicas de Educação",
+          "Dinâmica de Grupo",
+          "Psicologia Organizacional e do Trabalho I",
+          "Psicologia Social",
+          "Políticas Públicas de Assistência Social",
+          "Estágio Básico III - Psicodiagnóstico"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Psicologia e Sexualidade",
+          "Psicologia Organizacional e do Trabalho II",
+          "Psicologia Social Comunitária",
+          "Psicologia das Necessidades Especiais e Inclusão",
+          "Projeto Integrador III",
+          "Estágio Básico IV - Práticas Psicossociais",
+          "Políticas Públicas de Saúde"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Psicoterapia Corporal",
+          "Psicologia Hospitalar",
+          "Psicoterapia Gestáltica",
+          "Estágio Básico V - Práticas Psicossociais",
+          "Psicoterapia Psicanalítica",
+          "Psicopatologia I",
+          "Psicoterapia Junguiana"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Empreendedorismo e Inovação",
+          "Psicopatologia II",
+          "Psicoterapia Comportamental",
+          "Psicofarmacologia",
+          "Metodologia de Pesquisa em Psicologia",
+          "Psicoterapia Humanista",
+          "Psicologia Jurídica",
+          "Psicoterapia Cognitiva Comportamental"
+        ]
+      },
+      {
+        "label": "9° Período",
+        "subjects": [
+          "Projeto de trabalho de conclusão de curso",
+          "Tópicos avançados em psicologia I",
+          "Intervenção em clinica psicológica",
+          "Estágio específico - Práticas clínicas I",
+          "Estágio específico em políticas públicas I",
+          "Intervenção em políticas públicas I"
+        ]
+      },
+      {
+        "label": "10° Período",
+        "subjects": [
+          "Trabalho de conclusão de curso",
+          "Estágio específico - Práticas clínicas II",
+          "Tópicos avançados em psicologia II",
+          "Intervenção em políticas públicas II",
+          "Estágio especifico em políticas públicas II"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Comunicação Comunitária",
+          "Neurociências Aplicadas à Psicologia",
+          "Psicologia do Esporte",
+          "Dependência Química",
+          "Sexualidade",
+          "Ludoterapia",
+          "Psicodrama",
+          "Esquizoanálise",
+          "Psicologia Positiva",
+          "Psicologia do Idoso",
+          "Gestão de Pessoas",
+          "Vigilância em Saúde",
+          "Psicologia e direitos Humanos",
+          "Criatividade e Processos Criativos",
+          "Libras",
+          "Suporte Básico de Vida",
+          "Terapia Familiar sistêmica",
+          "Emergências e Desastres",
+          "Pedagogia Hospitalar",
+          "Orientação Profissional",
+          "Antropologia Cultural",
+          "Terapias Comportamentais de 3ª Onda"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Publicidade e Propaganda",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/publicidade-e-propaganda/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Comunicação e Linguagem",
+          "Criatividade",
+          "Arte e Comunicação",
+          "Pensamento Contemporâneo",
+          "História da Publicidade",
+          "Sociedade, Cidadania e Diversidade"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Fundamentos do Marketing",
+          "Teorias da Comunicação",
+          "Design",
+          "Legislação e Ética",
+          "Fotografia",
+          "Projeto Integrador I"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Projeto Integrador II",
+          "Fotografia Publicitária",
+          "Ferramentas da Comunicação",
+          "Direção de Arte I",
+          "Análise e Visualização de Dados",
+          "Redação Publicitária"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Pesquisa Mercadológica",
+          "Produção Audiovisual I",
+          "Produção para Plataformas Digitais",
+          "Direção de Arte II",
+          "Projeto Integrador III"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Psicologia e Consumo",
+          "Economia",
+          "Planejamento de Mídia",
+          "Comportamento do Consumidor",
+          "Projeto Integrador IV",
+          "Produção Audiovisual II"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Marketing de Varejo",
+          "Projeto Integrador V",
+          "Mídia e Sociedade",
+          "Transmídia Storytelling",
+          "Mídia e Performance"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Gestão de Projetos",
+          "Políticas de Comunicação",
+          "Branding",
+          "Projeto de TCC",
+          "Empreendedorismo e Inovação"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Comunicação integrada de marketing",
+          "Trabalho de conclusão de curso - TCC"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Dados analytics",
+          "Planejamento e organização de eventos",
+          "Animação",
+          "Campanha política",
+          "Libras",
+          "Comunicação e direitos humanos",
+          "Gestão de crise",
+          "Comunicação e sustentabilidade",
+          "Comunicação e cidadania"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Redes de Computadores",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/redes-de-computadores/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Universo Computacional",
+          "Laboratório de Programação I",
+          "Sistemas de Informação Organizacionais",
+          "Modelos Lógicos Computacionais",
+          "Habilidades de estudo e comunicação"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Laboratório de Programação II",
+          "Governança de TI",
+          "Sociedade, cidadania e diversidade",
+          "Modelagem de Processos de Negócio",
+          "Arquitetura de Computadores"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Segurança e Auditoria de Sistemas",
+          "Redes de Computadores e Dispositivos Inteligentes",
+          "sistemas Operacionais",
+          "Cabeamento Estruturado",
+          "Projeto Integrador de Redes I"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Redes de Computadores Avançada",
+          "Redes Proprietárias",
+          "Projeto Integrador de Redes II",
+          "Cibersegurança",
+          "Gerência de Redes",
+          "Perícia Computacional Forense",
+          "Tópicos Especiais I"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Segurança em Servidores",
+          "Empreendedorismo e Inovação",
+          "Redes Móveis",
+          "Projeto Integrador de Redes II",
+          "Tópicos Especiais II",
+          "Redes de Software Livre"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sistemas de Informação",
+    "modality": "Presencial",
+    "url": "https://www.faesa.br/graduacao/sistemas-de-informacao/",
+    "periods": [
+      {
+        "label": "1° Período",
+        "subjects": [
+          "Habilidades de Estudo e Comunicação",
+          "Laboratório de Programação I",
+          "Modelos Lógicos Computacionais",
+          "Universo Computacional",
+          "Sistemas de Informação Organizacionais"
+        ]
+      },
+      {
+        "label": "2° Período",
+        "subjects": [
+          "Engenharia de Software",
+          "Modelagem de Processos de Negócio",
+          "Sociedade, Cidadania e Diversidade",
+          "Laboratório de Programação II",
+          "Álgebra Linear e Tecnologias Digitais"
+        ]
+      },
+      {
+        "label": "3° Período",
+        "subjects": [
+          "Matemática Discreta",
+          "Padrões de Linguagens de Programação",
+          "Estrutura de Dados",
+          "Análise Orientada a Objetos",
+          "Projeto Integrador Computação I",
+          "Arquitetura de Computadores"
+        ]
+      },
+      {
+        "label": "4° Período",
+        "subjects": [
+          "Linguagem de Programação Orientada a Objetos",
+          "Projeto Integrador Computação II",
+          "Banco de Dados",
+          "Pesquisa e Ordenação",
+          "Projeto Orientado a Objetos"
+        ]
+      },
+      {
+        "label": "5° Período",
+        "subjects": [
+          "Sistemas Operacionais",
+          "Análise de Dados Aplicada à Computação",
+          "Business Intelligence",
+          "Projeto Integrador Computação III",
+          "Redes de Computadores e Dispositivos Inteligentes"
+        ]
+      },
+      {
+        "label": "6° Período",
+        "subjects": [
+          "Economia",
+          "Projeto Integrador Computação IV",
+          "Qualidade de Software e da Informação",
+          "Engenharia de Requisitos",
+          "Teste de software"
+        ]
+      },
+      {
+        "label": "7° Período",
+        "subjects": [
+          "Governança de TI",
+          "Projeto de Trabalho de Conclusão de Curso",
+          "Tópicos Especiais I",
+          "Segurança e Auditoria de Sistemas",
+          "Empreendedorismo e Inovação"
+        ]
+      },
+      {
+        "label": "8° Período",
+        "subjects": [
+          "Tópicos Especiais II",
+          "Trabalho de Conclusão de Curso",
+          "Interface Homem-Computador",
+          "Sistemas Distribuídos e Computação em Nuvem",
+          "Estágio Supervisionado"
+        ]
+      },
+      {
+        "label": "Optativas",
+        "subjects": [
+          "Desenvolvimento de aplicações web I",
+          "Inteligência artificial, machine learning e deep learning",
+          "Cibersegurança",
+          "Libras"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Administração",
+    "modality": "EAD",
+    "url": "https://ead.faesa.br/cursos-graduacao/administracao-ead",
+    "periods": [
+      {
+        "label": "1º Semestre",
+        "subjects": [
+          "Matemática Básica",
+          "Teoria da Administração",
+          "Projeto Integrador I-A",
+          "Contabilidade Básica",
+          "Direito",
+          "Projeto Integrador I-B"
+        ]
+      },
+      {
+        "label": "2º Semestre",
+        "subjects": [
+          "Matemática Aplicada",
+          "Sociologia",
+          "Projeto Integrador II-A",
+          "Raciocínio Lógico",
+          "Estatística e Análise de Dados",
+          "Projeto Integrador II-B"
+        ]
+      },
+      {
+        "label": "3º Semestre",
+        "subjects": [
+          "Matemática Financeira",
+          "Legislação Tributária",
+          "Projeto Integrador III-A",
+          "Mercado de Capitais",
+          "Fundamentos da Economia",
+          "Projeto Integrador III-B"
+        ]
+      },
+      {
+        "label": "4º Semestre",
+        "subjects": [
+          "Organização, Sistemas e Métodos",
+          "Administração de Marketing",
+          "Projeto Integrador IV-A",
+          "Sistemas de Informação para Gestão",
+          "Gestão de Custos",
+          "Projeto Integrador IV-B"
+        ]
+      },
+      {
+        "label": "5º Semestre",
+        "subjects": [
+          "Fundamentos da Logística",
+          "Planejamento Estratégico",
+          "Projeto Integrador V-A",
+          "Simulação Comercial",
+          "Comportamento Organizacional",
+          "Projeto Integrador V-B"
+        ]
+      },
+      {
+        "label": "6º Semestre",
+        "subjects": [
+          "Administração Financeira",
+          "Administração de Materiais",
+          "Projeto Integrador VI-A",
+          "Administração de Produção",
+          "Mapeamento e Modulagem de Processos",
+          "Projeto Integrador VI-B"
+        ]
+      },
+      {
+        "label": "7º Semestre",
+        "subjects": [
+          "Pesquisa Aplicada",
+          "Gestão Estratégica de Pessoas",
+          "Projeto Integrador VII-A",
+          "Gestão de Projetos",
+          "Sistemas de Produção",
+          "Projeto Integrador VII-B"
+        ]
+      },
+      {
+        "label": "8º Semestre",
+        "subjects": [
+          "Empreendedorismo",
+          "Administração de Micro e Pequenas Empresas",
+          "Projeto Integrador VIII-A",
+          "Optativa",
+          "Elaboração do Projeto de Graduação",
+          "Projeto Integrador VIII-B"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Análise e Desenvolvimento de Sistemas",
+    "modality": "EAD",
+    "url": "https://ead.faesa.br/cursos-graduacao/analise-desenvolvimento-ead",
+    "periods": [
+      {
+        "label": "1º Semestre",
+        "subjects": [
+          "Arquitetura e Organização de Computadores",
+          "Sistemas Operacionais",
+          "Projeto Integrador I-A",
+          "Tópicos Especiais",
+          "Comunicação e Linguagem",
+          "Projeto Integrador I-B"
+        ]
+      },
+      {
+        "label": "2º Semestre",
+        "subjects": [
+          "Gestão de Projetos",
+          "Fundamentos de Redes de Computadores",
+          "Projeto Integrador II-A",
+          "Empreendedorismo",
+          "Programação Orientada a Objetos",
+          "Projeto Integrador II-B"
+        ]
+      },
+      {
+        "label": "3º Semestre",
+        "subjects": [
+          "Estrutura de Dados",
+          "Modelagem e Desenvolvimento de Dados",
+          "Projeto Integrador III-A",
+          "Desenvolvimento para Dispositivos Móveis",
+          "Engenharia de Software I",
+          "Projeto Integrador III-B"
+        ]
+      },
+      {
+        "label": "4º Semestre",
+        "subjects": [
+          "Ferramentas de Desenvolvimento Web",
+          "Engenharia de Software II",
+          "Projeto Integrador IV-A",
+          "Arquitetura de Sistemas",
+          "Interface Humano-Computador",
+          "Projeto Integrador IV-B"
+        ]
+      },
+      {
+        "label": "5º Semestre",
+        "subjects": [
+          "Segurança em Sistema Computacionais",
+          "Programação Back-end",
+          "Projeto Integrador V-A",
+          "Integração de Aplicações",
+          "Optativa",
+          "Projeto Integrador V-B"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ciências Contábeis",
+    "modality": "EAD",
+    "url": "https://ead.faesa.br/cursos-graduacao/ciencias-contabeis-ead",
+    "periods": [
+      {
+        "label": "1º Semestre",
+        "subjects": [
+          "Matemática Básica",
+          "Teoria da Administração",
+          "Projeto Integrador I-A",
+          "Contabilidade Básica",
+          "Direito",
+          "Projeto Integrador I-B"
+        ]
+      },
+      {
+        "label": "2º Semestre",
+        "subjects": [
+          "Matemática Aplicada",
+          "Sociologia",
+          "Projeto Integrador II-A",
+          "Raciocínio Lógico",
+          "Estatística e Análise de Dados",
+          "Projeto Integrador II-B"
+        ]
+      },
+      {
+        "label": "3º Semestre",
+        "subjects": [
+          "Matemática Financeira",
+          "Legislação Tributária",
+          "Projeto Integrador III-A",
+          "Mercado de Capitais",
+          "Fundamentos da Economia",
+          "Projeto Integrador III-B"
+        ]
+      },
+      {
+        "label": "4º Semestre",
+        "subjects": [
+          "Orçamento Empresarial",
+          "Contabilidade Intermediária",
+          "Projeto Integrador IV-A",
+          "Empreendedorismo",
+          "Contabilidade de Custos",
+          "Projeto Integrador IV-B"
+        ]
+      },
+      {
+        "label": "5º Semestre",
+        "subjects": [
+          "Administração Financeira",
+          "Contabilidade Gerencial",
+          "Projeto Integrador V-A",
+          "Contabilidade Tributária",
+          "Contabilidade Avançada",
+          "Projeto Integrador V-B"
+        ]
+      },
+      {
+        "label": "6º Semestre",
+        "subjects": [
+          "Análise dos Demonstrativos Contábeis",
+          "Auditoria Contábil Avançada",
+          "Projeto Integrador VI-A",
+          "Perícia Contábil",
+          "Planejamento Tributário",
+          "Projeto Integrador VI-B"
+        ]
+      },
+      {
+        "label": "7º Semestre",
+        "subjects": [
+          "Pesquisa Aplicada",
+          "Contabilidade Internacional",
+          "Projeto Integrador VII-A",
+          "Orçamento, Custos e Finanças no Setor Público",
+          "Laboratório Contábil",
+          "Projeto Integrador VII-B"
+        ]
+      },
+      {
+        "label": "8º Semestre",
+        "subjects": [
+          "Perícia, Avaliação e Arbitragem",
+          "Controladoria",
+          "Projeto Integrador VIII-A",
+          "Optativa",
+          "Elaboração do Projeto de Graduação",
+          "Projeto Integrador VIII-B"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Gestão de Recursos Humanos",
+    "modality": "EAD",
+    "url": "https://ead.faesa.br/cursos-graduacao/gestao-recursos-humanos-ead",
+    "periods": [
+      {
+        "label": "1º Semestre",
+        "subjects": [
+          "Comunicação e Linguagem",
+          "Fundamentos de Administração",
+          "Projeto Integrador I-A",
+          "Fundamentos de Economia",
+          "Comportamento organizacional",
+          "Projeto Integrador I-B"
+        ]
+      },
+      {
+        "label": "2º Semestre",
+        "subjects": [
+          "Contabilidade Básica, Custos e Formação de Preços",
+          "Fundamentos de Finanças",
+          "Projeto Integrador II-A",
+          "Estatística e Análise de Dados",
+          "Planejamento Estratégico e Empreendedorismo",
+          "Projeto Integrador II-B"
+        ]
+      },
+      {
+        "label": "3º Semestre",
+        "subjects": [
+          "Direito do Trabalho e Legislação Trabalhista",
+          "Gestão Estratégica de Pessoas",
+          "Projeto Integrador III-A",
+          "Recrutamento e Seleção",
+          "Treinamento e Desenvolvimento",
+          "Projeto Integrador III-B"
+        ]
+      },
+      {
+        "label": "4º Semestre",
+        "subjects": [
+          "Rotinas de DP",
+          "Optativa",
+          "Projeto Integrador IV-A",
+          "Administração de Cargos, Salários e Desempenho",
+          "Segurança do Trabalho, Saúde Ocupacional e Qualidade de Vida",
+          "Projeto Integrador IV-B",
+          "AC | Atividade Complementar"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Logística",
+    "modality": "EAD",
+    "url": "https://ead.faesa.br/cursos-graduacao/logistica-ead",
+    "periods": [
+      {
+        "label": "1º Semestre",
+        "subjects": [
+          "Comunicação e linguagem",
+          "Fundamentos da Administração",
+          "Projeto integrador i-a",
+          "Fundamentos da economia",
+          "Comportamento organizacional",
+          "Projeto integrador i-b"
+        ]
+      },
+      {
+        "label": "2º Semestre",
+        "subjects": [
+          "Contabilidade básica, custos e formação de preços",
+          "Fundamentos de Finanças",
+          "Projeto integrador ii-a",
+          "Estatística e análise de dados",
+          "Planejamento estratégico e empreendedorismo",
+          "Projeto integrador ii-b"
+        ]
+      },
+      {
+        "label": "3º Semestre",
+        "subjects": [
+          "Fundamentos da logística",
+          "Optativa - gest estr. Pessoas",
+          "Projeto integrador iii-a",
+          "Gestão de logística",
+          "Gestão de custos, riscos e perdas",
+          "Projeto integrador iii-b"
+        ]
+      },
+      {
+        "label": "4º Semestre",
+        "subjects": [
+          "Gestão de projetos",
+          "Logística portuária e legislação aduaneira",
+          "Projeto integrador iv-a",
+          "Logística internacional",
+          "Gestão de estoque e compras",
+          "Projeto integrador iv-b"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Marketing",
+    "modality": "EAD",
+    "url": "https://ead.faesa.br/cursos-graduacao/marketing-ead",
+    "periods": [
+      {
+        "label": "1º Semestre",
+        "subjects": [
+          "Comportamento Humano nas Organizações",
+          "Comunicação e Linguagem",
+          "Projeto Integrador I-A",
+          "Fundamentos de Economia",
+          "Comportamento organizacional",
+          "Projeto Integrador I-B"
+        ]
+      },
+      {
+        "label": "2º Semestre",
+        "subjects": [
+          "Contabilidade Básica, Custos e Formação de Preços",
+          "Fundamentos das Finanças",
+          "Projeto Integrador II-A",
+          "Estatística e Análise de Dados",
+          "Planejamento Estratégico e Empreendedorismo",
+          "Projeto Integrador II-B"
+        ]
+      },
+      {
+        "label": "3º Semestre",
+        "subjects": [
+          "Comportamento do Consumidos e Pesquisa de Marketing",
+          "Fundamentos do Marketing",
+          "Projeto Integrador III-A",
+          "Gestão de Produtos e Marcas",
+          "Gestão de Preços e Canais",
+          "Projeto Integrador III-B"
+        ]
+      },
+      {
+        "label": "4º Semestre",
+        "subjects": [
+          "Gestão da Comunicação",
+          "Optativa",
+          "Projeto Integrador IV-A",
+          "Marketing Digital",
+          "Marketing de Serviços e Relacionamento",
+          "Projeto Integrador IV-B",
+          "AC | Atividade Complementar"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Processos Gerenciais",
+    "modality": "EAD",
+    "url": "https://ead.faesa.br/cursos-graduacao/processos-gerenciais-ead",
+    "periods": [
+      {
+        "label": "1º Semestre",
+        "subjects": [
+          "Comportamento Humano nas Organizações",
+          "Fundamentos da Administração",
+          "Projeto Integrador I-A",
+          "Fundamentos da Economia",
+          "Comunicação e Linguagem",
+          "Projeto Integrador I-B"
+        ]
+      },
+      {
+        "label": "2º Semestre",
+        "subjects": [
+          "Contabilidade Básica | Custos e Formação de Preços",
+          "Fundamentos das Finanças",
+          "Projeto Integrador II-A",
+          "Estatística e Análise de Dados",
+          "Planejamento Estratégico e Empreendedorismo",
+          "Projeto Integrador II-B"
+        ]
+      },
+      {
+        "label": "3º Semestre",
+        "subjects": [
+          "Direito do Trabalho e Legislação Trabalhista",
+          "Gestão Financeira",
+          "Projeto Integrador III-A",
+          "DIREITO (Fundamentos de Direito e Estruturação Empresarial)",
+          "Gestão de Projetos",
+          "Projeto Integrador III-B"
+        ]
+      },
+      {
+        "label": "4º Semestre",
+        "subjects": [
+          "Gestão do Composto de Marketing",
+          "Rotinas de DP",
+          "Projeto Integrador IV-A",
+          "Produção e Logística",
+          "Optativa",
+          "Projeto Integrador IV-B"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sistemas de Informação",
+    "modality": "EAD",
+    "url": "https://ead.faesa.br/cursos-graduacao/sistemas-informacao-ead",
+    "periods": [
+      {
+        "label": "1º Semestre",
+        "subjects": [
+          "Sistemas operacionais",
+          "Comunicação e Linguagem",
+          "Projeto Integrador I-A",
+          "Engenharia de requisitos",
+          "Tópicos especiais",
+          "Projeto Integrador I-B"
+        ]
+      },
+      {
+        "label": "2º Semestre",
+        "subjects": [
+          "Sistemas operacionais",
+          "Comunicação e Linguagem",
+          "Projeto Integrador I-A",
+          "Empreendedorismo",
+          "Programação orientada a objetos",
+          "Projeto Integrador II-B"
+        ]
+      },
+      {
+        "label": "3º Semestre",
+        "subjects": [
+          "Estrutura de dados",
+          "Engenharia de Software I",
+          "Projeto Integrador III-A",
+          "Desenvolvimento para Dispositivo Móveis",
+          "Engenharia de Software II",
+          "Projeto Integrador III-B"
+        ]
+      },
+      {
+        "label": "4º Semestre",
+        "subjects": [
+          "Ferramentas de desenvolvimento web",
+          "Modelagem e Desenvolvimento de Dados",
+          "Projeto Integrador IV-A",
+          "Banco de dados",
+          "Interação humano-computador",
+          "Projeto integrador IV-B"
+        ]
+      },
+      {
+        "label": "5º Semestre",
+        "subjects": [
+          "Sistemas distribuídos",
+          "Gestão Estratégica de Pessoas",
+          "Projeto Integrador V-A",
+          "Análise e projeto de sistemas",
+          "Infraestrutura de TI",
+          "Projeto integrador V-B"
+        ]
+      },
+      {
+        "label": "6º Semestre",
+        "subjects": [
+          "Algoritmos e programação com Python",
+          "Projeto e implementação de sistemas de apoio à decisão",
+          "Projeto Integrador VI-A",
+          "Governança de tecnologia da informação",
+          "Sistemas de informações gerenciais",
+          "Projeto integrador VI-B"
+        ]
+      },
+      {
+        "label": "7º Semestre",
+        "subjects": [
+          "Introdução a big data e internet das Coisas (IoT)",
+          "Sistemas especialistas",
+          "Projeto Integrador VII-A",
+          "Introdução a inteligência de negócios",
+          "Analytics para big data",
+          "Projeto integrador VII-B"
+        ]
+      },
+      {
+        "label": "8º Semestre",
+        "subjects": [
+          "Segurança e auditoria da informação",
+          "Gestão da inovação",
+          "Projeto integrador VIII-A",
+          "Direito e ética na computação",
+          "Projeto de sistemas de informação",
+          "Projeto integrador VIII-B"
+        ]
+      }
+    ]
+  }
+]
