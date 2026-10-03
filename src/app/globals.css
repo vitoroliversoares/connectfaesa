@@ -282,9 +282,10 @@ a { text-decoration: none; }
   .feature-grid, .profile-grid { grid-template-columns: 1fr; }
   .feature-grid { gap: 22px; }
   .feature-card h3 { margin-top: 22px; }
-  .artifact-layout { display: flex; flex-direction: column; min-height: max(1900px, 290vh); padding-block: 76px 110px; }
-  .artifact-visual { order: -1; top: 72px; width: 100%; height: min(38vh, 320px); }
-  .artifact-copy { top: calc(64px + min(38vh, 320px)); width: 100%; padding: 0; }
+  .artifact-section { min-height: max(1900px, 290svh); }
+  .artifact-layout { position: sticky; top: 0; display: flex; flex-direction: column; gap: 18px; height: 100svh; min-height: 0; padding-block: 76px 16px; }
+  .artifact-visual { position: relative; order: -1; top: auto; width: 100%; height: min(38svh, 320px); flex-shrink: 1; min-height: 0; }
+  .artifact-copy { position: relative; top: auto; width: 100%; flex: none; padding: 0; }
   .artifact-copy-stage { min-height: 275px; }
   .artifact-copy h2 { margin-top: 12px; font-size: clamp(37px, 9vw, 48px); }
   .artifact-copy p:not(.eyebrow) { margin-top: 14px; font-size: 15px; line-height: 1.55; }
@@ -314,8 +315,8 @@ a { text-decoration: none; }
   .form-section { padding: 22px; }
 }
 @media (max-width: 680px) and (max-height: 650px) {
-  .artifact-visual { top: 64px; height: 32vh; }
-  .artifact-copy { top: calc(56px + 32vh); }
+  .artifact-layout { gap: 12px; padding-block: 64px 14px; }
+  .artifact-visual { height: 32svh; }
   .artifact-copy-stage { min-height: 250px; }
   .artifact-copy h2 { font-size: 34px; }
   .artifact-copy p:not(.eyebrow) { font-size: 14px; line-height: 1.5; }
