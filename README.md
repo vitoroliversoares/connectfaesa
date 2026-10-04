@@ -1,23 +1,53 @@
+<p align="center">
+  <a href="https://connectfaesa.vercel.app/">
+    <picture>
+      <source media="(max-width: 600px)" srcset="docs/readme/hero-mobile.png">
+      <img src="docs/readme/hero.png" alt="Connect FAESA — uma matéria em comum pode abrir novos caminhos" width="1200">
+    </picture>
+  </a>
+</p>
+
 # Connect FAESA
 
-O Connect FAESA aproxima estudantes que querem estudar juntos, trocar habilidades e tirar projetos do papel. A descoberta de pessoas começa pelo que cada um está vivendo na faculdade: curso, matérias em estudo e objetivos.
+**A vida universitária acontece junto.** Encontre estudantes da FAESA que compartilham suas matérias, habilidades e vontade de criar algo novo. Uma disciplina em comum pode ser o início de um grupo de estudos, uma parceria ou um projeto.
+
+**[Explorar a plataforma](https://connectfaesa.vercel.app/)** · [Entender como funciona](#como-funciona)
+
+---
 
 ## Como funciona
 
-1. **Conheça a plataforma.** A página inicial apresenta a proposta do Connect FAESA e uma galeria de espaços do campus. É possível explorá-la sem criar uma conta.
-2. **Crie seu perfil.** Com um e-mail institucional da FAESA, informe seu curso e modalidade, selecione as matérias que está estudando e conte o que você procura e pode oferecer a outros estudantes.
-3. **Encontre colegas.** Explore perfis organizados por afinidade e filtre por nome, curso, modalidade ou matéria. As matérias em comum e outros interesses ajudam a entender por que uma pessoa pode combinar com você.
-4. **Conecte-se no seu ritmo.** Envie um convite para quem você gostaria de conhecer. A outra pessoa pode aceitar ou recusar, e você pode cancelar um convite enviado.
-5. **Conversem depois da aceitação.** Os dados de contato ficam privados até a conexão ser aceita. Quando houver um número cadastrado, o perfil oferece um atalho para iniciar a conversa no WhatsApp.
+**01 / Mostre seu momento**
 
-## Seu espaço
+Crie um perfil com seu curso, modalidade, matérias em estudo, objetivo, habilidades e disponibilidade. As disciplinas são selecionadas a partir das grades de graduação publicadas pela FAESA para cursos presenciais e EAD.
 
-No perfil, você pode atualizar suas matérias, objetivo, habilidades, disponibilidade e apresentação pessoal conforme sua rotina muda. A área **Minhas conexões** reúne os perfis com os quais você já trocou convites, e os cards mostram discretamente quando um convite está pendente ou quando a conexão foi aceita.
+**02 / Encontre sua turma**
 
-## Matérias e cursos
+Explore perfis por afinidade e filtre por nome, curso, modalidade ou matéria. Veja o que vocês estudam em comum e o que cada pessoa procura ou pode oferecer.
 
-A seleção de matérias é organizada por curso e modalidade, presencial ou EAD, com base nas grades de graduação publicadas pela FAESA. Assim, estudantes da mesma disciplina podem se encontrar mesmo quando procuram tipos diferentes de parceria, como um grupo de estudos ou um projeto.
+**03 / Conecte-se no seu ritmo**
 
-## Privacidade e acesso
+Envie um convite, acompanhe se ele está pendente e aceite ou recuse convites recebidos. Depois da aceitação, os dados de contato são liberados; quando há um número cadastrado, você pode iniciar a conversa pelo WhatsApp.
 
-O cadastro usa e-mails institucionais `@aluno.faesa.br` ou `@faesa.br`. Perfis de estudantes são exibidos apenas para pessoas autenticadas. WhatsApp e e-mail de contato só ficam disponíveis para uma conexão aceita. Também é possível recuperar ou alterar a senha da conta.
+---
+
+## O campus também faz parte da história
+
+<p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="docs/readme/campus-still.webp">
+    <img src="docs/readme/campus.gif" alt="Galeria animada de espaços da FAESA: Mov.ie, biblioteca, Núcleo de Prática Jurídica e área de convivência" width="900">
+  </picture>
+</p>
+
+<p align="center"><sub>Mov.ie · Biblioteca · Núcleo de Prática Jurídica · Convivência</sub></p>
+
+A página inicial combina uma galeria de fotos do campus com um modelo 3D de livros e canecas que responde à rolagem. A apresentação convida você a conhecer a comunidade antes de criar uma conta.
+
+---
+
+## Seu espaço, suas escolhas
+
+Atualize suas matérias, objetivo e disponibilidade conforme o semestre avança. Em **Minhas conexões**, acompanhe os perfis com os quais já trocou convites. Os cards distinguem, de forma discreta, convites pendentes e conexões aceitas.
+
+O cadastro usa e-mails institucionais `@aluno.faesa.br` ou `@faesa.br`. Perfis de estudantes são visíveis apenas para pessoas autenticadas, e WhatsApp e e-mail de contato ficam privados até que uma conexão seja aceita.
