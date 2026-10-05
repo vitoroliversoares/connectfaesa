@@ -48,7 +48,7 @@ export async function registerAction(email: string, password: string) {
   const protocol = host.includes('localhost') ? 'http' : 'https'
   const emailRedirectTo = `${protocol}://${host}/auth/callback?next=/onboarding`
 
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email: emailLower, 
     password,
     options: {
@@ -58,6 +58,30 @@ export async function registerAction(email: string, password: string) {
 
   if (error) {
     return { error: error.message }
+  }
+
+  return { success: true, needsConfirmation: !data.session }
+}
+
+export async function resendSignupConfirmationAction(email: string) {
+  const emailLower = email.toLowerCase().trim()
+  if (!emailLower.endsWith('@aluno.faesa.br') && !emailLower.endsWith('@faesa.br')) {
+    return { error: 'Use seu e-mail institucional da FAESA.' }
+  }
+
+  const headersList = await headers()
+  const host = headersList.get('host') || 'localhost:3000'
+  const protocol = host.includes('localhost') ? 'http' : 'https'
+  const emailRedirectTo = `${protocol}://${host}/auth/callback?next=/onboarding`
+  const supabase = await createClient()
+  const { error } = await supabase.auth.resend({
+    type: 'signup',
+    email: emailLower,
+    options: { emailRedirectTo },
+  })
+
+  if (error) {
+    return { error: error.status === 429 ? 'Aguarde um pouco antes de pedir outro link.' : 'Não foi possível reenviar agora. Tente novamente em instantes.' }
   }
 
   return { success: true }

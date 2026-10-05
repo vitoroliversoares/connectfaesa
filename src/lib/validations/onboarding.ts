@@ -27,7 +27,10 @@ export const SKILL_QUESTIONS: Record<string, string> = {
 
 export const onboardingSchema = z.object({
   full_name: z.string().trim().min(3, 'Informe seu nome completo.'),
-  whatsapp: z.string().trim().min(10, 'Informe seu WhatsApp com DDD.'),
+  whatsapp: z.string().trim().refine((value) => {
+    const digits = value.replace(/\D/g, '')
+    return digits.length >= 10 && digits.length <= 13
+  }, 'Informe um WhatsApp válido com DDD.'),
   institutional_email: z.email('Informe um e-mail válido.').refine(
     (email) => /@(aluno\.)?faesa\.br$/i.test(email),
     'Use seu e-mail institucional da FAESA.',
