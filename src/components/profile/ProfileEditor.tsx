@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { Controller, useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { ArrowLeft, ArrowRight, Check, ChevronDown, LockKeyhole, X } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, ChevronDown, LockKeyhole, Search, X } from 'lucide-react'
 import { toast } from 'sonner'
 import { updateProfileAction } from '@/actions/profile'
 import { coursesFor, findCourse, type Modality } from '@/lib/catalog'
@@ -24,12 +24,16 @@ const DRAFT_KEY = 'connectfaesa:onboarding-draft'
 
 const STEPS = [
   { label: 'Você', title: 'Primeiro, você.', action: 'Escolher meu curso', lead: 'Seu nome abre', script: 'caminhos.', note: 'Vamos começar pelo essencial. Seu contato fica para o final.' },
-  { label: 'Vida acadêmica', title: 'Sua vida acadêmica.', action: 'Contar meus interesses', lead: 'Encontre quem vive as mesmas', script: 'matérias.', note: 'Escolha seu curso e, se quiser, as matérias que está estudando agora.' },
+  { label: 'Vida acadêmica', title: 'Sua vida acadêmica.', action: 'Contar meus interesses', lead: 'Encontre quem vive as mesmas', script: 'matérias.', note: 'Sua grade pode seguir seu ritmo. Escolha disciplinas de qualquer período.' },
   { label: 'Interesses', title: 'O que move você?', action: 'Revisar meu perfil', lead: 'Boas ideias começam com', script: 'trocas.', note: 'Mostre o que você oferece e o que gostaria de encontrar.' },
   { label: 'Revisão', title: 'Pronto para conectar.', action: 'Entrar na comunidade', lead: 'Sua próxima conexão está', script: 'perto.', note: 'Revise seu perfil e decida como compartilhar seus dados.' },
 ] as const
 
 type CoursePeriod = NonNullable<ReturnType<typeof findCourse>>['periods'][number]
+
+function normalizeSubjectSearch(value: string) {
+  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR')
+}
 
 function SubjectPeriod({ period, initiallyOpen, selected, onToggle }: { period: CoursePeriod; initiallyOpen: boolean; selected: string[]; onToggle: (subject: string) => void }) {
   const [open, setOpen] = useState(initiallyOpen)
@@ -62,6 +66,7 @@ export default function ProfileEditor({ mode, email, profile, onDone, onClose }:
   const [step, setStep] = useState(0)
   const [busy, setBusy] = useState(false)
   const [draftLoaded, setDraftLoaded] = useState(false)
+  const [subjectQuery, setSubjectQuery] = useState('')
   const { register, control, setValue, trigger, clearErrors, handleSubmit, getValues, reset, subscribe, formState: { errors } } = useForm<OnboardingData>({
     resolver: zodResolver(onboardingSchema),
     defaultValues: {
@@ -91,6 +96,12 @@ export default function ProfileEditor({ mode, email, profile, onDone, onClose }:
   const topSkills = useWatch({ control, name: 'top_skills' }) ?? []
   const partnerNeeds = useWatch({ control, name: 'partner_needs' }) ?? []
   const course = findCourse(modality, courseName)
+  const normalizedQuery = normalizeSubjectSearch(subjectQuery.trim())
+  const searchedPeriods = normalizedQuery && course ? course.periods.map((period) => ({
+    ...period,
+    subjects: period.subjects.filter((subject) => normalizeSubjectSearch(subject).includes(normalizedQuery)),
+  })).filter((period) => period.subjects.length > 0) : []
+  const searchResultCount = searchedPeriods.reduce((count, period) => count + period.subjects.length, 0)
   const isEdit = mode === 'edit'
 
   useEffect(() => {
@@ -149,6 +160,7 @@ export default function ProfileEditor({ mode, email, profile, onDone, onClose }:
   }, [draftLoaded, email, getValues, isEdit, step, subscribe])
 
   function chooseModality(next: Modality) {
+    setSubjectQuery('')
     setValue('modality', next, { shouldValidate: true })
     setValue('course', '')
     setValue('study_subjects', [])
@@ -210,13 +222,17 @@ export default function ProfileEditor({ mode, email, profile, onDone, onClose }:
       {isEdit && <h2>Sua vida acadêmica.</h2>}
       <div className="form-stack">
         <div><span className="label">Modalidade</span><div className="choice-row"><Choice selected={modality === 'Presencial'} onClick={() => chooseModality('Presencial')}>Presencial</Choice><Choice selected={modality === 'EAD'} onClick={() => chooseModality('EAD')}>EAD</Choice></div></div>
-        <div><label className="label" htmlFor="course">Curso</label><select id="course" className="field" aria-invalid={!!errors.course} value={courseName} onChange={(event) => { setValue('course', event.target.value, { shouldValidate: true }); setValue('study_subjects', []) }}><option value="">Selecione seu curso</option>{coursesFor(modality).map((item) => <option key={item.name} value={item.name}>{item.name}</option>)}</select>{error('course')}</div>
+        <div><label className="label" htmlFor="course">Curso</label><select id="course" className="field" aria-invalid={!!errors.course} value={courseName} onChange={(event) => { setSubjectQuery(''); setValue('course', event.target.value, { shouldValidate: true }); setValue('study_subjects', []) }}><option value="">Selecione seu curso</option>{coursesFor(modality).map((item) => <option key={item.name} value={item.name}>{item.name}</option>)}</select>{error('course')}</div>
         {modality === 'Presencial' && <div><span className="label">Turno</span><div className="choice-row">{SHIFTS.filter((item) => item !== 'EAD').map((item) => <Choice key={item} selected={shift === item} onClick={() => setValue('shift', item, { shouldValidate: true })}>{item}</Choice>)}</div>{error('shift')}</div>}
         <div><div className="form-field-title"><span className="label">Matérias que você está estudando <span className="muted" style={{ fontWeight: 400 }}>(opcional)</span></span><span className="muted" style={{ fontSize: 12 }}>{selectedSubjects.length}/8</span></div>
-          <p className="form-help" style={{ marginTop: 0, marginBottom: 12 }}>Selecione as matérias atuais para encontrar colegas com algo em comum. Você pode mudar depois.</p>
+          <p className="form-help" style={{ marginTop: 0, marginBottom: 12 }}>Escolha as matérias que cursa agora, mesmo que sejam de períodos diferentes ou adiantadas. Você pode mudar depois.</p>
           {!course && <p className="muted" style={{ fontSize: 13 }}>Escolha seu curso para ver a grade.</p>}
           {course && !course.periods.length && <p className="muted" style={{ fontSize: 13 }}>A matriz deste curso não está disponível na página oficial no momento.</p>}
-          {course && course.periods.length > 0 && <div className="subject-groups">{course.periods.map((period, index) => <SubjectPeriod period={period} initiallyOpen={index === 0} selected={selectedSubjects} onToggle={chooseSubject} key={`${courseName}-${period.label}-${index}`} />)}</div>}
+          {course && course.periods.length > 0 && <>
+            <div className="subject-search"><Search size={17} aria-hidden="true" /><input type="search" className="field" value={subjectQuery} onChange={(event) => setSubjectQuery(event.target.value)} placeholder="Buscar em toda a grade" aria-label="Buscar matéria em qualquer período" /></div>
+            {selectedSubjects.length > 0 && <div className="selected-subjects"><p className="student-card-caption">Suas matérias selecionadas</p><div className="selected-subjects-list">{selectedSubjects.map((subject) => <button type="button" className="selected-subject" key={subject} onClick={() => chooseSubject(subject)} aria-label={`Remover ${subject}`}><span>{subject}</span><small>{course.periods.find((period) => period.subjects.includes(subject))?.label}</small><X size={13} aria-hidden="true" /></button>)}</div></div>}
+            {normalizedQuery ? <div className="subject-search-results"><p className="subject-search-count" role="status">{searchResultCount ? `${searchResultCount} ${searchResultCount === 1 ? 'matéria encontrada' : 'matérias encontradas'} na grade` : 'Nenhuma matéria encontrada nessa grade'}</p>{searchedPeriods.map((period) => <div className="subject-search-period" key={period.label}><p>{period.label}</p><div className="subject-list">{period.subjects.map((subject) => <Choice key={subject} selected={selectedSubjects.includes(subject)} onClick={() => chooseSubject(subject)}>{subject}</Choice>)}</div></div>)}</div> : <div className="subject-groups">{course.periods.map((period, index) => <SubjectPeriod period={period} initiallyOpen={index === 0} selected={selectedSubjects} onToggle={chooseSubject} key={`${courseName}-${period.label}-${index}`} />)}</div>}
+          </>}
           {course && <a href={course.url} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: 10, color: 'var(--blue)', fontSize: 12, fontWeight: 700 }}>Consultar a matriz na FAESA ↗</a>}
           {error('study_subjects')}
         </div>
