@@ -29,7 +29,11 @@ export default function ProfileModal({ profile, currentUser, busy, onClose, onAc
     <div style={{ display: 'grid', gap: 22 }}>
       <section><p className="eyebrow">Quer fazer</p><p style={{ fontSize: 19, fontWeight: 700, marginTop: 8 }}>{profile.main_goal || 'Conhecer outros estudantes'}</p>{profile.specific_goal && <p className="muted" style={{ marginTop: 5, fontSize: 14 }}>{profile.specific_goal}</p>}</section>
       <section><p className="eyebrow">Matérias em estudo</p><div className="choice-row" style={{ marginTop: 10 }}>{profile.study_subjects?.length ? profile.study_subjects.map((item) => <span key={item} className={`chip ${match.subjects.includes(item) ? 'chip-selected' : ''}`}><BookOpenText size={13} />{item}</span>) : <p className="muted" style={{ fontSize: 13 }}>Ainda não adicionou matérias.</p>}</div></section>
-      {match.reasons.length > 0 && <section className="subject-group" style={{ background: 'var(--blue-soft)' }}><p style={{ fontSize: 13, fontWeight: 700, color: 'var(--blue)' }}>{match.score}% de afinidade</p><p className="muted" style={{ fontSize: 13, marginTop: 5 }}>{match.reasons.join(' · ')}</p></section>}
+      {match.reasons.length > 0 && <section className="profile-affinity" aria-label="Afinidade acadêmica">
+        <div className="profile-affinity-heading"><p className="eyebrow">Afinidade acadêmica</p><strong>{match.score}%</strong></div>
+        <div className="profile-affinity-track" aria-hidden="true"><span style={{ width: `${match.score}%` }} /></div>
+        <ul className="profile-affinity-reasons">{match.reasons.map((reason) => <li key={reason}>{reason}</li>)}</ul>
+      </section>}
       <div className="two-fields"><section><p className="eyebrow">Oferece</p><p className="muted" style={{ fontSize: 13, marginTop: 7 }}>{profile.top_skills?.map((item) => item.split('/')[0].trim()).join(', ') || 'Não informado'}</p></section><section><p className="eyebrow">Disponibilidade</p><p className="muted" style={{ fontSize: 13, marginTop: 7 }}><Clock3 size={14} style={{ display: 'inline', marginRight: 5 }} />{profile.availability_hours ? `${profile.availability_hours} horas por semana` : 'Não informada'}</p></section></div>
       {profile.feedback && <section><p className="eyebrow">Sobre</p><p className="muted" style={{ fontSize: 14, marginTop: 7, whiteSpace: 'pre-wrap' }}>{profile.feedback}</p></section>}
     </div>

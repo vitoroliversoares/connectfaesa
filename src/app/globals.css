@@ -325,6 +325,16 @@ a { text-decoration: none; }
 .modal-card { width: min(100%, 640px); max-height: min(90vh, 900px); overflow: auto; padding: clamp(24px, 4vw, 38px); }
 .modal-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .modal-close { display: inline-flex; width: 42px; height: 42px; flex: none; align-items: center; justify-content: center; border-radius: 4px; background: var(--surface-soft); color: var(--ink); }
+.profile-affinity { padding: 18px 0 20px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.profile-affinity-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; }
+.profile-affinity-heading strong { color: var(--ink); font-size: 23px; font-weight: 700; line-height: 1; letter-spacing: -.04em; }
+.profile-affinity-track { height: 2px; margin-top: 14px; background: var(--line); }
+.profile-affinity-track span { display: block; height: 100%; background: var(--blue); }
+.dark .profile-affinity-track span { background: #9dbbff; }
+.profile-affinity-reasons { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 14px; list-style: none; }
+.profile-affinity-reasons li { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.profile-affinity-reasons li::before { width: 4px; height: 4px; flex: none; border-radius: 50%; background: var(--blue); content: ''; }
+.dark .profile-affinity-reasons li::before { background: #9dbbff; }
 
 .form-stack { display: grid; gap: 20px; }
 .form-field-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
