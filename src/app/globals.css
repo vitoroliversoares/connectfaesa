@@ -153,7 +153,7 @@ a { text-decoration: none; }
 .dark .text-link { color: #d6e3ff; }
 .text-link svg { transition: transform .18s ease; }
 @media (hover: hover) and (pointer: fine) { .text-link:hover svg { transform: translateX(4px); } }
-.artifact-visual { position: sticky; top: max(24px, calc(50vh - 300px)); align-self: start; height: 600px; min-width: 0; overflow: hidden; }
+.artifact-visual { position: sticky; top: max(24px, calc(50vh - 300px)); align-self: start; height: min(600px, calc(100svh - 48px)); min-width: 0; overflow: hidden; }
 .artifact-canvas { position: absolute; z-index: 1; inset: 0; }
 .artifact-webgl { display: block; width: 100%; height: 100%; }
 .artifact-fallback { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; transition: opacity .3s ease; }
@@ -428,7 +428,7 @@ a { text-decoration: none; }
   .wizard-stage-list { display: none; }
   .wizard-main { padding-top: 35px; }
   .artifact-layout { grid-template-columns: 1fr 1fr; min-height: max(2100px, 290vh); }
-  .artifact-visual { top: max(24px, calc(50vh - min(23vw, 220px))); height: min(46vw, 440px); }
+  .artifact-visual { top: max(24px, calc(50vh - min(23vw, 220px))); height: min(46vw, 440px, calc(100svh - 48px)); }
 }
 @media (max-width: 680px) {
   .shell { width: min(100% - 32px, 1200px); }
