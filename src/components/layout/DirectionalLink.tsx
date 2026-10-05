@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { DirectionalArrow } from './DirectionalArrow'
 
 type DirectionalLinkProps = {
   href: string
@@ -11,10 +11,7 @@ export function DirectionalLink({ href, children, className = '' }: DirectionalL
   return (
     <Link href={href} className={`btn btn-directional ${className}`.trim()}>
       <span>{children}</span>
-      <span className="btn-directional-icon" aria-hidden="true">
-        <ArrowRight size={18} />
-        <ArrowRight size={18} />
-      </span>
+      <DirectionalArrow />
     </Link>
   )
 }
